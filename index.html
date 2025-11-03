@@ -4,16 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio — Personalized Snowflake Generator</title>
-  <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Choose font, color, arms, spacing, and a center snowburst. Download as PNG or SVG and share your creation with #NameflakeStudio." />
+  <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Choose arms, font, spacing and color — then download your flake as PNG or SVG. Outline fonts included for coloring." />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Allura&family=Sacramento&family=Parisienne&family=Playfair+Display:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Poppins:wght@400;600&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Monoton&family=Righteous&family=Raleway+Dots&display=swap" rel="stylesheet">
+  <!-- UI + Outline + Script fonts (add/remove here as you like) -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --cran:#8b2323; --gold:#d6b46a; --ink:#262626;
-      --cream:#f7efe0; --paper:#fff; --glass:rgba(255,255,255,.68);
-      --shadow:0 12px 28px rgba(0,0,0,.14);
+      --cran:#7b2323;
+      --ever:#144a34;
+      --gold:#d6b46a;
+      --ink:#1b1b1b;
+      --paper:#fff;
+      --cream:#f8f3e7;
+      --glass: rgba(255,255,255,.68);
+      --shadow: 0 12px 28px rgba(0,0,0,.14);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -22,35 +27,69 @@
       background:
         radial-gradient(1400px 600px at 50% -10%, rgba(255,255,255,.55), transparent 70%),
         linear-gradient(135deg, #f4ead5 0%, #efe2c4 35%, #ecd8af 100%);
-      font-family:'Libre Baskerville',serif; overflow-x:hidden;
+      font-family:'Libre Baskerville',serif;
+      overflow-x:hidden;
     }
 
-    header{ padding:16px 0 8px; border-bottom:6px solid var(--gold);
-      background:linear-gradient(135deg, #7b2f2f, #6b2b2b); box-shadow:var(--shadow);}
-    .shell{ max-width:1280px; margin:0 auto; padding:0 16px; }
-    .brandbar{ display:flex; flex-direction:column; align-items:center; color:#fbe9d6; }
-    .brand{ font-family:'Cinzel',serif; font-weight:700; font-size:26px; letter-spacing:.06em; text-shadow:0 2px 0 rgba(0,0,0,.12);}
-    .tag{ font-family:'Great Vibes',cursive; margin-top:2px; opacity:.95 }
+    /* Header */
+    .site-header{
+      padding:18px 0 10px;
+      border-bottom:6px solid var(--gold);
+      background: linear-gradient(135deg, #7b2f2f, #6b2b2b);
+      box-shadow: var(--shadow);
+      text-align:center;
+      color:#ffe9d0;
+    }
+    .brand{
+      margin:0;
+      font-size: clamp(22px, 3.2vw, 34px);
+      letter-spacing:.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color:#fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,.25);
+    }
+    .tagline{
+      margin:6px 0 0;
+      font-family:'Great Vibes',cursive;
+      font-size: clamp(16px, 2.2vw, 22px);
+      color:#fde8d2;
+      opacity:.95;
+    }
 
+    /* Layout */
+    .shell{ max-width:1200px; margin:18px auto; padding:0 16px; }
     .card{ background:var(--glass); backdrop-filter: blur(8px);
       border:1px solid rgba(255,255,255,.7); border-radius:16px; box-shadow:var(--shadow); }
-    .stage{ margin:18px auto 0; padding:12px; }
-    .frame{
-      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.15), transparent 45%), var(--paper);
-      border-radius:12px; box-shadow:inset 0 0 0 2px rgba(0,0,0,.04);
+
+    .stage{ padding:12px; }
+    .stage-frame{
+      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.12), transparent 45%) , var(--paper);
+      border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.04);
       overflow:hidden; position:relative; padding:10px;
     }
     svg{ width:100%; height:auto; display:block; position:relative; z-index:1 }
 
-    .controls{ margin:16px auto 0; padding:14px }
-    .grid{ display:grid; gap:.6rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .controls{ padding:14px; margin-top:16px }
+    .grid{
+      display:grid; gap:.6rem;
+      grid-template-columns: 1fr 1fr;
+      align-items:center;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
     .controls label{
       display:flex; align-items:center; justify-content:space-between; gap:.75rem; font-size:14px;
-      border-bottom:1px dashed rgba(0,0,0,.08); padding-bottom:6px;
+      border-bottom:1px dashed rgba(0,0,0,.08); padding:8px 0;
     }
     .controls input, .controls select{
       width:220px; max-width:60%;
       padding:8px 10px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff;
+      font-size:14px;
+    }
+    .small{
+      width:120px !important;
     }
     .buttons{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px }
     .btn{
@@ -59,156 +98,362 @@
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
     }
     .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 30px rgba(0,0,0,.16) }
-    .btn.primary{ background:linear-gradient(135deg, var(--gold), #c19a52); border-color:transparent; color:#2a2a2a }
+    .btn.primary{ background: linear-gradient(135deg, var(--gold), #c19a52); border-color: transparent; color:#2a2a2a }
 
-    .about{ margin:16px auto; padding:18px }
-    .about h3{ margin:0 0 8px; color:#144a34 }
+    .about { padding:18px; margin-top:16px }
+    .about h3{ margin:0 0 8px; color:var(--ever) }
 
-    .counter{ text-align:center; margin:10px 0 0; font-size:13px; opacity:.85; }
+    .social-btns{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px }
+    .share{ padding:8px 12px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff; cursor:pointer }
 
-    footer{ text-align:center; font-size:12px; opacity:.8; padding:20px 0 28px }
+    .footer{ text-align:center; font-size:12px; opacity:.8; padding:20px 0 28px }
 
-    .adwrap{ max-width:1280px; margin:18px auto; padding:0 16px }
-    .ad-card{ padding:8px 10px; text-align:center }
-
-    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+    /* Bottom ad area */
+    .adwrap{ max-width:1200px; margin:18px auto; padding:0 16px }
+    .ad-card{ padding:8px 10px }
   </style>
+
+  <!-- AdSense script (your publisher id) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <div class="shell brandbar">
-      <div class="brand">NAMEFLAKE STUDIO</div>
-      <div class="tag">Each Snowflake is Uniquely Yours</div>
-    </div>
+
+  <header class="site-header">
+    <h1 class="brand">Nameflake Studio</h1>
+    <p class="tagline">Each Snowflake is Uniquely Yours</p>
   </header>
 
   <main class="shell">
+
+    <!-- Stage / Preview -->
     <section class="stage card">
-      <div class="frame">
+      <div class="stage-frame">
+        <!-- KEEP these IDs & translate centered -->
         <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview">
           <g id="root" transform="translate(400,400)"></g>
         </svg>
       </div>
     </section>
 
+    <!-- Controls -->
     <section class="controls card">
       <div class="grid">
         <label>Word or Short Phrase <input id="word" value="David Loves Angie"></label>
-        <label>Arms <input id="arms" type="number" min="3" max="24" value="6"></label>
-        <label>Font size <input id="fs" type="number" value="40"></label>
-        <label>Arm length (px) <input id="len" type="number" value="210"></label>
-        <label>Join gap (px) <input id="gap" type="number" value="40"></label>
-        <label>Tilt (°) <input id="tilt" type="number" value="0"></label>
+        <label>Arms <input id="arms" type="number" min="3" max="24" value="6" class="small"></label>
+
+        <label>Font size <input id="fs" type="number" value="40" class="small"></label>
+        <label>Arm length (px) <input id="len" type="number" value="210" class="small"></label>
+
+        <label>Join gap (px) <input id="gap" type="number" value="40" class="small"></label>
+        <label>Tilt (°) <input id="tilt" type="number" value="0" class="small"></label>
+
         <label>Font
           <select id="font">
-            <option value="Great Vibes" selected>Great Vibes</option>
-            <option value="Dancing Script">Dancing Script</option>
-            <option value="Allura">Allura</option>
-            <option value="Sacramento">Sacramento</option>
-            <option value="Parisienne">Parisienne</option>
-            <option value="Londrina Outline">Londrina Outline</option>
-            <option value="Bungee Outline">Bungee Outline</option>
-            <option value="Kumar One Outline">Kumar One Outline</option>
-            <option value="Monoton">Monoton</option>
-            <option value="Raleway Dots">Raleway Dots</option>
-            <option value="Playfair Display">Playfair Display</option>
-            <option value="Libre Baskerville">Libre Baskerville</option>
-            <option value="Lora">Lora</option>
-            <option value="Cinzel">Cinzel</option>
-            <option value="Montserrat">Montserrat</option>
-            <option value="Raleway">Raleway</option>
-            <option value="Poppins">Poppins</option>
-            <option value="Righteous">Righteous</option>
+            <option value="Great Vibes" data-kind="cursive" selected>Great Vibes (script)</option>
+            <option value="Dancing Script" data-kind="cursive">Dancing Script (script)</option>
+
+            <option value="Londrina Outline" data-kind="cursive">Londrina Outline (coloring)</option>
+            <option value="Bungee Outline" data-kind="cursive">Bungee Outline (coloring)</option>
+            <option value="Kumar One Outline" data-kind="serif">Kumar One Outline (coloring)</option>
+
+            <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
+            <option value="Playfair Display" data-kind="serif">Playfair Display</option>
+            <option value="Lora" data-kind="serif">Lora</option>
+            <option value="Cinzel" data-kind="serif">Cinzel</option>
+            <option value="Montserrat" data-kind="sans-serif">Montserrat</option>
+            <option value="Raleway" data-kind="sans-serif">Raleway</option>
           </select>
         </label>
-        <label>Color <input id="color" type="color" value="#7b2323"></label>
-        <label>Center snowburst <input id="stampOn" type="checkbox" checked></label>
-        <label>Stamp size <input id="stampSize" type="range" min="10" max="80" value="28"></label>
+
+        <label>Color <input id="color" type="color" value="#111111" /></label>
+
+        <!-- Optional: simple center snowburst toggle -->
+        <label>
+          Center snowburst
+          <span style="display:flex; gap:.5rem; align-items:center;">
+            <input id="burstOn" type="checkbox" />
+            Size <input id="burstSize" type="number" value="14" class="small" />
+          </span>
+        </label>
       </div>
 
       <div class="buttons">
         <button id="go" class="btn primary">Generate</button>
-        <button id="pngTransparent" class="btn">Download PNG (Transparent)</button>
-        <button id="pngWhite" class="btn">Download PNG (White)</button>
+        <button id="download" class="btn">Download PNG</button>
         <button id="downloadSvg" class="btn">Download SVG</button>
         <button id="printBtn" class="btn">Print</button>
       </div>
-
-      <div class="counter">
-        <span id="dlCounter">❄ You’ve created 0 snowflakes here.</span>
-      </div>
     </section>
 
+    <!-- About + Share -->
     <section class="about card">
       <h3>❄ About Nameflake Studio</h3>
-      <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — add a tiny center snowburst — then download or share your creation.</p>
-    </section>
+      <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or share your creation.</p>
 
-    <!-- Share Section -->
-    <section class="share card" style="margin:16px auto; padding:18px">
-      <h3 style="margin:0 0 8px; color:#144a34">📣 Share Your Snowflake</h3>
-      <p style="margin:0 0 10px">
-        Show off your creation! Post it with <strong>#NameflakeStudio</strong> so we can see it. ❄️
-      </p>
-      <div class="share-btns" style="display:flex; flex-wrap:wrap; gap:10px">
-        <button class="btn" onclick="shareSnowflake('facebook')">Share on Facebook</button>
-        <button class="btn" onclick="shareSnowflake('x')">Share on X</button>
-        <button class="btn" onclick="shareSnowflake('pinterest')">Pin on Pinterest</button>
-        <button class="btn" onclick="shareSnowflake('copy')">Copy Page Link</button>
+      <h4>🎨 Coloring-Friendly Fonts</h4>
+      <p>Try <strong>Londrina Outline</strong>, <strong>Bungee Outline</strong>, or <strong>Kumar One Outline</strong> for printable snowflakes you can color in!</p>
+
+      <h4>💡 Tip</h4>
+      <p>Use a short word for bold, petal-like designs — or a longer word for intricate lace effects.</p>
+
+      <h4>📣 Share Your Snowflake!</h4>
+      <p>Post your favorite flakes with <strong>#MyNameSnowflake</strong> — or share this page:</p>
+
+      <div class="social-btns">
+        <button class="share" onclick="shareToSocial('facebook')">Share on Facebook</button>
+        <button class="share" onclick="shareToSocial('x')">Share on X</button>
+        <button class="share" onclick="shareToSocial('pinterest')">Pin on Pinterest</button>
       </div>
-      <p style="margin-top:10px; font-size:13px; opacity:0.85;">💡 Tip: Download your snowflake as a PNG before sharing it for the best image quality!</p>
     </section>
   </main>
 
-  <!-- ✅ Adsense Banner -->
+  <!-- Bottom AdSense banner -->
   <div class="adwrap">
     <section class="ad-card card">
-      <!-- Name Flake Studio Ad Unit -->
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958"
-          crossorigin="anonymous"></script>
+      <!-- Name Flake Studio (your slot) -->
       <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-9007523138058958"
-          data-ad-slot="6836589862"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+           style="display:block"
+           data-ad-client="ca-pub-9007523138058958"
+           data-ad-slot="6836589862"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
     </section>
   </div>
 
-  <footer>© Nameflake Studio</footer>
+  <footer class="footer">© Nameflake Studio</footer>
 
-  <!-- Your working JavaScript file -->
-  <script src="script.js"></script>
+  <script defer>
+    // ---------- helpers ----------
+    const svgNS = "http://www.w3.org/2000/svg";
+    const $ = id => document.getElementById(id);
 
-  <!-- Share Script -->
-  <script>
-    function shareSnowflake(where){
-      const url = location.href.split('#')[0];
-      const text = "I just made a custom name snowflake on Nameflake Studio! ❄ #NameflakeStudio";
-      if (where === 'copy') {
-        navigator.clipboard.writeText(url).then(
-          () => alert("Link copied! Share it anywhere ✨"),
-          () => prompt("Copy this link:", url)
-        );
-        return;
-      }
-      if (navigator.share && where === 'native') {
-        navigator.share({ title: "Nameflake Studio", text, url }).catch(()=>{});
-        return;
-      }
-      let shareUrl = url;
-      if (where === 'facebook') {
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-      } else if (where === 'x') {
-        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-      } else if (where === 'pinterest') {
-        shareUrl = `https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(text)}`;
-      }
-      window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    let root, flake;
+
+    function v(id, fb){ const el=$(id); return el ? el.value : fb; }
+    function selectedFontStack(){
+      const sel = $("font");
+      const family = sel?.value || "Great Vibes";
+      const kind = (sel && sel.selectedOptions && sel.selectedOptions[0]?.dataset.kind) || "serif";
+      return { css: `'${family}', ${kind}`, family };
     }
+
+    async function waitForFont(fontFamily, px = 40){
+      try {
+        await document.fonts.load(`${px}px "${fontFamily}"`);
+        await document.fonts.ready;
+      } catch(e){}
+    }
+
+    // Optional burst
+    function drawBurst(group, color, size){
+      const g = document.createElementNS(svgNS,"g");
+      for(let i=0;i<12;i++){
+        const r = document.createElementNS(svgNS,"rect");
+        r.setAttribute("x", String(-size/8));
+        r.setAttribute("y", String(-size));
+        r.setAttribute("width", String(size/4));
+        r.setAttribute("height", String(size*2));
+        r.setAttribute("rx", String(size/8));
+        r.setAttribute("fill", color);
+        const holder = document.createElementNS(svgNS,"g");
+        holder.setAttribute("transform", `rotate(${(360/12)*i})`);
+        holder.appendChild(r);
+        g.appendChild(holder);
+      }
+      group.appendChild(g);
+    }
+
+    async function generate(){
+      // guard DOM
+      if(!root) root = $("root");
+      if(!flake) flake = $("flake");
+      if(!root || !flake) return;
+
+      const WORD  = (v("word","David Loves Angie")).toString();
+      const ARMS  = Math.max(3, Math.min(24, +v("arms",6)));
+      const FS    = +v("fs",40);
+      const LEN   = +v("len",210);
+      const GAP   = +v("gap",40);
+      const TILT  = +v("tilt",0);
+      const COLOR = v("color","#111111");
+      const { css: FONT, family: FONT_ONLY } = selectedFontStack();
+
+      await waitForFont(FONT_ONLY, FS);
+
+      root.innerHTML = "";
+
+      // optional center burst
+      const burstOn = $("burstOn")?.checked;
+      const burstSize = Math.max(6, +v("burstSize", 14));
+      if (burstOn) drawBurst(root, COLOR, burstSize);
+
+      // tiny hub dot (under burst so burst points cover it)
+      const hub = document.createElementNS(svgNS,"circle");
+      hub.setAttribute("r","2.5"); hub.setAttribute("fill",COLOR); hub.setAttribute("opacity",".55");
+      root.appendChild(hub);
+
+      function buildArmPair(){
+        const arm = document.createElementNS(svgNS,"g");
+
+        const gOut = document.createElementNS(svgNS,"g");
+        gOut.setAttribute("transform", `rotate(${-90 + TILT})`);
+        const tOut = document.createElementNS(svgNS,"text");
+        tOut.setAttribute("fill", COLOR);
+        tOut.setAttribute("font-size", FS);
+        tOut.setAttribute("font-family", FONT);
+        tOut.setAttribute("lengthAdjust","spacingAndGlyphs");
+        tOut.setAttribute("textLength", String(Math.max(0, LEN - GAP)));
+        tOut.setAttribute("text-anchor","start");
+        tOut.setAttribute("x", String(GAP));
+        tOut.textContent = WORD;
+        gOut.appendChild(tOut);
+        arm.appendChild(gOut);
+
+        const gIn = document.createElementNS(svgNS,"g");
+        gIn.setAttribute("transform", `scale(1,-1) rotate(${-90 - TILT})`);
+        const tIn = document.createElementNS(svgNS,"text");
+        tIn.setAttribute("fill", COLOR);
+        tIn.setAttribute("font-size", FS);
+        tIn.setAttribute("font-family", FONT);
+        tIn.setAttribute("lengthAdjust","spacingAndGlyphs");
+        tIn.setAttribute("textLength", String(Math.max(0, LEN - GAP)));
+        tIn.setAttribute("text-anchor","start");
+        tIn.setAttribute("x", String(GAP));
+        tIn.textContent = WORD;
+        gIn.appendChild(tIn);
+        arm.appendChild(gIn);
+
+        return arm;
+      }
+
+      const pair = buildArmPair();
+      for(let i=0;i<ARMS;i++){
+        const holder = document.createElementNS(svgNS,"g");
+        holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
+        holder.appendChild(pair.cloneNode(true));
+        root.appendChild(holder);
+      }
+    }
+
+    // --------- Export helpers (with simple font inlining) ----------
+    async function inlineFontsIntoSVG(svgEl, families){
+      try{
+        const cssChunks = [];
+        for (const fam of families){
+          const url = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
+          const css = await (await fetch(url)).text();
+          const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m=>m[1]);
+          let inlined = css;
+          for (const u of urls){
+            const ab = await (await fetch(u)).arrayBuffer();
+            const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
+            inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
+          }
+          cssChunks.push(inlined);
+        }
+        const clone = svgEl.cloneNode(true);
+        const style = document.createElementNS("http://www.w3.org/2000/svg","style");
+        style.setAttribute("type","text/css");
+        style.textContent = cssChunks.join("\n");
+        clone.insertBefore(style, clone.firstChild);
+        return clone;
+      }catch(e){
+        // fallback: return original
+        return svgEl.cloneNode(true);
+      }
+    }
+
+    async function downloadSVG(){
+      const svg = $("flake");
+      const fam = $("font")?.value || "Great Vibes";
+      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
+      const data = new XMLSerializer().serializeToString(svgWithFonts);
+      const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
+      a.href = url; a.download = `${word}_flake.svg`; a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    async function downloadPNG(whiteBg=false){
+      const svg = $("flake");
+      const fam = $("font")?.value || "Great Vibes";
+      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
+      let svgStr = new XMLSerializer().serializeToString(svgWithFonts);
+      if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style=\"background:white\" ");
+
+      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+
+      const img = new Image();
+      img.onload = function(){
+        const vb = svg.viewBox.baseVal;
+        const canvas = document.createElement("canvas");
+        canvas.width = vb.width; canvas.height = vb.height;
+        const ctx = canvas.getContext("2d");
+        if (!whiteBg) ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(img,0,0);
+        URL.revokeObjectURL(url);
+
+        const a = document.createElement("a");
+        const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
+        a.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
+        a.href = canvas.toDataURL("image/png");
+        a.click();
+      };
+      img.src = url;
+    }
+
+    // --------- Share ----------
+    function shareToSocial(where){
+      const page = location.href.split('#')[0];
+      const text = encodeURIComponent("I made a custom name snowflake on Nameflake Studio!");
+      if (where === 'facebook'){
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
+      } else if (where === 'x'){
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(page)}&text=${text}`,'_blank');
+      } else if (where === 'pinterest'){
+        window.open(`https://www.pinterest.com/pin/create/button/?url=${encodeURIComponent(page)}&description=${text}`,'_blank');
+      }
+    }
+    window.shareToSocial = shareToSocial;
+
+    // --------- Print ----------
+    function printFlake(){
+      const w = window.open("", "_blank", "width=900,height=900");
+      const svg = $("flake").outerHTML;
+      w.document.write(`
+        <!doctype html><html><head><meta charset="utf-8"><title>Print Snowflake</title>
+        <style>body{margin:0;}</style></head><body>${svg}</body></html>
+      `);
+      w.document.close();
+      w.focus();
+      w.print();
+    }
+
+    // --------- Bind + First draw ----------
+    function bindUI(){
+      ["word","arms","fs","len","gap","tilt","font","color","burstOn","burstSize"].forEach(id=>{
+        const el = $(id); if (el) el.addEventListener("input", generate);
+      });
+      $("go")?.addEventListener("click", generate);
+      $("download")?.addEventListener("click", async ()=>{
+        const white = confirm("OK = white background, Cancel = transparent");
+        await downloadPNG(white);
+      });
+      $("downloadSvg")?.addEventListener("click", downloadSVG);
+      $("printBtn")?.addEventListener("click", printFlake);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      root = $("root");
+      flake = $("flake");
+      // AdSense push (safe if not yet eligible)
+      try{ (adsbygoogle = window.adsbygoogle || []).push({}); }catch(e){}
+      bindUI();
+      generate();
+    });
   </script>
 </body>
 </html>
