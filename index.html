@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio</title>
   <meta name="google-adsense-account" content="ca-pub-9007523138058958">
-  <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included." />
+  <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included.">
+
+  <!-- Perf: preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&display=swap" rel="stylesheet">
@@ -28,17 +32,17 @@
       font-family:'Libre Baskerville',serif; overflow-x:hidden;
     }
 
-    .site-header{ padding:0 0 16px; border-bottom:6px solid var(--gold);
+    /* Header (tidied spacing, no tagline) */
+    .site-header{
+      padding:0 0 10px;
+      border-bottom:6px solid var(--gold);
       background: linear-gradient(135deg, #7b2f2f, #6b2b2b);
       box-shadow: var(--shadow);
     }
     .banner{
-      max-width:1280px; margin:0 auto; display:block; width:100%; height:auto;
-      object-fit:cover;
-    }
-    .tagline{
-      text-align:center; color:#fbe9d6; margin:.4rem auto 0;
-      font-family:'Great Vibes',cursive; font-size:20px; opacity:.95;
+      display:block; width:100%; height:auto; object-fit:cover;
+      max-width:1280px; margin:0 auto;
+      padding:10px 16px 6px; /* small breathing room */
     }
 
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
@@ -47,7 +51,7 @@
 
     .stage{ padding:12px; }
     .stage-frame{
-      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.15), transparent 45%) , var(--paper);
+      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.15), transparent 45%), var(--paper);
       border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.04);
       overflow:hidden; position:relative; padding:10px;
     }
@@ -83,6 +87,15 @@
     .adwrap{ max-width:1280px; margin:18px auto; padding:0 16px }
     .ad-card{ padding:8px 10px }
 
+    /* Print: just the snowflake, clean page */
+    @media print{
+      header, .controls, .about, .adwrap, .footer { display:none !important; }
+      .shell{ margin:0; padding:0 }
+      .card, .stage, .stage-frame{ box-shadow:none; border:none; padding:0; margin:0 }
+      body{ background:#fff }
+      svg{ width:100%; height:auto }
+    }
+
     @media (max-width: 860px){
       .grid{ grid-template-columns: 1fr; }
     }
@@ -91,10 +104,12 @@
 <body>
 
   <header class="site-header">
-    <img class="banner" src="Banner.png" alt="Personalized Snowflake Generator">
+    <!-- Make sure the filename in your repo is exactly `Banner.png` (case-sensitive) -->
+    <img class="banner" src="Banner.png" alt="Nameflake Studio">
   </header>
 
   <main class="shell">
+    <!-- Preview -->
     <section class="stage card">
       <div class="stage-frame">
         <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview">
@@ -103,14 +118,21 @@
       </div>
     </section>
 
+    <!-- Controls -->
     <section class="controls card">
       <div class="grid">
+        <!-- Back to original default before “David Loves Angie” -->
         <label>Word or Short Phrase <input id="word" value="Angie"></label>
+
         <label>Arms <input id="arms" type="number" min="3" max="24" value="6"></label>
         <label>Font size <input id="fs" type="number" value="40"></label>
         <label>Arm length (px) <input id="len" type="number" value="210"></label>
+
+        <!-- Your preferred showcase spacing -->
         <label>Join gap (px) <input id="gap" type="number" value="40"></label>
+
         <label>Tilt (°) <input id="tilt" type="number" value="0"></label>
+
         <label>Font
           <select id="font">
             <option value="Londrina Outline" data-kind="cursive" selected>Londrina Outline</option>
@@ -126,6 +148,7 @@
             <option value="Dancing Script" data-kind="cursive">Dancing Script</option>
           </select>
         </label>
+
         <label>Color <input id="color" type="color" value="#7b2323"></label>
       </div>
 
@@ -136,6 +159,7 @@
       </div>
     </section>
 
+    <!-- About -->
     <section class="about card">
       <h3>❄ About Nameflake Studio</h3>
       <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or print your creation.</p>
@@ -146,15 +170,13 @@
       <h4>💡 Tip</h4>
       <p>Use a short word for bold, petal-like designs — or a longer word for intricate lace effects.</p>
 
-      <h4>📣 Share Your Creations!</h4>
-      <p>Share your snowflakes with friends on Facebook — spread the creativity!</p>
-
       <div class="social-btns">
         <button class="share" onclick="shareToSocial('facebook')">Share on Facebook</button>
       </div>
     </section>
   </main>
 
+  <!-- Bottom AdSense banner -->
   <div class="adwrap">
     <section class="ad-card card">
       <ins class="adsbygoogle"
@@ -169,20 +191,20 @@
   <footer class="footer">
     © Nameflake Studio
     <p style="font-size: 0.85rem; text-align: center; opacity: 0.85; margin-top: 10px;">
-      <strong>Privacy & Cookies:</strong>  
-      Nameflake Studio uses cookies to personalize your experience, show relevant ads through Google AdSense,  
-      and help us understand how visitors enjoy creating their snowflakes.  
-      By continuing to use this site, you agree to our use of cookies.  
+      <strong>Privacy & Cookies:</strong>
+      Nameflake Studio uses cookies to personalize your experience, show relevant ads through Google AdSense,
+      and help us understand how visitors enjoy creating their snowflakes.
+      By continuing to use this site, you agree to our use of cookies.
       You can manage your preferences anytime through the consent banner provided by Google.
     </p>
   </footer>
 
+  <!-- AdSense loader -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
-  <script>
-    try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}
-  </script>
+  <script>try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}</script>
 
   <script>
+    // ------- helpers -------
     const svgNS = "http://www.w3.org/2000/svg";
     const $ = id => document.getElementById(id);
     const root = $("root");
@@ -192,8 +214,39 @@
       return `'${sel.value}', ${sel.selectedOptions[0].dataset.kind || "serif"}`;
     }
 
+    // Ensure webfont is loaded before we render or export
+    async function waitForFont(family, px = 40){
+      try {
+        await document.fonts.load(`${px}px "${family}"`);
+        await document.fonts.ready;
+      } catch(e){}
+    }
+
+    // Inline Google Fonts into the SVG so downloads keep the correct font
+    async function inlineFontsIntoSVG(svgEl, families){
+      const cssChunks = [];
+      for (const fam of families){
+        const url = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
+        const css = await (await fetch(url)).text();
+        const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
+        let inlined = css;
+        for (const u of urls){
+          const ab = await (await fetch(u)).arrayBuffer();
+          const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
+          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
+        }
+        cssChunks.push(inlined);
+      }
+      const style = document.createElementNS("http://www.w3.org/2000/svg","style");
+      style.setAttribute("type","text/css");
+      style.textContent = cssChunks.join("\n");
+      const clone = svgEl.cloneNode(true);
+      clone.insertBefore(style, clone.firstChild);
+      return clone;
+    }
+
     async function generate(){
-      const WORD  = (v("word","David Loves Angie")).toString();
+      const WORD  = (v("word","Angie")).toString();
       const ARMS  = +v("arms",6);
       const FS    = +v("fs",40);
       const LEN   = +v("len",210);
@@ -201,8 +254,13 @@
       const TILT  = +v("tilt",0);
       const COLOR = v("color","#7b2323");
       const FONT  = selectedFontStack();
+      const FONT_FAMILY_ONLY = $("font").value;
+
+      await waitForFont(FONT_FAMILY_ONLY, FS);
+
       root.innerHTML = "";
 
+      // center dot
       const hub = document.createElementNS(svgNS,"circle");
       hub.setAttribute("r","2.5");
       hub.setAttribute("fill",COLOR);
@@ -212,31 +270,39 @@
       function buildArmPair(){
         const arm = document.createElementNS(svgNS,"g");
         root.appendChild(arm);
+
+        // outward
         const gOut = document.createElementNS(svgNS,"g");
         gOut.setAttribute("transform", `rotate(${-90 + TILT})`);
         arm.appendChild(gOut);
+
         const tOut = document.createElementNS(svgNS,"text");
         tOut.setAttribute("fill", COLOR);
         tOut.setAttribute("font-size", FS);
         tOut.setAttribute("font-family", FONT);
+        tOut.setAttribute("lengthAdjust","spacingAndGlyphs");
         tOut.setAttribute("textLength", String(LEN - GAP));
         tOut.setAttribute("text-anchor","start");
         tOut.setAttribute("x", String(GAP));
         tOut.textContent = WORD;
         gOut.appendChild(tOut);
 
+        // inward (mirrored)
         const gIn = document.createElementNS(svgNS,"g");
         gIn.setAttribute("transform", `scale(1,-1) rotate(${-90 - TILT})`);
         arm.appendChild(gIn);
+
         const tIn = document.createElementNS(svgNS,"text");
         tIn.setAttribute("fill", COLOR);
         tIn.setAttribute("font-size", FS);
         tIn.setAttribute("font-family", FONT);
+        tIn.setAttribute("lengthAdjust","spacingAndGlyphs");
         tIn.setAttribute("textLength", String(LEN - GAP));
         tIn.setAttribute("text-anchor","start");
         tIn.setAttribute("x", String(GAP));
         tIn.textContent = WORD;
         gIn.appendChild(tIn);
+
         return arm;
       }
 
@@ -256,35 +322,40 @@
       }
     }
 
-    function downloadSVG(){
+    async function downloadSVG(){
       const svg = document.getElementById("flake");
-      const data = new XMLSerializer().serializeToString(svg);
-      const blob = new Blob([data], { type: "image/svg+xml" });
+      const fam = document.getElementById("font").value;
+      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
+      const data = new XMLSerializer().serializeToString(svgWithFonts);
+      const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-      a.href = url;
-      a.download = `${word}_flake.svg`;
-      a.click();
+      a.href = url; a.download = `${word}_flake.svg`; a.click();
       URL.revokeObjectURL(url);
     }
 
-    function downloadPNG(whiteBg=false){
+    async function downloadPNG(whiteBg=false){
       const svg = document.getElementById("flake");
-      const serializer = new XMLSerializer();
-      let svgStr = serializer.serializeToString(svg);
-      if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style='background:white' ");
+      const fam = document.getElementById("font").value;
+      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
+
+      let svgStr = new XMLSerializer().serializeToString(svgWithFonts);
+      if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style=\"background:white\" ");
+
+      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+
       const img = new Image();
-      const svgBlob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(svgBlob);
       img.onload = function (){
+        const vb = svg.viewBox.baseVal;
         const canvas = document.createElement("canvas");
-        canvas.width = svg.viewBox.baseVal.width;
-        canvas.height = svg.viewBox.baseVal.height;
+        canvas.width = vb.width; canvas.height = vb.height;
         const ctx = canvas.getContext("2d");
         if (!whiteBg) ctx.clearRect(0,0,canvas.width,canvas.height);
         ctx.drawImage(img,0,0);
         URL.revokeObjectURL(url);
+
         const link = document.createElement("a");
         const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
         link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
@@ -294,12 +365,14 @@
       img.src = url;
     }
 
-    $("download").addEventListener("click", ()=> {
+    // listeners
+    $("download").addEventListener("click", async ()=>{
       const white = confirm("OK = white background, Cancel = transparent");
-      downloadPNG(white);
+      await downloadPNG(white);
     });
-    $("downloadSvg").addEventListener("click", downloadSVG);
+    $("downloadSvg").addEventListener("click", async ()=>{ await downloadSVG(); });
     $("print").addEventListener("click", ()=> window.print());
+
     ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
       const el=$(id); if (el) el.addEventListener("input", generate);
     });
@@ -307,4 +380,3 @@
   </script>
 </body>
 </html>
-
