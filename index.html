@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio</title>
 
-  <!-- AdSense account meta (keep) -->
+  <!-- AdSense account meta -->
   <meta name="google-adsense-account" content="ca-pub-9007523138058958">
   <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included." />
 
-  <!-- Google Fonts (UI + outline/script font options) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&display=swap" rel="stylesheet">
 
   <style>
@@ -25,14 +25,12 @@
     html,body{height:100%}
     body{
       margin:0; color:var(--ink);
-      /* Darker background so white snowflakes pop */
       background:
         radial-gradient(1400px 700px at 50% -15%, rgba(255,255,255,.25), transparent 70%),
         linear-gradient(135deg, #c9b596 0%, #a79171 40%, #8b7658 100%);
       font-family:'Libre Baskerville',serif; overflow-x:hidden;
     }
 
-    /* Header with banner */
     .site-header{
       padding:0 0 16px;
       background: linear-gradient(135deg, var(--cran), var(--cran-2));
@@ -43,7 +41,6 @@
       display:block; margin:0 auto; width:100%; max-width:1280px; height:auto; object-fit:cover;
     }
 
-    /* Layout */
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
     .card{
       background:var(--glass); backdrop-filter: blur(8px);
@@ -80,13 +77,11 @@
     .about { padding:18px; margin-top:16px }
     .about h3{ margin:0 0 8px; color:var(--ever) }
 
-    /* Center the single Facebook share button */
     .social-btns{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:8px }
     .share{ padding:10px 14px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff; cursor:pointer; font-weight:700 }
 
     .footer{ text-align:center; font-size:12px; opacity:.85; padding:20px 0 28px }
 
-    /* Bottom AdSense area */
     .adwrap{ max-width:1280px; margin:18px auto; padding:0 16px }
     .ad-card{ padding:8px 10px }
 
@@ -97,14 +92,12 @@
 </head>
 <body>
 
-  <!-- Banner (make sure the file is exactly banner.png) -->
   <header class="site-header">
     <img class="banner" src="banner.png" alt="Nameflake Studio">
   </header>
 
   <main class="shell">
 
-    <!-- Preview -->
     <section class="stage card">
       <div class="stage-frame">
         <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview">
@@ -113,18 +106,14 @@
       </div>
     </section>
 
-    <!-- Controls -->
     <section class="controls card">
       <div class="grid">
         <label>Word or Short Phrase <input id="word" value="David Loves Angie"></label>
         <label>Arms <input id="arms" type="number" min="3" max="24" value="6"></label>
-
         <label>Font size <input id="fs" type="number" value="40"></label>
         <label>Arm length (px) <input id="len" type="number" value="210"></label>
-
         <label>Join gap (px) <input id="gap" type="number" value="40"></label>
         <label>Tilt (°) <input id="tilt" type="number" value="0"></label>
-
         <label>Font
           <select id="font">
             <option value="Londrina Outline" data-kind="cursive">Londrina Outline</option>
@@ -140,8 +129,6 @@
             <option value="Dancing Script" data-kind="cursive">Dancing Script</option>
           </select>
         </label>
-
-        <!-- Default color set to gold -->
         <label>Color <input id="color" type="color" value="#d6b46a"></label>
       </div>
 
@@ -152,24 +139,19 @@
       </div>
     </section>
 
-    <!-- About + (centered) Facebook share only -->
     <section class="about card">
       <h3>❄ About Nameflake Studio</h3>
       <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or print your creation.</p>
-
       <h4>🎨 Coloring-Friendly Fonts</h4>
       <p>Try <strong>Londrina Outline</strong>, <strong>Bungee Outline</strong>, or <strong>Kumar One Outline</strong> for printable snowflakes you can color in!</p>
-
       <h4>💡 Tip</h4>
       <p>Use a short word for bold, petal-like designs — or a longer word for intricate lace effects.</p>
-
       <div class="social-btns">
         <button class="share" id="shareFb">Share on Facebook</button>
       </div>
     </section>
   </main>
 
-  <!-- Bottom AdSense Banner -->
   <div class="adwrap">
     <section class="ad-card card">
       <ins class="adsbygoogle"
@@ -181,603 +163,39 @@
     </section>
   </div>
 
- <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Nameflake Studio</title>
-
-  <!-- AdSense account meta (keep) -->
-  <meta name="google-adsense-account" content="ca-pub-9007523138058958">
-  <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included." />
-
-  <!-- Google Fonts (UI + outline/script font options) -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --cran:#7b2f2f; --cran-2:#5e2424;
-      --ever:#124032; --gold:#d6b46a;
-      --ink:#1f1f1f;
-      --paper:#ffffff;
-      --glass: rgba(255,255,255,.70);
-      --shadow: 0 14px 30px rgba(0,0,0,.16);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--ink);
-      /* Darker background so white snowflakes pop */
-      background:
-        radial-gradient(1400px 700px at 50% -15%, rgba(255,255,255,.25), transparent 70%),
-        linear-gradient(135deg, #c9b596 0%, #a79171 40%, #8b7658 100%);
-      font-family:'Libre Baskerville',serif; overflow-x:hidden;
-    }
-
-    /* Header with banner */
-    .site-header{
-      padding:0 0 16px;
-      background: linear-gradient(135deg, var(--cran), var(--cran-2));
-      border-bottom:6px solid var(--gold);
-      box-shadow: var(--shadow);
-    }
-    .banner{
-      display:block; margin:0 auto; width:100%; max-width:1280px; height:auto; object-fit:cover;
-    }
-
-    /* Layout */
-    .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
-    .card{
-      background:var(--glass); backdrop-filter: blur(8px);
-      border:1px solid rgba(255,255,255,.75); border-radius:16px; box-shadow:var(--shadow);
-    }
-
-    .stage{ padding:12px; }
-    .stage-frame{
-      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.18), transparent 45%) , var(--paper);
-      border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
-      overflow:hidden; position:relative; padding:10px;
-    }
-    svg{ width:100%; height:auto; display:block; position:relative; z-index:1 }
-
-    .controls{ padding:14px; margin-top:16px }
-    .grid{ display:grid; gap:.6rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .controls label{
-      display:flex; align-items:center; justify-content:space-between; gap:.75rem; font-size:14px;
-      border-bottom:1px dashed rgba(0,0,0,.08); padding-bottom:6px;
-    }
-    .controls input, .controls select{
-      width:180px; max-width:60%;
-      padding:8px 10px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff;
-    }
-    .buttons{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px }
-    .btn{
-      appearance:none; border:1px solid rgba(0,0,0,.12); background:#fff; color:var(--ink);
-      padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
-      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-    }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 18px 36px rgba(0,0,0,.18) }
-    .btn.primary{ background: linear-gradient(135deg, var(--gold), #c19a52); border-color: transparent; color:#2a2a2a }
-
-    .about { padding:18px; margin-top:16px }
-    .about h3{ margin:0 0 8px; color:var(--ever) }
-
-    /* Center the single Facebook share button */
-    .social-btns{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:8px }
-    .share{ padding:10px 14px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff; cursor:pointer; font-weight:700 }
-
-    .footer{ text-align:center; font-size:12px; opacity:.85; padding:20px 0 28px }
-
-    /* Bottom AdSense area */
-    .adwrap{ max-width:1280px; margin:18px auto; padding:0 16px }
-    .ad-card{ padding:8px 10px }
-
-    @media (max-width: 860px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Banner (make sure the file is exactly banner.png) -->
-  <header class="site-header">
-    <img class="banner" src="banner.png" alt="Nameflake Studio">
-  </header>
-
-  <main class="shell">
-
-    <!-- Preview -->
-    <section class="stage card">
-      <div class="stage-frame">
-        <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview">
-          <g id="root" transform="translate(400,400)"></g>
-        </svg>
-      </div>
-    </section>
-
-    <!-- Controls -->
-    <section class="controls card">
-      <div class="grid">
-        <label>Word or Short Phrase <input id="word" value="David Loves Angie"></label>
-        <label>Arms <input id="arms" type="number" min="3" max="24" value="6"></label>
-
-        <label>Font size <input id="fs" type="number" value="40"></label>
-        <label>Arm length (px) <input id="len" type="number" value="210"></label>
-
-        <label>Join gap (px) <input id="gap" type="number" value="40"></label>
-        <label>Tilt (°) <input id="tilt" type="number" value="0"></label>
-
-        <label>Font
-          <select id="font">
-            <option value="Londrina Outline" data-kind="cursive">Londrina Outline</option>
-            <option value="Bungee Outline" data-kind="cursive">Bungee Outline</option>
-            <option value="Kumar One Outline" data-kind="serif">Kumar One Outline</option>
-            <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
-            <option value="Playfair Display" data-kind="serif">Playfair Display</option>
-            <option value="Lora" data-kind="serif">Lora</option>
-            <option value="Cinzel" data-kind="serif">Cinzel</option>
-            <option value="Montserrat" data-kind="sans-serif">Montserrat</option>
-            <option value="Raleway" data-kind="sans-serif">Raleway</option>
-            <option value="Great Vibes" data-kind="cursive">Great Vibes</option>
-            <option value="Dancing Script" data-kind="cursive">Dancing Script</option>
-          </select>
-        </label>
-
-        <!-- Default color set to gold -->
-        <label>Color <input id="color" type="color" value="#d6b46a"></label>
-      </div>
-
-      <div class="buttons">
-        <button id="download" class="btn">Download PNG</button>
-        <button id="downloadSvg" class="btn">Download SVG</button>
-        <button id="print" class="btn primary">Print</button>
-      </div>
-    </section>
-
-    <!-- About + (centered) Facebook share only -->
-    <section class="about card">
-      <h3>❄ About Nameflake Studio</h3>
-      <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or print your creation.</p>
-
-      <h4>🎨 Coloring-Friendly Fonts</h4>
-      <p>Try <strong>Londrina Outline</strong>, <strong>Bungee Outline</strong>, or <strong>Kumar One Outline</strong> for printable snowflakes you can color in!</p>
-
-      <h4>💡 Tip</h4>
-      <p>Use a short word for bold, petal-like designs — or a longer word for intricate lace effects.</p>
-
-      <div class="social-btns">
-        <button class="share" id="shareFb">Share on Facebook</button>
-      </div>
-    </section>
-  </main>
-
-  <!-- Bottom AdSense Banner -->
-  <div class="adwrap">
-    <section class="ad-card card">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9007523138058958"
-           data-ad-slot="6836589862"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-    </section>
-  </div>
-
-  <footer class="footer">
-    © Nameflake Studio
+  <!-- ✨ Improved footer -->
+  <footer class="footer" style="
+    background: linear-gradient(135deg, #6a2e2e, #4a1f1f);
+    color: #f5e7ce;
+    padding: 30px 10px;
+    border-top: 3px solid #d6b46a;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+  ">
+    <p style="margin:0;font-weight:600;">© 2025 Nameflake Studio</p>
+    <p style="margin:4px 0 0;font-style:italic;opacity:0.9;">
+      Each snowflake is uniquely yours ❄️
+    </p>
+    <p style="margin:10px auto 0;max-width:600px;font-size:12px;opacity:0.8;">
+      <strong>Privacy & Cookies:</strong> This site uses cookies for personalization,
+      analytics, and ads through Google AdSense. By continuing, you agree to our use of cookies.
+      You can manage preferences anytime through the consent banner provided by Google.
+    </p>
   </footer>
 
-  <!-- AdSense loader -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
   <script>try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}</script>
 
   <script>
-    /* -------- robust renderer (no missing flakes) -------- */
-    const svgNS = "http://www.w3.org/2000/svg";
-    const $ = id => document.getElementById(id);
-    const gv = (id, fb) => { const el = $(id); return el ? el.value : fb; };
-
-    function selectedFontStack() {
-      const sel = $("font");
-      const kind = sel?.selectedOptions?.[0]?.dataset?.kind || "serif";
-      return `'${sel.value}', ${kind}`;
-    }
-
-    async function waitForFont(fontFamily, sizePx = 40) {
-      try {
-        if (document.fonts && document.fonts.load) {
-          await document.fonts.load(`${sizePx}px "${fontFamily}"`);
-          await document.fonts.ready;
-        }
-      } catch(_) {}
-    }
-
-    async function generate() {
-      const root = $("root");
-      if (!root) return;
-
-      const WORD  = (gv("word","David Loves Angie") + "");
-      const ARMS  = +gv("arms", 6) || 6;
-      const FS    = +gv("fs",   40) || 40;
-      const LEN   = +gv("len", 210) || 210;
-      const GAP   = +gv("gap",  40) || 40;
-      const TILT  = +gv("tilt",  0) || 0;
-      const COLOR = gv("color", "#d6b46a"); // default gold
-      const FAM   = $("font")?.value || "Londrina Outline";
-      const FONT  = selectedFontStack();
-
-      const usable = Math.max(10, LEN - Math.max(0, GAP));
-
-      await waitForFont(FAM, FS);
-
-      while (root.firstChild) root.removeChild(root.firstChild);
-
-      const hub = document.createElementNS(svgNS, "circle");
-      hub.setAttribute("r","2.5");
-      hub.setAttribute("fill",COLOR);
-      hub.setAttribute("opacity",".55");
-      root.appendChild(hub);
-
-      function buildArmPair() {
-        const arm = document.createElementNS(svgNS, "g");
-
-        // outward
-        const gOut = document.createElementNS(svgNS, "g");
-        gOut.setAttribute("transform", `rotate(${-90 + TILT})`);
-        const tOut = document.createElementNS(svgNS, "text");
-        tOut.setAttribute("fill", COLOR);
-        tOut.setAttribute("font-size", FS);
-        tOut.setAttribute("font-family", FONT);
-        tOut.setAttribute("text-anchor","start");
-        tOut.setAttribute("x", String(Math.max(0, GAP)));
-        if (usable > 0) {
-          tOut.setAttribute("lengthAdjust","spacingAndGlyphs");
-          tOut.setAttribute("textLength", String(usable));
-        }
-        tOut.textContent = WORD;
-        gOut.appendChild(tOut);
-        arm.appendChild(gOut);
-
-        // inward (mirrored)
-        const gIn = document.createElementNS(svgNS, "g");
-        gIn.setAttribute("transform", `scale(1,-1) rotate(${-90 - TILT})`);
-        const tIn = document.createElementNS(svgNS, "text");
-        tIn.setAttribute("fill", COLOR);
-        tIn.setAttribute("font-size", FS);
-        tIn.setAttribute("font-family", FONT);
-        tIn.setAttribute("text-anchor","start");
-        tIn.setAttribute("x", String(Math.max(0, GAP)));
-        if (usable > 0) {
-          tIn.setAttribute("lengthAdjust","spacingAndGlyphs");
-          tIn.setAttribute("textLength", String(usable));
-        }
-        tIn.textContent = WORD;
-        gIn.appendChild(tIn);
-        arm.appendChild(gIn);
-
-        return arm;
-      }
-
-      const pair = buildArmPair();
-      for (let i = 0; i < ARMS; i++) {
-        const holder = document.createElementNS(svgNS, "g");
-        holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
-        holder.appendChild(pair.cloneNode(true));
-        root.appendChild(holder);
-      }
-    }
-
-    /* -------- embed fonts for SVG/PNG/Print -------- */
-    async function inlineFontsIntoSVG(svgEl, families) {
-      const cssChunks = [];
-      for (const fam of families) {
-        const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
-        const css = await (await fetch(cssURL)).text();
-        const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
-        let inlined = css;
-        for (const u of urls) {
-          const ab = await (await fetch(u, {mode:"cors"})).arrayBuffer();
-          const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
-          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
-        }
-        cssChunks.push(inlined);
-      }
-      const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
-      style.setAttribute("type", "text/css");
-      style.textContent = cssChunks.join("\n");
-      const clone = svgEl.cloneNode(true);
-      clone.insertBefore(style, clone.firstChild);
-      return clone;
-    }
-
-    async function downloadSVG(){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-      const data = new XMLSerializer().serializeToString(svgWithFonts);
-      const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      const word = (gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-      a.href = url; a.download = `${word}_flake.svg`; a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    async function downloadPNG(whiteBg=false) {
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-
-      let svgStr = new XMLSerializer().serializeToString(svgWithFonts);
-      if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style=\"background:white\" ");
-
-      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-
-      const img = new Image();
-      img.onload = function () {
-        const vb = svg.viewBox.baseVal;
-        const canvas = document.createElement("canvas");
-        canvas.width = vb.width; canvas.height = vb.height;
-        const ctx = canvas.getContext("2d");
-        if (!whiteBg) ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.drawImage(img, 0, 0);
-        URL.revokeObjectURL(url);
-
-        const link = document.createElement("a");
-        const word = (gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-        link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      };
-      img.src = url;
-    }
-
-    async function printFlake(){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-      const svgStr = new XMLSerializer().serializeToString(svgWithFonts);
-      const html = `
-        <!doctype html><html><head><meta charset="utf-8"><title>Print Snowflake</title>
-        <style>html,body{margin:0;padding:0;background:#fff}</style>
-        </head><body>${svgStr}
-        <script>window.onload=()=>{window.print();setTimeout(()=>window.close(),300);}<\/script>
-        </body></html>`;
-      const blob = new Blob([html], {type:'text/html'});
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-    }
-
-    /* -------- share -------- */
-    function shareToFacebook(){
-      const page = location.href.split('#')[0];
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
-    }
-
-    /* -------- events -------- */
-    ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
-      const el = $(id); if (el) el.addEventListener("input", generate);
-    });
-    $("download").addEventListener("click", async ()=>{
-      const white = confirm("OK = white background, Cancel = transparent");
-      await downloadPNG(white);
-    });
-    $("downloadSvg").addEventListener("click", downloadSVG);
-    $("print").addEventListener("click", printFlake);
-    $("shareFb").addEventListener("click", shareToFacebook);
-
-    // initial render (twice to be extra-safe with font timing)
-    generate();
-    document.addEventListener("DOMContentLoaded", generate);
-  </script>
-</body>
-</html>
-
-  <!-- AdSense loader -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
-  <script>try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}</script>
-
-  <script>
-    /* -------- robust renderer (no missing flakes) -------- */
-    const svgNS = "http://www.w3.org/2000/svg";
-    const $ = id => document.getElementById(id);
-    const gv = (id, fb) => { const el = $(id); return el ? el.value : fb; };
-
-    function selectedFontStack() {
-      const sel = $("font");
-      const kind = sel?.selectedOptions?.[0]?.dataset?.kind || "serif";
-      return `'${sel.value}', ${kind}`;
-    }
-
-    async function waitForFont(fontFamily, sizePx = 40) {
-      try {
-        if (document.fonts && document.fonts.load) {
-          await document.fonts.load(`${sizePx}px "${fontFamily}"`);
-          await document.fonts.ready;
-        }
-      } catch(_) {}
-    }
-
-    async function generate() {
-      const root = $("root");
-      if (!root) return;
-
-      const WORD  = (gv("word","David Loves Angie") + "");
-      const ARMS  = +gv("arms", 6) || 6;
-      const FS    = +gv("fs",   40) || 40;
-      const LEN   = +gv("len", 210) || 210;
-      const GAP   = +gv("gap",  40) || 40;
-      const TILT  = +gv("tilt",  0) || 0;
-      const COLOR = gv("color", "#d6b46a"); // default gold
-      const FAM   = $("font")?.value || "Londrina Outline";
-      const FONT  = selectedFontStack();
-
-      const usable = Math.max(10, LEN - Math.max(0, GAP));
-
-      await waitForFont(FAM, FS);
-
-      while (root.firstChild) root.removeChild(root.firstChild);
-
-      const hub = document.createElementNS(svgNS, "circle");
-      hub.setAttribute("r","2.5");
-      hub.setAttribute("fill",COLOR);
-      hub.setAttribute("opacity",".55");
-      root.appendChild(hub);
-
-      function buildArmPair() {
-        const arm = document.createElementNS(svgNS, "g");
-
-        // outward
-        const gOut = document.createElementNS(svgNS, "g");
-        gOut.setAttribute("transform", `rotate(${-90 + TILT})`);
-        const tOut = document.createElementNS(svgNS, "text");
-        tOut.setAttribute("fill", COLOR);
-        tOut.setAttribute("font-size", FS);
-        tOut.setAttribute("font-family", FONT);
-        tOut.setAttribute("text-anchor","start");
-        tOut.setAttribute("x", String(Math.max(0, GAP)));
-        if (usable > 0) {
-          tOut.setAttribute("lengthAdjust","spacingAndGlyphs");
-          tOut.setAttribute("textLength", String(usable));
-        }
-        tOut.textContent = WORD;
-        gOut.appendChild(tOut);
-        arm.appendChild(gOut);
-
-        // inward (mirrored)
-        const gIn = document.createElementNS(svgNS, "g");
-        gIn.setAttribute("transform", `scale(1,-1) rotate(${-90 - TILT})`);
-        const tIn = document.createElementNS(svgNS, "text");
-        tIn.setAttribute("fill", COLOR);
-        tIn.setAttribute("font-size", FS);
-        tIn.setAttribute("font-family", FONT);
-        tIn.setAttribute("text-anchor","start");
-        tIn.setAttribute("x", String(Math.max(0, GAP)));
-        if (usable > 0) {
-          tIn.setAttribute("lengthAdjust","spacingAndGlyphs");
-          tIn.setAttribute("textLength", String(usable));
-        }
-        tIn.textContent = WORD;
-        gIn.appendChild(tIn);
-        arm.appendChild(gIn);
-
-        return arm;
-      }
-
-      const pair = buildArmPair();
-      for (let i = 0; i < ARMS; i++) {
-        const holder = document.createElementNS(svgNS, "g");
-        holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
-        holder.appendChild(pair.cloneNode(true));
-        root.appendChild(holder);
-      }
-    }
-
-    /* -------- embed fonts for SVG/PNG/Print -------- */
-    async function inlineFontsIntoSVG(svgEl, families) {
-      const cssChunks = [];
-      for (const fam of families) {
-        const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
-        const css = await (await fetch(cssURL)).text();
-        const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
-        let inlined = css;
-        for (const u of urls) {
-          const ab = await (await fetch(u, {mode:"cors"})).arrayBuffer();
-          const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
-          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
-        }
-        cssChunks.push(inlined);
-      }
-      const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
-      style.setAttribute("type", "text/css");
-      style.textContent = cssChunks.join("\n");
-      const clone = svgEl.cloneNode(true);
-      clone.insertBefore(style, clone.firstChild);
-      return clone;
-    }
-
-    async function downloadSVG(){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-      const data = new XMLSerializer().serializeToString(svgWithFonts);
-      const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      const word = (gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-      a.href = url; a.download = `${word}_flake.svg`; a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    async function downloadPNG(whiteBg=false) {
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-
-      let svgStr = new XMLSerializer().serializeToString(svgWithFonts);
-      if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style=\"background:white\" ");
-
-      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-
-      const img = new Image();
-      img.onload = function () {
-        const vb = svg.viewBox.baseVal;
-        const canvas = document.createElement("canvas");
-        canvas.width = vb.width; canvas.height = vb.height;
-        const ctx = canvas.getContext("2d");
-        if (!whiteBg) ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.drawImage(img, 0, 0);
-        URL.revokeObjectURL(url);
-
-        const link = document.createElement("a");
-        const word = (gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-        link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      };
-      img.src = url;
-    }
-
-    async function printFlake(){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-      const svgStr = new XMLSerializer().serializeToString(svgWithFonts);
-      const html = `
-        <!doctype html><html><head><meta charset="utf-8"><title>Print Snowflake</title>
-        <style>html,body{margin:0;padding:0;background:#fff}</style>
-        </head><body>${svgStr}
-        <script>window.onload=()=>{window.print();setTimeout(()=>window.close(),300);}<\/script>
-        </body></html>`;
-      const blob = new Blob([html], {type:'text/html'});
-      const url = URL.createObjectURL(blob);
-      window.open(url, '_blank');
-    }
-
-    /* -------- share -------- */
-    function shareToFacebook(){
-      const page = location.href.split('#')[0];
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
-    }
-
-    /* -------- events -------- */
-    ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
-      const el = $(id); if (el) el.addEventListener("input", generate);
-    });
-    $("download").addEventListener("click", async ()=>{
-      const white = confirm("OK = white background, Cancel = transparent");
-      await downloadPNG(white);
-    });
-    $("downloadSvg").addEventListener("click", downloadSVG);
-    $("print").addEventListener("click", printFlake);
-    $("shareFb").addEventListener("click", shareToFacebook);
-
-    // initial render (twice to be extra-safe with font timing)
-    generate();
-    document.addEventListener("DOMContentLoaded", generate);
-  </script>
-</body>
-</html>
+    /* full snowflake JS stays unchanged */
+    const svgNS="http://www.w3.org/2000/svg";const $=id=>document.getElementById(id);
+    const gv=(id,fb)=>{const el=$(id);return el?el.value:fb;};
+    function selectedFontStack(){const sel=$("font");const kind=sel?.selectedOptions?.[0]?.dataset?.kind||"serif";return`'${sel.value}', ${kind}`;}
+    async function waitForFont(f,s=40){try{if(document.fonts&&document.fonts.load){await document.fonts.load(`${s}px "${f}"`);await document.fonts.ready;}}catch{}}
+    async function generate(){const r=$("root");if(!r)return;const W=(gv("word","David Loves Angie")+"");const A=+gv("arms",6)||6;const F=+gv("fs",40)||40;const L=+gv("len",210)||210;const G=+gv("gap",40)||40;const T=+gv("tilt",0)||0;const C=gv("color","#d6b46a");const FF=$("font")?.value||"Londrina Outline";const FONT=selectedFontStack();const u=Math.max(10,L-Math.max(0,G));await waitForFont(FF,F);while(r.firstChild)r.removeChild(r.firstChild);const h=document.createElementNS(svgNS,"circle");h.setAttribute("r","2.5");h.setAttribute("fill",C);h.setAttribute("opacity",".55");r.appendChild(h);function armPair(){const a=document.createElementNS(svgNS,"g");const go=document.createElementNS(svgNS,"g");go.setAttribute("transform",`rotate(${-90+T})`);const to=document.createElementNS(svgNS,"text");to.setAttribute("fill",C);to.setAttribute("font-size",F);to.setAttribute("font-family",FONT);to.setAttribute("text-anchor","start");to.setAttribute("x",String(Math.max(0,G)));if(u>0){to.setAttribute("lengthAdjust","spacingAndGlyphs");to.setAttribute("textLength",String(u));}to.textContent=W;go.appendChild(to);a.appendChild(go);const gi=document.createElementNS(svgNS,"g");gi.setAttribute("transform",`scale(1,-1) rotate(${-90-T})`);const ti=document.createElementNS(svgNS,"text");ti.setAttribute("fill",C);ti.setAttribute("font-size",F);ti.setAttribute("font-family",FONT);ti.setAttribute("text-anchor","start");ti.setAttribute("x",String(Math.max(0,G)));if(u>0){ti.setAttribute("lengthAdjust","spacingAndGlyphs");ti.setAttribute("textLength",String(u));}ti.textContent=W;gi.appendChild(ti);a.appendChild(gi);return a;}const p=armPair();for(let i=0;i<A;i++){const H=document.createElementNS(svgNS,"g");H.setAttribute("transform",`rotate(${(360/A)*i})`);H.appendChild(p.cloneNode(true));r.appendChild(H);}}
+    async function inlineFontsIntoSVG(s,f){const cssChunks=[];for(const fam of f){const cssURL=`https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;const css=await(await fetch(cssURL)).text();const urls=Array.from(css.matchAll(/url(https:[^)]+\.woff2)/g)).map(m=>m[1]);let inlined=css;for(const u of urls){const ab=await(await fetch(u,{mode:"cors"})).arrayBuffer();const b64=btoa(String.fromCharCode(...new Uint8Array(ab)));inlined=inlined.replaceAll(u,`data:font/woff2;base64,${b64}`);}cssChunks.push(inlined);}const style=document.createElementNS("http://www.w3.org/2000/svg","style");style.textContent=cssChunks.join("\n");const clone=s.cloneNode(true);clone.insertBefore(style,clone.firstChild);return clone;}
+    async function downloadSVG(){const s=document.getElementById("flake");const f=document.getElementById("font").value;const sf=await inlineFontsIntoSVG(s,[f]);const d=new XMLSerializer().serializeToString(sf);const b=new Blob([d],{type:"image/svg+xml;charset=utf-8"});const u=URL.createObjectURL(b);const a=document.createElement("a");const w=(gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');a.href=u;a.download=`${w}_flake.svg`;a.click();URL.revokeObjectURL(u);}
+    async function downloadPNG(w=false){const s=document.getElementById("flake");const f=document.getElementById("font").value;const sf=await inlineFontsIntoSVG(s,[f]);let str=new XMLSerializer().serializeToString(sf);if(w)str=str.replace("<svg ","<svg style='background:white' ");const blob=new Blob([str],{type:"image/svg+xml;charset=utf-8"});const u=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const vb=s.viewBox.baseVal;const c=document.createElement("canvas");c.width=vb.width;c.height=vb.height;const ctx=c.getContext("2d");if(!w)ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);URL.revokeObjectURL(u);const link=document.createElement("a");const wname=(gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');link.download=w?`${wname}_flake_white.png`:`${wname}_flake.png`;link.href=c.toDataURL("image/png");link.click();};img.src=u;}
+    async function printFlake(){const s=document.getElementById("flake");const f=document.getElementById("font").value;const sf=await inlineFontsIntoSVG(s,[f]);const str=new XMLSerializer().serializeToString(sf);const html=`<!doctype html><html><head><meta charset='utf-8'><title>Print Snowflake</title><style>html,body{margin:0;padding:0;background:#fff}</style></head><body>${str}<script>window.onload=()=>{window.print();setTimeout(()=>window.close(),300);}<\/script></body></html>`;const blob=new Blob([html],{type:'text/html'});const u=URL.createObjectURL(blob);window.open(u,'_blank');}
+    function shareToFacebook(){const p=location.href.split('#')[0];window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent
