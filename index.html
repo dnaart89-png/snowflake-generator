@@ -186,16 +186,61 @@
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
   <script>try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
+<script>try{(adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}</script>
 
-  <script>
-    /* full snowflake JS stays unchanged */
-    const svgNS="http://www.w3.org/2000/svg";const $=id=>document.getElementById(id);
-    const gv=(id,fb)=>{const el=$(id);return el?el.value:fb;};
-    function selectedFontStack(){const sel=$("font");const kind=sel?.selectedOptions?.[0]?.dataset?.kind||"serif";return`'${sel.value}', ${kind}`;}
-    async function waitForFont(f,s=40){try{if(document.fonts&&document.fonts.load){await document.fonts.load(`${s}px "${f}"`);await document.fonts.ready;}}catch{}}
-    async function generate(){const r=$("root");if(!r)return;const W=(gv("word","David Loves Angie")+"");const A=+gv("arms",6)||6;const F=+gv("fs",40)||40;const L=+gv("len",210)||210;const G=+gv("gap",40)||40;const T=+gv("tilt",0)||0;const C=gv("color","#d6b46a");const FF=$("font")?.value||"Londrina Outline";const FONT=selectedFontStack();const u=Math.max(10,L-Math.max(0,G));await waitForFont(FF,F);while(r.firstChild)r.removeChild(r.firstChild);const h=document.createElementNS(svgNS,"circle");h.setAttribute("r","2.5");h.setAttribute("fill",C);h.setAttribute("opacity",".55");r.appendChild(h);function armPair(){const a=document.createElementNS(svgNS,"g");const go=document.createElementNS(svgNS,"g");go.setAttribute("transform",`rotate(${-90+T})`);const to=document.createElementNS(svgNS,"text");to.setAttribute("fill",C);to.setAttribute("font-size",F);to.setAttribute("font-family",FONT);to.setAttribute("text-anchor","start");to.setAttribute("x",String(Math.max(0,G)));if(u>0){to.setAttribute("lengthAdjust","spacingAndGlyphs");to.setAttribute("textLength",String(u));}to.textContent=W;go.appendChild(to);a.appendChild(go);const gi=document.createElementNS(svgNS,"g");gi.setAttribute("transform",`scale(1,-1) rotate(${-90-T})`);const ti=document.createElementNS(svgNS,"text");ti.setAttribute("fill",C);ti.setAttribute("font-size",F);ti.setAttribute("font-family",FONT);ti.setAttribute("text-anchor","start");ti.setAttribute("x",String(Math.max(0,G)));if(u>0){ti.setAttribute("lengthAdjust","spacingAndGlyphs");ti.setAttribute("textLength",String(u));}ti.textContent=W;gi.appendChild(ti);a.appendChild(gi);return a;}const p=armPair();for(let i=0;i<A;i++){const H=document.createElementNS(svgNS,"g");H.setAttribute("transform",`rotate(${(360/A)*i})`);H.appendChild(p.cloneNode(true));r.appendChild(H);}}
-    async function inlineFontsIntoSVG(s,f){const cssChunks=[];for(const fam of f){const cssURL=`https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;const css=await(await fetch(cssURL)).text();const urls=Array.from(css.matchAll(/url(https:[^)]+\.woff2)/g)).map(m=>m[1]);let inlined=css;for(const u of urls){const ab=await(await fetch(u,{mode:"cors"})).arrayBuffer();const b64=btoa(String.fromCharCode(...new Uint8Array(ab)));inlined=inlined.replaceAll(u,`data:font/woff2;base64,${b64}`);}cssChunks.push(inlined);}const style=document.createElementNS("http://www.w3.org/2000/svg","style");style.textContent=cssChunks.join("\n");const clone=s.cloneNode(true);clone.insertBefore(style,clone.firstChild);return clone;}
-    async function downloadSVG(){const s=document.getElementById("flake");const f=document.getElementById("font").value;const sf=await inlineFontsIntoSVG(s,[f]);const d=new XMLSerializer().serializeToString(sf);const b=new Blob([d],{type:"image/svg+xml;charset=utf-8"});const u=URL.createObjectURL(b);const a=document.createElement("a");const w=(gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');a.href=u;a.download=`${w}_flake.svg`;a.click();URL.revokeObjectURL(u);}
-    async function downloadPNG(w=false){const s=document.getElementById("flake");const f=document.getElementById("font").value;const sf=await inlineFontsIntoSVG(s,[f]);let str=new XMLSerializer().serializeToString(sf);if(w)str=str.replace("<svg ","<svg style='background:white' ");const blob=new Blob([str],{type:"image/svg+xml;charset=utf-8"});const u=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const vb=s.viewBox.baseVal;const c=document.createElement("canvas");c.width=vb.width;c.height=vb.height;const ctx=c.getContext("2d");if(!w)ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);URL.revokeObjectURL(u);const link=document.createElement("a");const wname=(gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');link.download=w?`${wname}_flake_white.png`:`${wname}_flake.png`;link.href=c.toDataURL("image/png");link.click();};img.src=u;}
-    async function printFlake(){const s=document.getElementById("flake");const f=document.getElementById("font").value;const sf=await inlineFontsIntoSVG(s,[f]);const str=new XMLSerializer().serializeToString(sf);const html=`<!doctype html><html><head><meta charset='utf-8'><title>Print Snowflake</title><style>html,body{margin:0;padding:0;background:#fff}</style></head><body>${str}<script>window.onload=()=>{window.print();setTimeout(()=>window.close(),300);}<\/script></body></html>`;const blob=new Blob([html],{type:'text/html'});const u=URL.createObjectURL(blob);window.open(u,'_blank');}
-    function shareToFacebook(){const p=location.href.split('#')[0];window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent
+<script>
+const svgNS="http://www.w3.org/2000/svg";const $=id=>document.getElementById(id);
+const gv=(id,fb)=>{const el=$(id);return el?el.value:fb;};
+function selectedFontStack(){const sel=$("font");const kind=sel?.selectedOptions?.[0]?.dataset?.kind||"serif";return`'${sel.value}', ${kind}`;}
+async function waitForFont(f,s=40){try{if(document.fonts&&document.fonts.load){await document.fonts.load(`${s}px "${f}"`);await document.fonts.ready;}}catch{}}
+async function generate(){
+  const r=$("root");if(!r)return;
+  const W=(gv("word","David Loves Angie")+"");const A=+gv("arms",6)||6;
+  const F=+gv("fs",40)||40;const L=+gv("len",210)||210;
+  const G=+gv("gap",40)||40;const T=+gv("tilt",0)||0;
+  const C=gv("color","#d6b46a");const FF=$("font")?.value||"Londrina Outline";
+  const FONT=selectedFontStack();const usable=Math.max(10,L-Math.max(0,G));
+  await waitForFont(FF,F);
+  while(r.firstChild)r.removeChild(r.firstChild);
+  const hub=document.createElementNS(svgNS,"circle");
+  hub.setAttribute("r","2.5");hub.setAttribute("fill",C);hub.setAttribute("opacity",".55");r.appendChild(hub);
+  function makeArm(){
+    const a=document.createElementNS(svgNS,"g");
+    const go=document.createElementNS(svgNS,"g");
+    go.setAttribute("transform",`rotate(${-90+T})`);
+    const to=document.createElementNS(svgNS,"text");
+    to.setAttribute("fill",C);to.setAttribute("font-size",F);
+    to.setAttribute("font-family",FONT);to.setAttribute("text-anchor","start");
+    to.setAttribute("x",G);if(usable>0){to.setAttribute("textLength",usable);to.setAttribute("lengthAdjust","spacingAndGlyphs");}
+    to.textContent=W;go.appendChild(to);a.appendChild(go);
+    const gi=document.createElementNS(svgNS,"g");
+    gi.setAttribute("transform",`scale(1,-1) rotate(${-90-T})`);
+    const ti=document.createElementNS(svgNS,"text");
+    ti.setAttribute("fill",C);ti.setAttribute("font-size",F);
+    ti.setAttribute("font-family",FONT);ti.setAttribute("text-anchor","start");
+    ti.setAttribute("x",G);if(usable>0){ti.setAttribute("textLength",usable);ti.setAttribute("lengthAdjust","spacingAndGlyphs");}
+    ti.textContent=W;gi.appendChild(ti);a.appendChild(gi);
+    return a;
+  }
+  const arm=makeArm();
+  for(let i=0;i<A;i++){
+    const g=document.createElementNS(svgNS,"g");
+    g.setAttribute("transform",`rotate(${(360/A)*i})`);
+    g.appendChild(arm.cloneNode(true));r.appendChild(g);
+  }
+}
+async function inlineFontsIntoSVG(svg,fams){const cssChunks=[];for(const fam of fams){const cssURL=`https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;const css=await(await fetch(cssURL)).text();const urls=Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m=>m[1]);let inlined=css;for(const u of urls){const ab=await(await fetch(u,{mode:"cors"})).arrayBuffer();const b64=btoa(String.fromCharCode(...new Uint8Array(ab)));inlined=inlined.replaceAll(u,`data:font/woff2;base64,${b64}`);}cssChunks.push(inlined);}const style=document.createElementNS("http://www.w3.org/2000/svg","style");style.textContent=cssChunks.join("\n");const clone=svg.cloneNode(true);clone.insertBefore(style,clone.firstChild);return clone;}
+async function downloadSVG(){const s=$("flake");const f=$("font").value;const sf=await inlineFontsIntoSVG(s,[f]);const d=new XMLSerializer().serializeToString(sf);const b=new Blob([d],{type:"image/svg+xml;charset=utf-8"});const u=URL.createObjectURL(b);const a=document.createElement("a");const w=(gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');a.href=u;a.download=`${w}_flake.svg`;a.click();URL.revokeObjectURL(u);}
+async function downloadPNG(white=false){const s=$("flake");const f=$("font").value;const sf=await inlineFontsIntoSVG(s,[f]);let str=new XMLSerializer().serializeToString(sf);if(white)str=str.replace("<svg ","<svg style='background:white' ");const blob=new Blob([str],{type:"image/svg+xml;charset=utf-8"});const u=URL.createObjectURL(blob);const img=new Image();img.onload=function(){const vb=s.viewBox.baseVal;const c=document.createElement("canvas");c.width=vb.width;c.height=vb.height;const ctx=c.getContext("2d");if(!white)ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(img,0,0);URL.revokeObjectURL(u);const link=document.createElement("a");const wname=(gv("word","snowflake")||"snowflake").replace(/\s+/g,'_');link.download=white?`${wname}_flake_white.png`:`${wname}_flake.png`;link.href=c.toDataURL("image/png");link.click();};img.src=u;}
+async function printFlake(){const s=$("flake");const f=$("font").value;const sf=await inlineFontsIntoSVG(s,[f]);const str=new XMLSerializer().serializeToString(sf);const html=`<!doctype html><html><head><meta charset='utf-8'><title>Print Snowflake</title><style>html,body{margin:0;padding:0;background:#fff}</style></head><body>${str}<script>window.onload=()=>{window.print();setTimeout(()=>window.close(),300);}<\/script></body></html>`;const blob=new Blob([html],{type:'text/html'});const u=URL.createObjectURL(blob);window.open(u,'_blank');}
+function shareToFacebook(){const p=location.href.split('#')[0];window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(p)}`,'_blank');}
+["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{const el=$(id);if(el)el.addEventListener("input",generate);});
+$("download").addEventListener("click",async()=>{const white=confirm("OK = white background, Cancel = transparent");await downloadPNG(white);});
+$("downloadSvg").addEventListener("click",downloadSVG);
+$("print").addEventListener("click",printFlake);
+$("shareFb").addEventListener("click",shareToFacebook);
+document.addEventListener("DOMContentLoaded",()=>{generate();setTimeout(generate,500);});
+</script>
+
+ 
