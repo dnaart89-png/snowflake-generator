@@ -53,7 +53,22 @@
     /* Layout */
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
     .row{ display:grid; grid-template-columns: 260px 1fr 260px; gap:14px; }
-    @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
+/* === Stack the action buttons vertically === */
+.controls .btn,
+.controls .facebook-btn {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+/* Add soft spacing between buttons */
+.controls .btn + .btn,
+.controls .btn + .facebook-btn {
+  margin-top: 8px;
+}
+ @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
 
     .card{ background:var(--glass); backdrop-filter: blur(8px);
       border:1px solid rgba(255,255,255,.7); border-radius:16px; box-shadow:var(--shadow); }
@@ -72,9 +87,18 @@
     svg{ width:100%; height:auto; display:block; position:relative; z-index:1 }
 
     /* Controls */
-    .controls{ padding:14px; }
+   .controls {
+  padding: 18px;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.controls label {
+  border-bottom: 1px dashed rgba(0,0,0,.1);
+  padding-bottom: 6px;
+}
     .controls h3{ margin:4px 4px 12px; font-family:Poppins,system-ui,sans-serif; }
-    .grid{ display:grid; gap:.6rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid{ display:grid; gap:.6rem; grid-template-columns: 1fr; }
     @media (max-width: 620px){ .grid{ grid-template-columns:1fr; } }
     .controls label{
       display:flex; align-items:center; justify-content:space-between; gap:.75rem; font-size:14px;
@@ -144,14 +168,14 @@
         <h3>Snowflake Controls</h3>
         <div class="grid">
           <label>Word or Short Phrase <input id="word" value="David Loves Angie" /></label>
-          <label>Arms <input id="arms" type="number" min="3" max="24" value="6" /></label>
-          <label>Font size <input id="fs" type="number" value="40" /></label>
-          <label>Arm length (px) <input id="len" type="number" value="210" /></label>
-          <label>Join gap (px) <input id="gap" type="number" value="40" /></label>
+          <label>Arms <input id="arms" type="number" min="3" max="24" value="8" /></label>
+          <label>Font size <input id="fs" type="number" value="100" /></label>
+          <label>Arm length (px) <input id="len" type="number" value="350" /></label>
+          <label>Join gap (px) <input id="gap" type="number" value="90" /></label>
           <label>Tilt (°) <input id="tilt" type="number" value="0" /></label>
           <label>Font
             <select id="font">
-              <option value="Londrina Outline" data-kind="cursive" selected>Londrina Outline</option>
+              <option value="Dancing Script" data-kind="cursive" selected>Dancing Script</option>
               <option value="Bungee Outline" data-kind="cursive">Bungee Outline</option>
               <option value="Kumar One Outline" data-kind="serif">Kumar One Outline</option>
               <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
@@ -165,7 +189,7 @@
               <option value="Dancing Script" data-kind="cursive">Dancing Script</option>
             </select>
           </label>
-          <label>Color <input id="color" type="color" value="#7b2323" /></label>
+          <label>Color <input id="color" type="color" value="#000000" /></label>
         </div>
 
         <div class="buttons">
@@ -181,7 +205,32 @@
     </div>
 
     <!-- ABOUT -->
-    <section class="about card">
+    <section class="info-panel card">
+  <p class="lede">
+    Your personalized snowflake can be used for endless projects!
+    Print it on ornaments, greeting cards, or stickers. Use it in
+    digital art, social media graphics, or classroom crafts. Couples
+    love creating matching snowflakes to celebrate engagements,
+    weddings, and anniversaries!
+  </p>
+
+  <div class="tip">
+    <div class="tip-emoji" aria-hidden="true">🎨</div>
+    <div class="tip-body">
+      <h4>Coloring-Friendly Fonts</h4>
+      <p>
+        Try <strong>Londrina Outline</strong>, <strong>Bungee Outline</strong>,
+        or <strong>Kumar One Outline</strong> for printable snowflakes you can color in!
+      </p>
+    </div>
+  </div>
+
+  <div class="cta">
+    <p class="cta-lead">Show Us Your Design!</p>
+    <p class="hashtag">#MyNameSnowflake</p>
+    <button class="facebook-btn" onclick="shareToSocial('facebook')">Facebook</button>
+  </div>
+</section>
       <h3>❄ About Nameflake Studio</h3>
       <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or print your creation.</p>
       <h4>🎨 Coloring-Friendly Fonts</h4>
@@ -191,9 +240,19 @@
     </section>
   </main>
 
-  <footer class="footer">
-    © 2025 Nameflake Studio · <a href="privacy.html">Privacy Policy</a>
-  </footer>
+ <footer class="footer-bar">
+  <div class="footer-inner">
+    <span>© 2025 Nameflake Studio</span>
+    <span class="sep">|</span>
+    <a href="privacy.html">Privacy Policy</a>
+    <span class="sep">|</span>
+    <a href="terms.html">Terms of Use</a>
+    <span class="sep">|</span>
+    <a href="about.html">About</a>
+    <span class="sep">|</span>
+    <a href="faq.html">FAQ</a>
+  </div>
+</footer>
 
   <!-- AdSense loader -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
@@ -239,12 +298,12 @@
 
     async function generate(){
       const WORD  = (v("word","David Loves Angie")).toString();
-      const ARMS  = +v("arms",6);
-      const FS    = +v("fs",40);
-      const LEN   = +v("len",210);
-      const GAP   = +v("gap",40);
+      const ARMS  = +v("arms",8);
+      const FS    = +v("fs",100);
+      const LEN   = +v("len",350);
+      const GAP   = +v("gap",90);
       const TILT  = +v("tilt",0);
-      const COLOR = v("color","#7b2323");
+      const COLOR = v("color","#000000");
       const FONT  = selectedFontStack();
       const FAMILY = $("font").value;
 
@@ -332,7 +391,7 @@
       img.src = url;
     }
 
-    // Share (Facebook only, centered)
+    // Share (Facebook only, centered
     $("fbshare").addEventListener("click", (e)=>{
       e.preventDefault();
       const page = location.href.split('#')[0];
