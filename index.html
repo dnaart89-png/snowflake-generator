@@ -1,19 +1,34 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Nameflake Studio — v1.0 (LOCKED) -->
+  <!-- Sanity checks after upload:
+       [ ] Header shows banner.png (case sensitive)
+       [ ] Default reads “David Loves Angie”
+       [ ] Only Facebook share button, centered
+       [ ] Dark parchment bg + gold buttons
+       [ ] Left AdSense rail visible (or blank if not eligible yet)
+       [ ] Footer has ONE Privacy Policy link
+  -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio</title>
+
+  <!-- Reduce caching while we iterate -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
   <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
   <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included." />
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts (pin a fixed list) -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --cran:#7b2323; --ever:#144a34; --gold:#d6b46a;
-      --cream:#f3e6c8; --ink:#262626; --paper:#fff;
+      --cream:#e7d7b3; --cream2:#dbc28e; --ink:#262626; --paper:#fff;
       --glass: rgba(255,255,255,.72);
       --shadow: 0 12px 28px rgba(0,0,0,.14);
       --gold-grad: linear-gradient(135deg,#e8c87e,#caa453);
@@ -24,7 +39,7 @@
       margin:0; color:var(--ink);
       background:
         radial-gradient(1200px 520px at 50% -10%, rgba(255,255,255,.45), transparent 70%),
-        linear-gradient(135deg, #e7d7b3 0%, #e2cda1 35%, #dbc28e 100%);
+        linear-gradient(135deg, var(--cream) 0%, #e2cda1 35%, var(--cream2) 100%);
       font-family:'Libre Baskerville',serif; overflow-x:hidden;
     }
 
@@ -33,14 +48,12 @@
       background: linear-gradient(135deg, #6b2b2b, #5c2424);
       box-shadow: var(--shadow);
     }
-    .banner{
-      max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover;
-    }
+    .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
 
     /* Layout */
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
     .row{ display:grid; grid-template-columns: 260px 1fr 260px; gap:14px; }
-    @media (max-width: 980px){ .row{ grid-template-columns: 1fr; } }
+    @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
 
     .card{ background:var(--glass); backdrop-filter: blur(8px);
       border:1px solid rgba(255,255,255,.7); border-radius:16px; box-shadow:var(--shadow); }
@@ -63,7 +76,6 @@
     .controls h3{ margin:4px 4px 12px; font-family:Poppins,system-ui,sans-serif; }
     .grid{ display:grid; gap:.6rem; grid-template-columns: repeat(2, minmax(0,1fr)); }
     @media (max-width: 620px){ .grid{ grid-template-columns:1fr; } }
-
     .controls label{
       display:flex; align-items:center; justify-content:space-between; gap:.75rem; font-size:14px;
       border-bottom:1px dashed rgba(0,0,0,.08); padding-bottom:6px;
@@ -99,7 +111,8 @@
 
   <!-- Header (tagline is baked into the image) -->
   <header class="site-header">
-    <img class="banner" src="banner.png" alt="Nameflake Studio banner">
+    <!-- version param helps bust cache while we’re stabilizing -->
+    <img class="banner" src="banner.png?v=1" alt="Nameflake Studio banner">
   </header>
 
   <main class="shell">
@@ -186,7 +199,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
 
   <script>
-    // ---------- Utilities ----------
+    /* ===================  JS (LOCKED)  =================== */
     const svgNS = "http://www.w3.org/2000/svg";
     const $ = id => document.getElementById(id);
     const root = $("root");
@@ -196,7 +209,6 @@
       return `'${sel.value}', ${sel.selectedOptions[0].dataset.kind || "serif"}`;
     }
 
-    // Wait for a font and inline it for exports
     async function waitForFont(fontFamily, sizePx = 40) {
       try {
         await document.fonts.load(`${sizePx}px "${fontFamily}"`);
@@ -225,7 +237,6 @@
       return clone;
     }
 
-    // ---------- Draw snowflake ----------
     async function generate(){
       const WORD  = (v("word","David Loves Angie")).toString();
       const ARMS  = +v("arms",6);
@@ -235,43 +246,40 @@
       const TILT  = +v("tilt",0);
       const COLOR = v("color","#7b2323");
       const FONT  = selectedFontStack();
-      const FONT_FAMILY_ONLY = $("font").value;
+      const FAMILY = $("font").value;
 
-      await waitForFont(FONT_FAMILY_ONLY, FS);
-
+      await waitForFont(FAMILY, FS);
       root.innerHTML = "";
 
       const hub = document.createElementNS(svgNS,"circle");
-      hub.setAttribute("r","2.5");
-      hub.setAttribute("fill",COLOR);
-      hub.setAttribute("opacity",".55");
+      hub.setAttribute("r","2.5"); hub.setAttribute("fill",COLOR); hub.setAttribute("opacity",".55");
       root.appendChild(hub);
 
-      function pair(){
+      function armPair(){
         const arm=document.createElementNS(svgNS,"g");
 
-        const outG=document.createElementNS(svgNS,"g");
-        outG.setAttribute("transform",`rotate(${-90+TILT})`);
-        arm.appendChild(outG);
-        const tOut=document.createElementNS(svgNS,"text");
-        tOut.setAttribute("fill",COLOR); tOut.setAttribute("font-size",FS); tOut.setAttribute("font-family",FONT);
-        tOut.setAttribute("lengthAdjust","spacingAndGlyphs");
-        tOut.setAttribute("textLength",String(LEN-GAP)); tOut.setAttribute("text-anchor","start"); tOut.setAttribute("x",String(GAP));
-        tOut.textContent=WORD; outG.appendChild(tOut);
+        const go=document.createElementNS(svgNS,"g");
+        go.setAttribute("transform",`rotate(${-90+TILT})`);
+        arm.appendChild(go);
+        const to=document.createElementNS(svgNS,"text");
+        to.setAttribute("fill",COLOR); to.setAttribute("font-size",FS); to.setAttribute("font-family",FONT);
+        to.setAttribute("lengthAdjust","spacingAndGlyphs"); to.setAttribute("textLength",String(LEN-GAP));
+        to.setAttribute("text-anchor","start"); to.setAttribute("x",String(GAP)); to.textContent=WORD;
+        go.appendChild(to);
 
-        const inG=document.createElementNS(svgNS,"g");
-        inG.setAttribute("transform",`scale(1,-1) rotate(${-90-TILT})`);
-        arm.appendChild(inG);
-        const tIn=document.createElementNS(svgNS,"text");
-        tIn.setAttribute("fill",COLOR); tIn.setAttribute("font-size",FS); tIn.setAttribute("font-family",FONT);
-        tIn.setAttribute("lengthAdjust","spacingAndGlyphs");
-        tIn.setAttribute("textLength",String(LEN-GAP)); tIn.setAttribute("text-anchor","start"); tIn.setAttribute("x",String(GAP));
-        tIn.textContent=WORD; inG.appendChild(tIn);
+        const gi=document.createElementNS(svgNS,"g");
+        gi.setAttribute("transform",`scale(1,-1) rotate(${-90-TILT})`);
+        arm.appendChild(gi);
+        const ti=document.createElementNS(svgNS,"text");
+        ti.setAttribute("fill",COLOR); ti.setAttribute("font-size",FS); ti.setAttribute("font-family",FONT);
+        ti.setAttribute("lengthAdjust","spacingAndGlyphs"); ti.setAttribute("textLength",String(LEN-GAP));
+        ti.setAttribute("text-anchor","start"); ti.setAttribute("x",String(GAP)); ti.textContent=WORD;
+        gi.appendChild(ti);
 
         return arm;
       }
 
-      const pr = pair();
+      const pr = armPair();
       for(let i=0;i<ARMS;i++){
         const holder = document.createElementNS(svgNS,"g");
         holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
@@ -280,7 +288,6 @@
       }
     }
 
-    // ---------- Exports ----------
     async function downloadSVG(){
       const svg = document.getElementById("flake");
       const fam = document.getElementById("font").value;
@@ -325,14 +332,14 @@
       img.src = url;
     }
 
-    // ---------- Share ----------
+    // Share (Facebook only, centered)
     $("fbshare").addEventListener("click", (e)=>{
       e.preventDefault();
       const page = location.href.split('#')[0];
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
     });
 
-    // ---------- Listeners & first render ----------
+    // Bind + first render
     ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
       const el=$(id); if (el) el.addEventListener("input", generate);
     });
@@ -344,6 +351,7 @@
     $("print").addEventListener("click", ()=> window.print());
 
     document.addEventListener("DOMContentLoaded", generate);
+    /* ===================  /JS (LOCKED)  =================== */
   </script>
 </body>
 </html>
