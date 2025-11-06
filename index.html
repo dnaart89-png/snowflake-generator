@@ -412,23 +412,20 @@
       }
     }
 
-    async function downloadSVG(){
+   async function downloadSVG(){
   const svg = document.getElementById("flake");
   const fam = document.getElementById("font").value;
 
-  // Keep this in sync with the PNG export scale (≈350 DPI)
-  const SCALE = 3.5;
-
-  // Inline the active font so the SVG renders correctly everywhere
+  // Inline the active font so the SVG works everywhere
   const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
 
-  // Bump pixel dimensions so design tools rasterize larger by default
-  const vb = svg.viewBox.baseVal;            // typically 800 × 800
-  svgWithFonts.setAttribute("width",  vb.width  * SCALE);   // 2800
-  svgWithFonts.setAttribute("height", vb.height * SCALE);   // 2800
-  svgWithFonts.setAttribute("preserveAspectRatio", "xMidYMid meet");
+  // Optional: bump pixel hints for friendlier default rasterizing
+  const SCALE = 3.5;
+  const vb = svg.viewBox.baseVal;
+  svgWithFonts.setAttribute("width",  vb.width  * SCALE);
+  svgWithFonts.setAttribute("height", vb.height * SCALE);
+  svgWithFonts.setAttribute("preserveAspectRatio","xMidYMid meet");
 
-  // Serialize and download
   const data = new XMLSerializer().serializeToString(svgWithFonts);
   const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -439,44 +436,44 @@
   a.click();
   URL.revokeObjectURL(url);
 }
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
 
-      let svgStr = new XMLSerializer().serializeToString(svgWithFonts);
-      if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style=\"background:white\" ");
+async function downloadPNG(whiteBg=false){
+  const svg = document.getElementById("flake");
+  const fam = document.getElementById("font").value;
+  const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
 
-      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
+  let svgStr = new XMLSerializer().serializeToString(svgWithFonts);
+  if (whiteBg) svgStr = svgStr.replace("<svg ","<svg style=\"background:white\" ");
 
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-img.onload = function(){
-  const vb = svg.viewBox.baseVal;
+  const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
 
-  // === 350 DPI export ===
-  // Default SVG viewBox is 800 × 800 px at ~96 dpi.
-  // Multiply by 3.5 × to reach roughly 2800 × 2800 px (≈ 350 dpi).
-  const scale = 3.5;
-  const canvas = document.createElement("canvas");
-  canvas.width = vb.width * scale;
-  canvas.height = vb.height * scale;
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.onload = function(){
+    const vb = svg.viewBox.baseVal;
 
-  const ctx = canvas.getContext("2d");
-  ctx.scale(scale, scale);
+    // ~350 DPI export (from 800×800 → 2800×2800)
+    const scale = 3.5;
+    const canvas = document.createElement("canvas");
+    canvas.width  = vb.width  * scale;
+    canvas.height = vb.height * scale;
 
-  if (!whiteBg) ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(img, 0, 0);
-  URL.revokeObjectURL(url);
+    const ctx = canvas.getContext("2d");
+    ctx.scale(scale, scale);
+    if (!whiteBg) ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(img, 0, 0);
 
-        const link = document.createElement("a");
-        const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-        link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      };
-      img.src = url;
-    }
+    URL.revokeObjectURL(url);
+
+    const link = document.createElement("a");
+    const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
+    link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  };
+  img.src = url;
+}
 
     // Share (Facebook only, centered
     $("fbshare").addEventListener("click", (e)=>{
@@ -501,4 +498,3 @@ img.onload = function(){
   </script>
 </body>
 </html>
-
