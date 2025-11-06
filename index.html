@@ -413,19 +413,32 @@
     }
 
     async function downloadSVG(){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-      const data = new XMLSerializer().serializeToString(svgWithFonts);
-      const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-      a.href = url; a.download = `${word}_flake.svg`; a.click();
-      URL.revokeObjectURL(url);
-    }
+  const svg = document.getElementById("flake");
+  const fam = document.getElementById("font").value;
 
-    async function downloadPNG(whiteBg=false){
+  // Keep this in sync with the PNG export scale (≈350 DPI)
+  const SCALE = 3.5;
+
+  // Inline the active font so the SVG renders correctly everywhere
+  const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
+
+  // Bump pixel dimensions so design tools rasterize larger by default
+  const vb = svg.viewBox.baseVal;            // typically 800 × 800
+  svgWithFonts.setAttribute("width",  vb.width  * SCALE);   // 2800
+  svgWithFonts.setAttribute("height", vb.height * SCALE);   // 2800
+  svgWithFonts.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+  // Serialize and download
+  const data = new XMLSerializer().serializeToString(svgWithFonts);
+  const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
+  a.href = url;
+  a.download = `${word}_flake.svg`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
       const svg = document.getElementById("flake");
       const fam = document.getElementById("font").value;
       const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
