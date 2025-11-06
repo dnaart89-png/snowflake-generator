@@ -128,7 +128,41 @@
 
     /* Footer */
     .footer{ text-align:center; font-size:12px; opacity:.9; padding:20px 10px 28px }
-    .footer a{ color:inherit }/* existing CSS above */
+    .footer a{ color:inherit }
+/* === Footer Bar === */
+.footer-bar {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 18px 10px;
+  border-top: 3px solid var(--gold);
+  box-shadow: inset 0 4px 8px rgba(0,0,0,.05);
+}
+
+.footer-bar .footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 13px;
+  color: #3a2f20;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-bar .sep {
+  margin: 0 8px;
+  opacity: 0.5;
+}
+
+.footer-bar a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.footer-bar a:hover {
+  color: var(--cran);
+  text-decoration-color: var(--gold);
+}/* existing CSS above */
 
 /* === Mockups Section === */
 .mockups-section {
