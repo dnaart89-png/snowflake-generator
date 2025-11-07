@@ -2,68 +2,148 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Nameflake Studio</title>
-  <link rel="canonical" href="https://nameflakestudio.com/about.html" />
-<meta name="description" content="What is Nameflake Studio? The story behind our personalized snowflake generator." />
-<meta property="og:title" content="About — Nameflake Studio" />
-<meta property="og:description" content="Meet the creator and learn how Nameflake Studio came to be." />
-<meta property="og:url" content="https://nameflakestudio.com/about.html" />
-<meta property="og:image" content="https://nameflakestudio.com/banner.png" />
-<meta name="twitter:card" content="summary_large_image" />
-  <meta name="description" content="Learn about the heart behind Nameflake Studio." />
+  <meta name="description" content="Nameflake Studio turns any name or phrase into a unique, printable snowflake. Learn our story, how it works, and ways to use your snowflakes." />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About — Nameflake Studio" />
+  <meta property="og:description" content="The story behind Nameflake Studio and how we make words into art." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nameflakestudio.com/about.html" />
+  <meta property="og:image" content="https://nameflakestudio.com/banner.png" />
+
   <style>
-    :root{ --gold:#d6b46a; --ink:#262626; --cream:#e7d7b3; --cream2:#dbc28e; --shadow:0 12px 28px rgba(0,0,0,.14); }
+    :root{
+      --cran:#7b2323; --ever:#144a34; --gold:#d6b46a;
+      --cream:#e7d7b3; --cream2:#dbc28e; --ink:#262626; --paper:#fff;
+      --glass: rgba(255,255,255,.72);
+      --shadow: 0 12px 28px rgba(0,0,0,.14);
+      --gold-grad: linear-gradient(135deg,#e8c87e,#caa453);
+    }
     *{box-sizing:border-box}
-    body{margin:0;color:var(--ink);font-family:'Libre Baskerville',serif;
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--ink);
       background:
         radial-gradient(1200px 520px at 50% -10%, rgba(255,255,255,.45), transparent 70%),
         linear-gradient(135deg, var(--cream) 0%, #e2cda1 35%, var(--cream2) 100%);
+      font-family:'Libre Baskerville',serif; overflow-x:hidden;
     }
-    .site-header{padding:0 0 12px;border-bottom:6px solid var(--gold);
-      background:linear-gradient(135deg,#6b2b2b,#5c2424);box-shadow:var(--shadow)}
-    .banner{max-width:1280px;margin:0 auto;display:block;width:100%;height:auto}
-    .shell{max-width:980px;margin:18px auto;padding:0 16px}
-    .card{background:rgba(255,255,255,.72);backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.7);border-radius:16px;box-shadow:var(--shadow);padding:20px}
-    h1,h2{font-family:Poppins,system-ui,sans-serif;margin:10px 0}
-    p{line-height:1.8}
-    .grid{display:grid;gap:14px}
-    .footer-bar{background:rgba(0,0,0,.06);padding:18px 10px;border-top:3px solid var(--gold);
-      box-shadow:inset 0 4px 8px rgba(0,0,0,.05)}
-    .footer-inner{max-width:1280px;margin:0 auto;text-align:center;font-size:13px;color:#3a2f20;
-      line-height:1.6;font-family:Poppins,sans-serif}
-    .sep{margin:0 8px;opacity:.5}
-    a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-    .back{display:inline-block;margin:10px 0 0;font-family:Poppins,sans-serif}
+    .site-header{ padding:0 0 12px; border-bottom:6px solid var(--gold);
+      background: linear-gradient(135deg, #6b2b2b, #5c2424);
+      box-shadow: var(--shadow);
+    }
+    .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
+    .shell{ max-width:980px; margin:18px auto 32px; padding:0 16px; }
+    .card{ background:var(--glass); backdrop-filter: blur(8px);
+      border:1px solid rgba(255,255,255,.7); border-radius:16px; box-shadow:var(--shadow); }
+    .hero{ padding:20px; display:flex; gap:18px; align-items:center; justify-content:space-between; }
+    .hero h1{ font-family:Poppins,system-ui,sans-serif; margin:0; font-size:32px; color:var(--cran) }
+    .hero p{ margin:.4rem 0 0; max-width:60ch }
+    .btn{ appearance:none; border:1px solid rgba(0,0,0,.12); background:#fff; color:var(--ink);
+      padding:10px 16px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease; text-decoration:none; display:inline-block }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 30px rgba(0,0,0,.16) }
+    .btn.primary{ background: var(--gold-grad); border-color: transparent; color:#2a2a2a }
+    .grid{ display:grid; gap:16px; margin-top:18px }
+    @media (min-width: 820px){ .grid{ grid-template-columns: 1fr 1fr } }
+    .section{ padding:20px }
+    .section h2{ font-family:Poppins,system-ui,sans-serif; margin:0 0 8px; color:var(--ever) }
+    .kicker{ text-transform:uppercase; letter-spacing:.06em; font-size:.85rem; color:#7a6a50 }
+    .list{ margin:0; padding-left:18px }
+    .quote{ font-style:italic; background:rgba(255,255,255,.6); padding:14px; border-left:4px solid var(--gold); border-radius:10px }
+    .footer-bar { background: rgba(0,0,0,0.06); padding: 18px 10px; border-top: 3px solid var(--gold);
+      box-shadow: inset 0 4px 8px rgba(0,0,0,.05); }
+    .footer-inner { max-width: 1280px; margin: 0 auto; text-align: center; font-size: 13px; color: #3a2f20;
+      line-height: 1.6; font-family: 'Poppins', sans-serif; }
+    .footer-inner .sep { margin: 0 8px; opacity: .5; }
+    .footer-inner a{ color:inherit; text-decoration: underline; text-underline-offset:3px }
+    nav.site-nav{ max-width:980px; margin:10px auto 0; padding:0 16px; display:flex; gap:10px; }
+    nav.site-nav a{ font-family:Poppins,system-ui,sans-serif; font-weight:600; color:#2a2a2a;
+      text-decoration:none; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.08) }
+    nav.site-nav a:hover{ background:#fff }
   </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Nameflake Studio",
+    "url":"https://nameflakestudio.com/",
+    "about":"Turn any name or phrase into a unique snowflake.",
+    "inLanguage":"en"
+  }
+  </script>
 </head>
 <body>
   <header class="site-header">
     <img class="banner" src="banner.png" alt="Nameflake Studio banner">
   </header>
 
-  <main class="shell">
-    <article class="card">
-      <h1>About Nameflake Studio</h1>
-      <p>🌸 About Nameflake Studio
+  <nav class="site-nav" aria-label="Primary">
+    <a href="index.html">Home</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
 
-At Nameflake Studio, every design begins with a name — a word that holds meaning, memory, and love. Our one-of-a-kind Snowflake Generator transforms names and phrases into beautifully symmetrical digital snowflakes, perfect for keepsakes, ornaments, and gifts. Each snowflake is a reflection of individuality — reminding us that, like snowflakes, no two people are ever the same.
-
-Created by a small family team of artists and dreamers, Nameflake Studio blends creativity, technology, and heart. We believe that beauty can be both personal and shared, and our mission is to help you turn words into art that warms every season. ❄️</p>
-      <div class="grid">
-        <p>We built it to be:</p>
-        <ul>
-          <li><strong>Fast & friendly.</strong> No accounts or complicated steps.</li>
-          <li><strong>Printable.</strong> 350-dpi PNGs and embeddable SVGs for serious crafting.</li>
-          <li><strong>Kid-safe ideas.</strong> Great for classrooms, church groups, and family projects.</li>
-        </ul>
-        <p>If you make something special with Nameflake Studio, we’d love to see it: <strong>#MyNameSnowflake</strong>.</p>
+  <main class="shell" id="main">
+    <!-- Hero -->
+    <section class="hero card" aria-labelledby="about-title">
+      <div>
+        <h1 id="about-title">About Nameflake Studio</h1>
+        <p>We turn words into art — elegant, printable snowflakes you can use on ornaments, cards, shirts, coloring pages, weddings, and more. Each snowflake is generated from your text, then mirrored around the circle to create a design that’s uniquely yours.</p>
+        <a class="btn primary" href="index.html">Create Your Snowflake</a>
       </div>
+    </section>
 
-      <a class="back" href="index.html">← Back to Nameflake Studio</a>
-    </article>
+    <!-- Story & How it Works -->
+    <section class="grid">
+      <article class="section card" aria-labelledby="story">
+        <p class="kicker" id="story">Our Story</p>
+        <h2>Family-built, memory-focused</h2>
+        <p>Nameflake Studio began as a simple idea: capture a name or a phrase that matters and shape it into something you can hold, color, print, or gift. We wanted a tool that’s beautiful, fast, and easy for families, teachers, and makers.</p>
+        <p class="quote">“Each snowflake is uniquely yours.”</p>
+      </article>
+
+      <article class="section card" aria-labelledby="how">
+        <p class="kicker" id="how">How it works</p>
+        <h2>From text → snowflake</h2>
+        <ol class="list">
+          <li>Type a word or short phrase (e.g., <em>David Loves Angie</em>).</li>
+          <li>Choose your font, color, and arm count.</li>
+          <li>Adjust size and spacing for the style you like.</li>
+          <li>Download as high-res PNG (≈350 DPI) or SVG for vector editing.</li>
+          <li>Print, color, craft, or share!</li>
+        </ol>
+      </article>
+    </section>
+
+    <!-- Uses -->
+    <section class="section card" aria-labelledby="ideas">
+      <p class="kicker" id="ideas">Ideas</p>
+      <h2>Fun ways to use your snowflakes</h2>
+      <ul class="list">
+        <li>Holiday ornaments, gift tags, and cards</li>
+        <li>Coloring pages and classroom crafts</li>
+        <li>Wedding monograms and keepsakes</li>
+        <li>Window clings and vinyl decals</li>
+        <li>Shirts, mugs, and tote prints</li>
+      </ul>
+    </section>
+
+    <!-- Contact / Credit -->
+    <section class="section card" aria-labelledby="contact">
+      <p class="kicker" id="contact">Contact</p>
+      <h2>Questions or requests?</h2>
+      <p>If you spot a bug, have a feature idea, or want to share what you made, we’d love to hear from you.</p>
+      <!-- If you prefer a different email, update the href only -->
+      <p><strong>Email:</strong> <a href="mailto:hello@nameflakestudio.com">hello@nameflakestudio.com</a></p>
+      <p style="margin-top:10px">Made with love by our family — turning words into art, one snowflake at a time.</p>
+    </section>
   </main>
 
   <footer class="footer-bar">
@@ -77,9 +157,9 @@ Created by a small family team of artists and dreamers, Nameflake Studio blends 
       <a href="about.html">About</a>
       <span class="sep">|</span>
       <a href="faq.html">FAQ</a>
+      <span class="sep">|</span>
+      <a href="sitemap.xml">Sitemap</a>
     </div>
   </footer>
 </body>
-
 </html>
-
