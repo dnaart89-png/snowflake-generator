@@ -181,23 +181,6 @@
     }
   </style>
 </head>
-  /* Keep 3-column layout on desktop/laptops */
-.row {
-  display: grid;
-  grid-template-columns: 260px 1fr 260px;
-  gap: 14px;
-}
-
-/* Stack only on very narrow screens (phones) */
-@media (max-width: 780px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
-  .rail, .controls {
-    width: 100%;
-    margin: 0 auto;
-  }
-}
 <body>
 
   <!-- Header -->
@@ -322,7 +305,7 @@
   </footer>
 
   <script>
-    /* ===================  JS  =================== */
+    /* =================== JS =================== */
     const svgNS = "http://www.w3.org/2000/svg";
     const $ = id => document.getElementById(id);
     const root = $("root");
@@ -372,14 +355,14 @@
     }
 
     async function generate(){
-      const WORD  = (v("word","David Loves Angie")).toString();
-      const ARMS  = +v("arms",8);
-      const FS    = +v("fs",100);
-      const LEN   = +v("len",350);
-      const GAP   = +v("gap",90);
-      const TILT  = +v("tilt",0);
+      const WORD = (v("word","David Loves Angie")).toString();
+      const ARMS = +v("arms",8);
+      const FS = +v("fs",100);
+      const LEN = +v("len",350);
+      const GAP = +v("gap",90);
+      const TILT = +v("tilt",0);
       const COLOR = v("color","#000000");
-      const FONT  = selectedFontStack();
+      const FONT = selectedFontStack();
       const FAMILY = $("font").value;
 
       await waitForFont(FAMILY, FS);
@@ -448,7 +431,7 @@
       const vb = svg.viewBox.baseVal;
       const SCALE = 3.5; // 800 * 3.5 = 2800 (~350 dpi on 8x8 in area)
 
-      svgWithFonts.setAttribute("width",  vb.width);
+      svgWithFonts.setAttribute("width", vb.width);
       svgWithFonts.setAttribute("height", vb.height);
       svgWithFonts.setAttribute("preserveAspectRatio","xMidYMid meet");
 
@@ -460,7 +443,7 @@
       img.crossOrigin = "anonymous";
       img.onload = function(){
         const canvas = document.createElement("canvas");
-        canvas.width  = vb.width  * SCALE;
+        canvas.width = vb.width * SCALE;
         canvas.height = vb.height * SCALE;
         const ctx = canvas.getContext("2d");
 
