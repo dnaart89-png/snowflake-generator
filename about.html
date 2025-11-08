@@ -3,28 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Core SEO -->
   <title>About — Nameflake Studio</title>
   <meta name="description" content="Nameflake Studio turns any name or phrase into a unique, printable snowflake. Learn our story, how it works, and ways to use your snowflakes." />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<meta property="og:title" content="Nameflake Studio ❄ Create Personalized Snowflakes">
-<meta property="og:description" content="Turn any name into a one-of-a-kind snowflake! Download as PNG or SVG and make ornaments, shirts, and cards.">
-<meta property="og:image" content="https://nameflakestudio.com/banner.png">
-<meta property="og:url" content="https://nameflakestudio.com/">
-<meta name="twitter:card" content="summary_large_image">
-<!-- 🧭 Enhanced SEO Metadata -->
-<title>Nameflake Studio ❄ Personalized Snowflake Generator</title>
-<meta name="keywords" content="snowflake generator, name snowflake, personalized snowflake, custom snowflake design, Christmas craft ideas, snowflake maker, name art, winter ornaments, DIY snowflake, printable snowflake, SVG snowflake, PNG snowflake, wedding keepsake, custom holiday gift, creative crafts">
-<meta name="author" content="Nameflake Studio">
-<meta name="robots" content="index, follow">
-<meta name="revisit-after" content="7 days">
-<link rel="canonical" href="https://nameflakestudio.com/">
+  <link rel="canonical" href="https://nameflakestudio.com/about.html">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="About — Nameflake Studio" />
-  <meta property="og:description" content="The story behind Nameflake Studio and how we make words into art." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nameflakestudio.com/about.html" />
-  <meta property="og:image" content="https://nameflakestudio.com/banner.png" />
+  <!-- Keywords (page-specific) -->
+  <meta name="keywords" content="about Nameflake Studio, personalized snowflakes, family project, how it works, printable snowflake art, custom name art">
+
+  <!-- Indexing -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Nameflake Studio">
+
+  <!-- Social (OG/Twitter) -->
+  <meta property="og:title" content="About — Nameflake Studio">
+  <meta property="og:description" content="The story behind Nameflake Studio and how we make words into art.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nameflakestudio.com/about.html">
+  <meta property="og:image" content="https://nameflakestudio.com/banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -66,27 +67,44 @@
     .kicker{ text-transform:uppercase; letter-spacing:.06em; font-size:.85rem; color:#7a6a50 }
     .list{ margin:0; padding-left:18px }
     .quote{ font-style:italic; background:rgba(255,255,255,.6); padding:14px; border-left:4px solid var(--gold); border-radius:10px }
+
+    /* Footer */
     .footer-bar { background: rgba(0,0,0,0.06); padding: 18px 10px; border-top: 3px solid var(--gold);
       box-shadow: inset 0 4px 8px rgba(0,0,0,.05); }
     .footer-inner { max-width: 1280px; margin: 0 auto; text-align: center; font-size: 13px; color: #3a2f20;
       line-height: 1.6; font-family: 'Poppins', sans-serif; }
     .footer-inner .sep { margin: 0 8px; opacity: .5; }
     .footer-inner a{ color:inherit; text-decoration: underline; text-underline-offset:3px }
-    nav.site-nav{ max-width:980px; margin:10px auto 0; padding:0 16px; display:flex; gap:10px; }
+
+    /* Top nav */
+    nav.site-nav{ max-width:980px; margin:10px auto 0; padding:0 16px; display:flex; gap:10px; flex-wrap:wrap }
     nav.site-nav a{ font-family:Poppins,system-ui,sans-serif; font-weight:600; color:#2a2a2a;
-      text-decoration:none; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.08) }
+      text-decoration:none; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.65);
+      border:1px solid rgba(0,0,0,.08) }
+    nav.site-nav a[aria-current="page"]{ outline:2px solid var(--gold) }
     nav.site-nav a:hover{ background:#fff }
   </style>
 
-  <!-- Schema.org -->
+  <!-- JSON-LD: WebPage + Breadcrumbs -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Nameflake Studio",
-    "url":"https://nameflakestudio.com/",
-    "about":"Turn any name or phrase into a unique snowflake.",
-    "inLanguage":"en"
+    "@graph":[
+      {
+        "@type":"WebPage",
+        "name":"About — Nameflake Studio",
+        "url":"https://nameflakestudio.com/about.html",
+        "description":"Nameflake Studio turns any name or phrase into a unique, printable snowflake. Learn our story, how it works, and ways to use your snowflakes.",
+        "inLanguage":"en"
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://nameflakestudio.com/"},
+          {"@type":"ListItem","position":2,"name":"About","item":"https://nameflakestudio.com/about.html"}
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -152,8 +170,7 @@
       <p class="kicker" id="contact">Contact</p>
       <h2>Questions or requests?</h2>
       <p>If you spot a bug, have a feature idea, or want to share what you made, we’d love to hear from you.</p>
-      <!-- If you prefer a different email, update the href only -->
-      <p><strong>Email:</strong> <a href="mailto:hello@nameflakestudio.com">hello@nameflakestudio.com</a></p>
+      <p><strong>Email:</strong> <a href="mailto:dna.art89@gmail.com">dna.art89@gmail.com</a></p>
       <p style="margin-top:10px">Made with love by our family — turning words into art, one snowflake at a time.</p>
     </section>
   </main>
@@ -166,7 +183,7 @@
       <span class="sep">|</span>
       <a href="terms.html">Terms of Use</a>
       <span class="sep">|</span>
-      <a href="about.html">About</a>
+      <a href="about.html" aria-current="page">About</a>
       <span class="sep">|</span>
       <a href="faq.html">FAQ</a>
       <span class="sep">|</span>
@@ -175,5 +192,3 @@
   </footer>
 </body>
 </html>
-
-
