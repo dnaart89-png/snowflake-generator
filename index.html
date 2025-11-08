@@ -181,6 +181,23 @@
     }
   </style>
 </head>
+  /* Keep 3-column layout on desktop/laptops */
+.row {
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 14px;
+}
+
+/* Stack only on very narrow screens (phones) */
+@media (max-width: 780px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .rail, .controls {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
 <body>
 
   <!-- Header -->
