@@ -1,30 +1,48 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- About — Nameflake Studio (stable) -->
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Core SEO -->
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>About — Nameflake Studio</title>
-  <meta name="description" content="Nameflake Studio turns any name or phrase into a unique, printable snowflake. Learn our story, how it works, and ways to use your snowflakes." />
-  <link rel="canonical" href="https://nameflakestudio.com/about.html">
 
-  <!-- Keywords (page-specific) -->
-  <meta name="keywords" content="about Nameflake Studio, personalized snowflakes, family project, how it works, printable snowflake art, custom name art">
+  <!-- Icons / theme -->
+  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="theme-color" content="#d6b46a">
 
-  <!-- Indexing -->
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Nameflake Studio">
+  <!-- Canonical & basic SEO -->
+  <link rel="canonical" href="https://nameflakestudio.com/about.html" />
+  <meta name="description" content="The story behind Nameflake Studio—how we turn names and words into printable, craft-ready snowflakes for families, teachers, and makers." />
 
-  <!-- Social (OG/Twitter) -->
-  <meta property="og:title" content="About — Nameflake Studio">
-  <meta property="og:description" content="The story behind Nameflake Studio and how we make words into art.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://nameflakestudio.com/about.html">
-  <meta property="og:image" content="https://nameflakestudio.com/banner.png">
-  <meta name="twitter:card" content="summary_large_image">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nameflakestudio.com/about.html" />
+  <meta property="og:title" content="About — Nameflake Studio" />
+  <meta property="og:description" content="We turn words into art—elegant, printable snowflakes for ornaments, cards, weddings, and more." />
+  <meta property="og:image" content="https://nameflakestudio.com/banner.png" />
+  <meta property="og:site_name" content="Nameflake Studio" />
 
-  <!-- Fonts -->
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About — Nameflake Studio" />
+  <meta name="twitter:description" content="The story behind Nameflake Studio and how it works." />
+  <meta name="twitter:image" content="https://nameflakestudio.com/banner.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AboutPage",
+    "name":"About — Nameflake Studio",
+    "url":"https://nameflakestudio.com/about.html",
+    "description":"The story behind Nameflake Studio and how we turn names into printable snowflakes."
+  }
+  </script>
+
+  <!-- Fonts (perf) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -49,17 +67,27 @@
       box-shadow: var(--shadow);
     }
     .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
+
+    nav.site-nav{ max-width:980px; margin:10px auto 0; padding:0 16px; display:flex; gap:10px; flex-wrap:wrap }
+    nav.site-nav a{ font-family:Poppins,system-ui,sans-serif; font-weight:600; color:#2a2a2a;
+      text-decoration:none; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.08) }
+    nav.site-nav a[aria-current="page"]{ outline:2px solid var(--gold) }
+    nav.site-nav a:hover{ background:#fff }
+
     .shell{ max-width:980px; margin:18px auto 32px; padding:0 16px; }
     .card{ background:var(--glass); backdrop-filter: blur(8px);
       border:1px solid rgba(255,255,255,.7); border-radius:16px; box-shadow:var(--shadow); }
-    .hero{ padding:20px; display:flex; gap:18px; align-items:center; justify-content:space-between; }
+
+    .hero{ padding:20px; display:flex; gap:18px; align-items:flex-start; justify-content:space-between; }
     .hero h1{ font-family:Poppins,system-ui,sans-serif; margin:0; font-size:32px; color:var(--cran) }
-    .hero p{ margin:.4rem 0 0; max-width:60ch }
+    .hero p{ margin:.6rem 0 0; max-width:70ch }
+
     .btn{ appearance:none; border:1px solid rgba(0,0,0,.12); background:#fff; color:var(--ink);
       padding:10px 16px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease; text-decoration:none; display:inline-block }
     .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 30px rgba(0,0,0,.16) }
     .btn.primary{ background: var(--gold-grad); border-color: transparent; color:#2a2a2a }
+
     .grid{ display:grid; gap:16px; margin-top:18px }
     @media (min-width: 820px){ .grid{ grid-template-columns: 1fr 1fr } }
     .section{ padding:20px }
@@ -68,45 +96,14 @@
     .list{ margin:0; padding-left:18px }
     .quote{ font-style:italic; background:rgba(255,255,255,.6); padding:14px; border-left:4px solid var(--gold); border-radius:10px }
 
-    /* Footer */
     .footer-bar { background: rgba(0,0,0,0.06); padding: 18px 10px; border-top: 3px solid var(--gold);
       box-shadow: inset 0 4px 8px rgba(0,0,0,.05); }
     .footer-inner { max-width: 1280px; margin: 0 auto; text-align: center; font-size: 13px; color: #3a2f20;
       line-height: 1.6; font-family: 'Poppins', sans-serif; }
     .footer-inner .sep { margin: 0 8px; opacity: .5; }
     .footer-inner a{ color:inherit; text-decoration: underline; text-underline-offset:3px }
-
-    /* Top nav */
-    nav.site-nav{ max-width:980px; margin:10px auto 0; padding:0 16px; display:flex; gap:10px; flex-wrap:wrap }
-    nav.site-nav a{ font-family:Poppins,system-ui,sans-serif; font-weight:600; color:#2a2a2a;
-      text-decoration:none; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.65);
-      border:1px solid rgba(0,0,0,.08) }
-    nav.site-nav a[aria-current="page"]{ outline:2px solid var(--gold) }
-    nav.site-nav a:hover{ background:#fff }
+    .footer-inner a:hover{ color: var(--cran); text-decoration-color: var(--gold); }
   </style>
-
-  <!-- JSON-LD: WebPage + Breadcrumbs -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"WebPage",
-        "name":"About — Nameflake Studio",
-        "url":"https://nameflakestudio.com/about.html",
-        "description":"Nameflake Studio turns any name or phrase into a unique, printable snowflake. Learn our story, how it works, and ways to use your snowflakes.",
-        "inLanguage":"en"
-      },
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://nameflakestudio.com/"},
-          {"@type":"ListItem","position":2,"name":"About","item":"https://nameflakestudio.com/about.html"}
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
   <header class="site-header">
@@ -118,6 +115,7 @@
     <a href="about.html" aria-current="page">About</a>
     <a href="faq.html">FAQ</a>
     <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
   </nav>
 
   <main class="shell" id="main">
@@ -125,7 +123,7 @@
     <section class="hero card" aria-labelledby="about-title">
       <div>
         <h1 id="about-title">About Nameflake Studio</h1>
-        <p>We turn words into art — elegant, printable snowflakes you can use on ornaments, cards, shirts, coloring pages, weddings, and more. Each snowflake is generated from your text, then mirrored around the circle to create a design that’s uniquely yours.</p>
+        <p>We turn words into art—elegant, printable snowflakes you can use on ornaments, cards, shirts, coloring pages, weddings, and more. Each snowflake is generated from your text, then mirrored around the circle to create a design that’s uniquely yours.</p>
         <a class="btn primary" href="index.html">Create Your Snowflake</a>
       </div>
     </section>
@@ -146,7 +144,7 @@
           <li>Type a word or short phrase (e.g., <em>David Loves Angie</em>).</li>
           <li>Choose your font, color, and arm count.</li>
           <li>Adjust size and spacing for the style you like.</li>
-          <li>Download as high-res PNG (≈350 DPI) or SVG for vector editing.</li>
+          <li>Download as high-res PNG (~350 dpi) or SVG for vector editing.</li>
           <li>Print, color, craft, or share!</li>
         </ol>
       </article>
@@ -171,7 +169,7 @@
       <h2>Questions or requests?</h2>
       <p>If you spot a bug, have a feature idea, or want to share what you made, we’d love to hear from you.</p>
       <p><strong>Email:</strong> <a href="mailto:dna.art89@gmail.com">dna.art89@gmail.com</a></p>
-      <p style="margin-top:10px">Made with love by our family — turning words into art, one snowflake at a time.</p>
+      <p style="margin-top:10px">Made with love by our family—turning words into art, one snowflake at a time.</p>
     </section>
   </main>
 
@@ -183,10 +181,11 @@
       <span class="sep">|</span>
       <a href="terms.html">Terms of Use</a>
       <span class="sep">|</span>
-      <a href="about.html" aria-current="page">About</a>
+      <a href="about.html">About</a>
       <span class="sep">|</span>
       <a href="faq.html">FAQ</a>
       <span class="sep">|</span>
+      <a href="sitemap.xml">Sitemap</a>
     </div>
   </footer>
 </body>
