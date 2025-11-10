@@ -2,8 +2,17 @@
 <html lang="en">
 <head>
   <!-- Nameflake Studio — v1.0 (stable) -->
-  <meta charset="utf-8" 
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+<script>
+  // If someone lands on /index.html, send them to the clean root URL once.
+  (function () {
+    var p = location.pathname;
+    if (p.endsWith('/index.html')) {
+      location.replace(location.origin + p.replace(/index\.html$/, ''));
+    }
+  })();
+</script>
+   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio</title>
   
   <!-- Icons / theme -->
