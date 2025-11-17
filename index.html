@@ -1,20 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Nameflake Studio — v1.0 (stable) -->
+  <!-- Nameflake Studio — v1.1 (with Advanced Wedge Mode) -->
   <meta charset="utf-8" />
-<script>
-  // If someone lands on /index.html, send them to the clean root URL once.
-  (function () {
-    var p = location.pathname;
-    if (p.endsWith('/index.html')) {
-      location.replace(location.origin + p.replace(/index\.html$/, ''));
-    }
-  })();
-</script>
-   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script>
+    // If someone lands on /index.html, send them to the clean root URL once.
+    (function () {
+      var p = location.pathname;
+      if (p.endsWith('/index.html')) {
+        location.replace(location.origin + p.replace(/index\.html$/, ''));
+      }
+    })();
+  </script>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio</title>
-  
+
   <!-- Icons / theme -->
   <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
   <link rel="apple-touch-icon" href="favicon.png">
@@ -58,10 +59,10 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <!-- AdSense -->
+  <!-- AdSense (account meta) -->
   <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
 
-  <!-- Fonts (perf) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -90,12 +91,17 @@
       background: linear-gradient(135deg, #6b2b2b, #5c2424);
       box-shadow: var(--shadow);
     }
-    .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
+    .banner{
+      max-width:1280px; margin:0 auto; display:block;
+      width:100%; height:auto; object-fit:cover;
+    }
 
     /* Layout */
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
     .row{ display:grid; grid-template-columns: 260px 1fr 260px; gap:14px; }
-    @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
+    @media (max-width: 980px){
+      .row{ grid-template-columns:1fr; }
+    }
 
     .card{
       background:var(--glass); backdrop-filter: blur(8px);
@@ -115,82 +121,147 @@
       border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
       overflow:hidden; position:relative; padding:10px;
     }
-    /* Keep fixed, square viewBox area */
-    svg{ width:100%; max-width:800px; height:auto; display:block; margin:0 auto; }
+    svg{
+      width:100%; max-width:800px; height:auto;
+      display:block; margin:0 auto;
+    }
 
     /* Controls */
-    .controls { padding: 18px; background: none; border: none; box-shadow: none; }
-    .controls h3{ margin:4px 4px 12px; font-family:Poppins,system-ui,sans-serif; }
-    .grid{ display:grid; gap:.6rem; grid-template-columns: 1fr; }
+    .controls{
+      padding:18px; background:none; border:none; box-shadow:none;
+    }
+    .controls h3{
+      margin:4px 4px 12px;
+      font-family:Poppins,system-ui,sans-serif;
+    }
+    .grid{
+      display:grid; gap:.6rem; grid-template-columns: 1fr;
+    }
     .controls label{
-      display:flex; align-items:center; justify-content:space-between; gap:.75rem; font-size:14px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:.75rem; font-size:14px;
       border-bottom:1px dashed rgba(0,0,0,.08); padding-bottom:6px;
     }
-    .controls input, .controls select{
+    .controls input,
+    .controls select{
       width:200px; max-width:60%;
-      padding:9px 10px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff; font-size:14px;
+      padding:9px 10px; border-radius:10px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#fff; font-size:14px;
     }
-    .buttons{ display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; justify-content:center }
+
+    .buttons{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:12px; justify-content:center;
+    }
     .btn{
       appearance:none; border:1px solid rgba(0,0,0,.12); background:#fff; color:var(--ink);
-      padding:10px 16px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+      padding:10px 16px; border-radius:12px;
+      font-weight:700; cursor:pointer; box-shadow:var(--shadow);
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
     }
-    .btn:hover{ transform: translateY(-1px); box-shadow: 0 14px 30px rgba(0,0,0,.16) }
-    .btn.primary{ background: var(--gold-grad); border-color: transparent; color:#2a2a2a }
+    .btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+    }
+    .btn.primary{
+      background: var(--gold-grad);
+      border-color: transparent;
+      color:#2a2a2a;
+    }
+
+    /* Wedge panel */
+    #wedgePanel{
+      margin-top:8px;
+      padding:10px;
+      border-radius:10px;
+      background: rgba(255,255,255,0.85);
+      border:1px solid rgba(0,0,0,.06);
+    }
+    #wedgePanel h4{
+      margin:0 0 8px;
+      font-family:Poppins,system-ui,sans-serif;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:#5a4631;
+    }
+    #wedgePanel label{
+      border-bottom:none;
+      padding-bottom:4px;
+      font-size:13px;
+    }
 
     /* Share */
     .share-wrap{ text-align:center; padding:12px 10px }
-    .fbshare{ display:inline-block; padding:10px 16px; border-radius:12px; background:#1877f2; color:#fff; font-weight:700; text-decoration:none; }
+    .fbshare{
+      display:inline-block; padding:10px 16px;
+      border-radius:12px; background:#1877f2;
+      color:#fff; font-weight:700; text-decoration:none;
+    }
 
     /* Mockups */
-    .mockups-section {
-      margin: 26px auto;
-      padding: 22px;
+    .mockups-section{
+      margin:26px auto; padding:22px;
       background: rgba(255,255,255,0.75);
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 6px 16px rgba(0,0,0,.12);
-      max-width: 1100px;
+      border-radius:14px;
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 6px 16px rgba(0,0,0,.12);
+      max-width:1100px;
     }
-    .mockups-title { text-align:center; font-size:24px; margin-bottom:8px; color:#4a3a2a; }
-    .mockups-desc { text-align:center; margin:0 auto 20px; max-width:700px; font-size:15px; }
-    .mockup-grid {
-      display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px; justify-items:center;
+    .mockups-title{
+      text-align:center; font-size:24px;
+      margin-bottom:8px; color:#4a3a2a;
     }
-    .mockup-grid img {
-      width: 100%; max-width: 260px; border-radius: 10px;
-      border: 1px solid rgba(0,0,0,.08); box-shadow: 0 4px 12px rgba(0,0,0,.10);
-      background: #fff;
+    .mockups-desc{
+      text-align:center; margin:0 auto 20px;
+      max-width:700px; font-size:15px;
+    }
+    .mockup-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:18px; justify-items:center;
+    }
+    .mockup-grid img{
+      width:100%; max-width:260px; border-radius:10px;
+      border:1px solid rgba(0,0,0,.08);
+      box-shadow:0 4px 12px rgba(0,0,0,.10);
+      background:#fff;
     }
 
     /* Footer bar */
-    .footer-bar {
-      background: rgba(0, 0, 0, 0.06);
-      padding: 18px 10px;
-      border-top: 3px solid var(--gold);
+    .footer-bar{
+      background: rgba(0,0,0,0.06);
+      padding:18px 10px;
+      border-top:3px solid var(--gold);
       box-shadow: inset 0 4px 8px rgba(0,0,0,.05);
     }
-    .footer-inner {
-      max-width: 1280px; margin: 0 auto; text-align: center;
-      font-size: 13px; color: #3a2f20; line-height: 1.6; font-family: 'Poppins', sans-serif;
+    .footer-inner{
+      max-width:1280px; margin:0 auto; text-align:center;
+      font-size:13px; color:#3a2f20;
+      line-height:1.6; font-family:'Poppins',sans-serif;
     }
-    .footer-bar .sep { margin: 0 8px; opacity: 0.5; }
-    .footer-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    .footer-bar a:hover { color: var(--cran); text-decoration-color: var(--gold); }
+    .footer-bar .sep{ margin:0 8px; opacity:0.5; }
+    .footer-bar a{
+      color:inherit; text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .footer-bar a:hover{
+      color:var(--cran); text-decoration-color:var(--gold);
+    }
 
     /* PRINT: only print the stage (one page) */
     @media print {
-      body { background: #fff !important; }
+      body { background:#fff !important; }
       .site-header, .controls, .rail, .mockups-section, .about, .footer-bar { display:none !important; }
-      .shell, .row, .stage, .stage-frame { box-shadow:none !important; border:none !important; margin:0 !important; padding:0 !important; }
-      svg { width: 7.5in !important; height: 7.5in !important; }
-      @page { size: 8.5in 11in; margin: 0.5in; }
+      .shell, .row, .stage, .stage-frame {
+        box-shadow:none !important; border:none !important;
+        margin:0 !important; padding:0 !important;
+      }
+      svg { width:7.5in !important; height:7.5in !important; }
+      @page { size:8.5in 11in; margin:0.5in; }
     }
   </style>
-    <!-- AdSense -->
-  <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
 
   <!-- Google Analytics 4 — Nameflake Studio -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-00YK96C5RV"></script>
@@ -200,8 +271,11 @@
     gtag('js', new Date());
     gtag('config', 'G-00YK96C5RV');
   </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958"
-     crossorigin="anonymous"></script>
+
+  <!-- AdSense JS -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958"
+    crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -215,18 +289,15 @@
       <!-- LEFT RAIL: AdSense -->
       <aside class="rail card">
         <section class="ad-card">
-          <!-- AdSense loader (one unit) -->
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-9007523138058958"
                data-ad-slot="6836589862"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-          <!-- Fallback: hide rail if no ad iframe appears -->
           <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            // Fallback: hide rail if no ad iframe appears
             setTimeout(() => {
               const rail = document.querySelector('.rail');
               const hasAd = rail && rail.querySelector('ins.adsbygoogle iframe');
@@ -239,7 +310,9 @@
       <!-- CENTER: Stage -->
       <section class="stage card">
         <div class="stage-frame">
-          <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview" role="img">
+          <svg id="flake" viewBox="0 0 800 800"
+               xmlns="http://www.w3.org/2000/svg"
+               aria-label="Snowflake preview" role="img">
             <g id="root" transform="translate(400,400)"></g>
           </svg>
         </div>
@@ -249,12 +322,24 @@
       <aside class="controls card">
         <h3>Snowflake Controls</h3>
         <div class="grid">
-          <label>Word or Short Phrase <input id="word" value="David Loves Angie" /></label>
-          <label>Arms <input id="arms" type="number" min="3" max="24" value="8" /></label>
-          <label>Font size <input id="fs" type="number" value="100" /></label>
-          <label>Arm length (px) <input id="len" type="number" value="350" /></label>
-          <label>Join gap (px) <input id="gap" type="number" value="90" /></label>
-          <label>Tilt (°) <input id="tilt" type="number" value="0" /></label>
+          <label>Word or Short Phrase
+            <input id="word" value="David Loves Angie" />
+          </label>
+          <label>Arms
+            <input id="arms" type="number" min="3" max="24" value="8" />
+          </label>
+          <label>Font size
+            <input id="fs" type="number" value="100" />
+          </label>
+          <label>Arm length (px)
+            <input id="len" type="number" value="350" />
+          </label>
+          <label>Join gap (px)
+            <input id="gap" type="number" value="90" />
+          </label>
+          <label>Tilt (°)
+            <input id="tilt" type="number" value="0" />
+          </label>
           <label>Font
             <select id="font">
               <option value="Dancing Script" data-kind="cursive" selected>Dancing Script</option>
@@ -271,7 +356,39 @@
               <option value="Londrina Outline" data-kind="sans-serif">Londrina Outline</option>
             </select>
           </label>
-          <label>Color <input id="color" type="color" value="#000000" /></label>
+          <label>Color
+            <input id="color" type="color" value="#000000" />
+          </label>
+
+          <!-- Advanced Wedge Mode toggle -->
+          <label>
+            Advanced Wedge Mode
+            <input id="wedgeMode" type="checkbox" />
+          </label>
+        </div>
+
+        <!-- Wedge Controls Panel -->
+        <div id="wedgePanel" style="display:none;">
+          <h4>Advanced Wedge Settings</h4>
+          <label>Arm Scale (%)
+            <input id="armScale" type="number" value="100" />
+          </label>
+          <label>Vertical Warp (%)
+            <input id="warp" type="number" value="0" />
+          </label>
+          <label>Inset from Center (px)
+            <input id="inset" type="number" value="0" />
+          </label>
+          <label>Custom Wedge Angle (°)
+            <input id="wedgeAngle" type="number" value="0" />
+          </label>
+          <label>Mirror Style
+            <select id="mirrorStyle">
+              <option value="full" selected>Full Mirror</option>
+              <option value="half">Half Mirror</option>
+              <option value="none">No Mirror</option>
+            </select>
+          </label>
         </div>
 
         <div class="buttons">
@@ -332,15 +449,17 @@
     const $ = id => document.getElementById(id);
     const root = $("root");
 
-    function v(id, fb){ const el=$(id); return el ? el.value : fb; }
+    function v(id, fb){
+      const el = $(id); return el ? el.value : fb;
+    }
     function selectedFontStack(){
       const sel = $("font");
-      return `'${sel.value}', ${sel.selectedOptions[0].dataset.kind || "serif"}`;
+      return "'" + sel.value + "', " + (sel.selectedOptions[0].dataset.kind || "serif");
     }
 
     async function waitForFont(fontFamily, sizePx = 40) {
       try {
-        await document.fonts.load(`${sizePx}px "${fontFamily}"`);
+        await document.fonts.load(sizePx + "px \"" + fontFamily + "\"");
         await document.fonts.ready;
       } catch(e){}
     }
@@ -349,26 +468,29 @@
     async function inlineFontsIntoSVG(svgEl, families) {
       const cssChunks = [];
       for (const fam of families) {
-        const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
-        const css = await (await fetch(cssURL)).text();
+        const cssURL = "https://fonts.googleapis.com/css2?family=" +
+          encodeURIComponent(fam) + ":wght@400;700&display=swap";
+        const cssResp = await fetch(cssURL);
+        const css = await cssResp.text();
+
         const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
         let inlined = css;
         for (const u of urls) {
-          const ab = await (await fetch(u)).arrayBuffer();
+          const fontResp = await fetch(u);
+          const ab = await fontResp.arrayBuffer();
           const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
-          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
+          inlined = inlined.replaceAll(u, "data:font/woff2;base64," + b64);
         }
         cssChunks.push(inlined);
       }
+
       const style = document.createElementNS(svgNS,"style");
       style.setAttribute("type","text/css");
       style.textContent = cssChunks.join("\n");
 
       const clone = svgEl.cloneNode(true);
-      // Ensure proper centering behavior in editors
-      clone.setAttribute("preserveAspectRatio","xMidYMid meet");
-      // Give explicit width/height for consistent rasterization defaults
       const vb = svgEl.viewBox.baseVal;
+      clone.setAttribute("preserveAspectRatio","xMidYMid meet");
       clone.setAttribute("width", vb.width);
       clone.setAttribute("height", vb.height);
 
@@ -377,53 +499,147 @@
     }
 
     async function generate(){
-      const WORD = (v("word","David Loves Angie")).toString();
-      const ARMS = +v("arms",8);
-      const FS = +v("fs",100);
-      const LEN = +v("len",350);
-      const GAP = +v("gap",90);
-      const TILT = +v("tilt",0);
+      const WORD  = (v("word","David Loves Angie")).toString();
+      const ARMS  = +v("arms",8);
+      const FS    = +v("fs",100);
+      const LEN   = +v("len",350);
+      const GAP   = +v("gap",90);
+      const TILT  = +v("tilt",0);
       const COLOR = v("color","#000000");
-      const FONT = selectedFontStack();
+      const FONT  = selectedFontStack();
       const FAMILY = $("font").value;
+
+      const wedgeMode = $("wedgeMode") && $("wedgeMode").checked;
+
+      // Advanced wedge settings
+      const armScale   = +v("armScale",100);
+      const warp       = +v("warp",0);
+      const inset      = +v("inset",0);
+      let   wedgeAngle = +v("wedgeAngle",0);
+      const mirrorStyle = v("mirrorStyle","full");
+
+      if (!wedgeAngle || isNaN(wedgeAngle)) {
+        wedgeAngle = 360 / ARMS;
+      }
 
       await waitForFont(FAMILY, FS);
       root.innerHTML = "";
 
+      // Hub
       const hub = document.createElementNS(svgNS,"circle");
-      hub.setAttribute("r","2.5"); hub.setAttribute("fill",COLOR); hub.setAttribute("opacity",".55");
+      hub.setAttribute("r","2.5");
+      hub.setAttribute("fill",COLOR);
+      hub.setAttribute("opacity",".55");
       root.appendChild(hub);
 
-      function armPair(){
-        const arm=document.createElementNS(svgNS,"g");
+      if (!wedgeMode) {
+        // ===== Original mirrored arm mode =====
+        function armPair(){
+          const arm = document.createElementNS(svgNS,"g");
 
-        const go=document.createElementNS(svgNS,"g");
-        go.setAttribute("transform",`rotate(${-90+TILT})`);
-        arm.appendChild(go);
-        const to=document.createElementNS(svgNS,"text");
-        to.setAttribute("fill",COLOR); to.setAttribute("font-size",FS); to.setAttribute("font-family",FONT);
-        to.setAttribute("lengthAdjust","spacingAndGlyphs"); to.setAttribute("textLength",String(LEN-GAP));
-        to.setAttribute("text-anchor","start"); to.setAttribute("x",String(GAP)); to.textContent=WORD;
-        go.appendChild(to);
+          const go = document.createElementNS(svgNS,"g");
+          go.setAttribute("transform","rotate(" + (-90+TILT) + ")");
+          arm.appendChild(go);
+          const to = document.createElementNS(svgNS,"text");
+          to.setAttribute("fill",COLOR);
+          to.setAttribute("font-size",FS);
+          to.setAttribute("font-family",FONT);
+          to.setAttribute("lengthAdjust","spacingAndGlyphs");
+          to.setAttribute("textLength",String(LEN-GAP));
+          to.setAttribute("text-anchor","start");
+          to.setAttribute("x",String(GAP));
+          to.textContent = WORD;
+          go.appendChild(to);
 
-        const gi=document.createElementNS(svgNS,"g");
-        gi.setAttribute("transform",`scale(1,-1) rotate(${-90-TILT})`);
-        arm.appendChild(gi);
-        const ti=document.createElementNS(svgNS,"text");
-        ti.setAttribute("fill",COLOR); ti.setAttribute("font-size",FS); ti.setAttribute("font-family",FONT);
-        ti.setAttribute("lengthAdjust","spacingAndGlyphs"); ti.setAttribute("textLength",String(LEN-GAP));
-        ti.setAttribute("text-anchor","start"); ti.setAttribute("x",String(GAP)); ti.textContent=WORD;
-        gi.appendChild(ti);
+          const gi = document.createElementNS(svgNS,"g");
+          gi.setAttribute("transform","scale(1,-1) rotate(" + (-90-TILT) + ")");
+          arm.appendChild(gi);
+          const ti = document.createElementNS(svgNS,"text");
+          ti.setAttribute("fill",COLOR);
+          ti.setAttribute("font-size",FS);
+          ti.setAttribute("font-family",FONT);
+          ti.setAttribute("lengthAdjust","spacingAndGlyphs");
+          ti.setAttribute("textLength",String(LEN-GAP));
+          ti.setAttribute("text-anchor","start");
+          ti.setAttribute("x",String(GAP));
+          ti.textContent = WORD;
+          gi.appendChild(ti);
 
-        return arm;
-      }
+          return arm;
+        }
 
-      const pr = armPair();
-      for(let i=0;i<ARMS;i++){
-        const holder = document.createElementNS(svgNS,"g");
-        holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
-        holder.appendChild(pr.cloneNode(true));
-        root.appendChild(holder);
+        const pr = armPair();
+        for (let i = 0; i < ARMS; i++){
+          const holder = document.createElementNS(svgNS,"g");
+          holder.setAttribute("transform","rotate(" + ((360/ARMS)*i) + ")");
+          holder.appendChild(pr.cloneNode(true));
+          root.appendChild(holder);
+        }
+      } else {
+        // ===== Advanced Wedge Mode =====
+        function makeWedgeArm(){
+          const arm = document.createElementNS(svgNS,"g");
+
+          const scaleY = Math.max(0.2, 1 - (warp/100)); // compress vertically
+          const localFS = FS * (armScale / 100);
+          const startX = inset;
+          const effectiveLen = Math.max(10, LEN - inset);
+
+          // Top text
+          const gt = document.createElementNS(svgNS,"g");
+          gt.setAttribute(
+            "transform",
+            "rotate(" + (-90+TILT) + ") scale(1," + scaleY + ")"
+          );
+          arm.appendChild(gt);
+
+          const tt = document.createElementNS(svgNS,"text");
+          tt.setAttribute("fill",COLOR);
+          tt.setAttribute("font-size",localFS);
+          tt.setAttribute("font-family",FONT);
+          tt.setAttribute("lengthAdjust","spacingAndGlyphs");
+          tt.setAttribute("textLength",String(effectiveLen));
+          tt.setAttribute("text-anchor","start");
+          tt.setAttribute("x",String(startX));
+          tt.textContent = WORD;
+          gt.appendChild(tt);
+
+          // Mirrored portion (optional)
+          if (mirrorStyle !== "none") {
+            const gb = document.createElementNS(svgNS,"g");
+            gb.setAttribute(
+              "transform",
+              "scale(1,-" + scaleY + ") rotate(" + (-90-TILT) + ")"
+            );
+            arm.appendChild(gb);
+
+            const tb = document.createElementNS(svgNS,"text");
+            tb.setAttribute("fill",COLOR);
+            tb.setAttribute("font-size",localFS);
+            tb.setAttribute("font-family",FONT);
+            tb.setAttribute("lengthAdjust","spacingAndGlyphs");
+
+            const mirrorLen = (mirrorStyle === "half")
+              ? effectiveLen * 0.7
+              : effectiveLen;
+
+            tb.setAttribute("textLength",String(mirrorLen));
+            tb.setAttribute("text-anchor","start");
+            tb.setAttribute("x",String(startX));
+            tb.textContent = WORD;
+            gb.appendChild(tb);
+          }
+
+          return arm;
+        }
+
+        const wedge = makeWedgeArm();
+        for (let i = 0; i < ARMS; i++){
+          const holder = document.createElementNS(svgNS,"g");
+          holder.setAttribute("transform","rotate(" + (wedgeAngle*i) + ")");
+          holder.appendChild(wedge.cloneNode(true));
+          root.appendChild(holder);
+        }
       }
     }
 
@@ -437,8 +653,10 @@
       const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-      a.href = url; a.download = `${word}_flake.svg`; a.click();
+      const word = (v("word","snowflake") || "snowflake").replace(/\s+/g,'_');
+      a.href = url;
+      a.download = word + "_flake.svg";
+      a.click();
       URL.revokeObjectURL(url);
     }
 
@@ -469,15 +687,19 @@
         canvas.height = vb.height * SCALE;
         const ctx = canvas.getContext("2d");
 
-        if (whiteBg) { ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
-        else { ctx.clearRect(0,0,canvas.width,canvas.height); }
+        if (whiteBg) {
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        } else {
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+        }
 
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         URL.revokeObjectURL(url);
 
         const link = document.createElement("a");
-        const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-        link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
+        const word = (v("word","snowflake") || "snowflake").replace(/\s+/g,'_');
+        link.download = whiteBg ? (word + "_flake_white.png") : (word + "_flake.png");
         link.href = canvas.toDataURL("image/png");
         link.click();
       };
@@ -488,13 +710,30 @@
     $("fbshare").addEventListener("click", (e)=>{
       e.preventDefault();
       const page = location.href.split('#')[0];
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
+      window.open(
+        "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(page),
+        "_blank"
+      );
     });
 
     // Bind + first render
     ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
-      const el=$(id); if (el) el.addEventListener("input", generate);
+      const el = $(id); if (el) el.addEventListener("input", generate);
     });
+
+    // Wedge mode bindings
+    const wedgeModeCheckbox = $("wedgeMode");
+    if (wedgeModeCheckbox) {
+      wedgeModeCheckbox.addEventListener("change", () => {
+        const panel = $("wedgePanel");
+        if (panel) panel.style.display = wedgeModeCheckbox.checked ? "block" : "none";
+        generate();
+      });
+    }
+    ["armScale","warp","inset","wedgeAngle","mirrorStyle"].forEach(id=>{
+      const el = $(id); if (el) el.addEventListener("input", generate);
+    });
+
     $("download").addEventListener("click", async ()=>{
       const white = confirm("OK = white background, Cancel = transparent");
       await downloadPNG(white);
