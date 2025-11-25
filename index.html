@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Nameflake Studio — v1.1 (Text + Draw mode) -->
+  <!-- Nameflake Studio — v1.1 -->
   <meta charset="utf-8" />
   <script>
     // If someone lands on /index.html, send them to the clean root URL once.
@@ -12,7 +12,6 @@
       }
     })();
   </script>
-
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Nameflake Studio</title>
 
@@ -59,14 +58,31 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <!-- AdSense -->
+  <!-- AdSense (site-level) -->
   <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2
+      ?family=Libre+Baskerville:wght@400;700
+      &family=Playfair+Display:wght@400;700
+      &family=Lora:wght@400;700
+      &family=Cinzel:wght@400;700
+      &family=Montserrat:wght@400;700
+      &family=Raleway:wght@400;700
+      &family=Great+Vibes
+      &family=Dancing+Script:wght@400;700
+      &family=Londrina+Outline
+      &family=Bungee+Outline
+      &family=Kumar+One+Outline
+      &family=Poppins:wght@400;600;700
+      &family=Pacifico
+      &family=Cedarville+Cursive
+      &family=Shadows+Into+Light
+      &display=swap" rel="stylesheet">
 
+  <!-- Styles -->
   <style>
     :root{
       --cran:#7b2323; --ever:#144a34; --gold:#d6b46a;
@@ -91,7 +107,10 @@
       background: linear-gradient(135deg, #6b2b2b, #5c2424);
       box-shadow: var(--shadow);
     }
-    .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
+    .banner{
+      max-width:1280px; margin:0 auto; display:block;
+      width:100%; height:auto; object-fit:cover;
+    }
 
     /* Layout */
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
@@ -116,9 +135,8 @@
       border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
       overflow:hidden; position:relative; padding:10px;
     }
-    svg, canvas.stage-canvas{
-      width:100%; max-width:800px; height:auto; display:block; margin:0 auto;
-    }
+    /* Keep fixed, square viewBox area */
+    svg{ width:100%; max-width:800px; height:auto; display:block; margin:0 auto; }
 
     /* Controls */
     .controls {
@@ -126,43 +144,42 @@
       background: none;
       border: none;
       box-shadow: none;
-      font-family: Poppins, system-ui, sans-serif;
     }
     .controls h3{
-      margin:4px 4px 12px;
-      font-size: 20px;
-      font-weight: 600;
+      margin:4px 4px 16px;
+      font-family:Poppins,system-ui,sans-serif;
+      font-size:20px;
     }
     .grid{
       display:grid;
-      gap:.7rem;
+      gap:.8rem;
       grid-template-columns: 1fr;
     }
     .controls label{
       display:flex;
-      flex-direction: row;
       align-items:center;
       justify-content:space-between;
-      gap:.75rem;
-      font-size:14px;
+      gap:.9rem;
+      font-size:16px;
       border-bottom:1px dashed rgba(0,0,0,.08);
-      padding-bottom:6px;
+      padding-bottom:8px;
     }
     .controls input,
     .controls select{
-      width:210px;
-      max-width:60%;
+      width:220px;
+      max-width:62%;
       padding:9px 10px;
       border-radius:10px;
       border:1px solid rgba(0,0,0,.12);
       background:#fff;
-      font-size:14px;
+      font-size:15px;
+      font-family:Poppins,system-ui,sans-serif;
     }
     .buttons{
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:12px;
+      margin-top:16px;
       justify-content:center;
     }
     .btn{
@@ -176,6 +193,7 @@
       cursor:pointer;
       box-shadow:var(--shadow);
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      font-family:Poppins,system-ui,sans-serif;
       font-size:14px;
     }
     .btn:hover{
@@ -188,28 +206,8 @@
       color:#2a2a2a;
     }
 
-    /* Draw mode area */
-    #drawControls{
-      margin-top:14px;
-      font-size:13px;
-    }
-    #drawControls p{
-      margin:0 0 8px;
-      line-height:1.4;
-    }
-    #wedgeCanvas{
-      border:1px solid rgba(0,0,0,.18);
-      border-radius:10px;
-      background:#ffffff;
-      display:block;
-      width:100%;
-      max-width:260px;
-      margin:0 auto 10px;
-      touch-action:none;
-    }
-
     /* Share */
-    .share-wrap{ text-align:center; padding:12px 10px; font-size:13px; }
+    .share-wrap{ text-align:center; padding:12px 10px }
     .fbshare{
       display:inline-block;
       padding:10px 16px;
@@ -218,6 +216,8 @@
       color:#fff;
       font-weight:700;
       text-decoration:none;
+      font-family:Poppins,system-ui,sans-serif;
+      font-size:14px;
     }
 
     /* Mockups */
@@ -230,15 +230,31 @@
       box-shadow: 0 6px 16px rgba(0,0,0,.12);
       max-width: 1100px;
     }
-    .mockups-title { text-align:center; font-size:24px; margin-bottom:8px; color:#4a3a2a; }
-    .mockups-desc { text-align:center; margin:0 auto 20px; max-width:700px; font-size:15px; }
+    .mockups-title {
+      text-align:center;
+      font-size:24px;
+      margin-bottom:8px;
+      color:#4a3a2a;
+      font-family:Poppins,system-ui,sans-serif;
+    }
+    .mockups-desc {
+      text-align:center;
+      margin:0 auto 20px;
+      max-width:700px;
+      font-size:15px;
+    }
     .mockup-grid {
-      display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px; justify-items:center;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      justify-items:center;
     }
     .mockup-grid img {
-      width: 100%; max-width: 260px; border-radius: 10px;
-      border: 1px solid rgba(0,0,0,.08); box-shadow: 0 4px 12px rgba(0,0,0,.10);
+      width: 100%;
+      max-width: 260px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,.10);
       background: #fff;
     }
 
@@ -251,11 +267,19 @@
     }
     .footer-inner {
       max-width: 1280px; margin: 0 auto; text-align: center;
-      font-size: 13px; color: #3a2f20; line-height: 1.6; font-family: 'Poppins', sans-serif;
+      font-size: 13px; color: #3a2f20; line-height: 1.6;
+      font-family: 'Poppins', sans-serif;
     }
     .footer-bar .sep { margin: 0 8px; opacity: 0.5; }
-    .footer-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    .footer-bar a:hover { color: var(--cran); text-decoration-color: var(--gold); }
+    .footer-bar a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-bar a:hover {
+      color: var(--cran);
+      text-decoration-color: var(--gold);
+    }
 
     /* PRINT: only print the stage (one page) */
     @media print {
@@ -267,10 +291,7 @@
         margin:0 !important;
         padding:0 !important;
       }
-      svg, canvas.stage-canvas {
-        width: 7.5in !important;
-        height: 7.5in !important;
-      }
+      svg { width: 7.5in !important; height: 7.5in !important; }
       @page { size: 8.5in 11in; margin: 0.5in; }
     }
   </style>
@@ -284,7 +305,7 @@
     gtag('config', 'G-00YK96C5RV');
   </script>
 
-  <!-- AdSense script -->
+  <!-- AdSense script (global) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958"
      crossorigin="anonymous"></script>
 </head>
@@ -300,16 +321,16 @@
       <!-- LEFT RAIL: AdSense -->
       <aside class="rail card">
         <section class="ad-card">
+          <!-- AdSense loader (one unit) -->
           <ins class="adsbygoogle"
                style="display:block"
                data-ad-client="ca-pub-9007523138058958"
                data-ad-slot="6836589862"
                data-ad-format="auto"
                data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-          <!-- Fallback: hide rail if no ad iframe appears -->
           <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            // Fallback: hide rail if no ad iframe appears
             setTimeout(() => {
               const rail = document.querySelector('.rail');
               const hasAd = rail && rail.querySelector('ins.adsbygoogle iframe');
@@ -322,81 +343,87 @@
       <!-- CENTER: Stage -->
       <section class="stage card">
         <div class="stage-frame">
-          <!-- TEXT MODE SVG -->
-          <svg id="flake" viewBox="0 0 800 800"
-               xmlns="http://www.w3.org/2000/svg"
-               aria-label="Snowflake preview" role="img">
+          <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview" role="img">
             <g id="root" transform="translate(400,400)"></g>
           </svg>
-
-          <!-- DRAW MODE CANVAS -->
-          <canvas id="flakeCanvas" class="stage-canvas" width="800" height="800" style="display:none;"></canvas>
         </div>
       </section>
 
       <!-- RIGHT: Controls -->
       <aside class="controls card">
         <h3>Snowflake Controls</h3>
-
-        <!-- Design mode selector -->
-        <div class="grid" style="margin-bottom:8px;">
-          <label>Design mode
-            <select id="designMode">
-              <option value="text" selected>Simple text snowflake</option>
-              <option value="draw">Draw your own wedge</option>
-            </select>
-          </label>
-        </div>
-
-        <!-- TEXT MODE CONTROLS -->
-        <div id="textControls" class="grid">
-          <label>Word or short phrase
+        <div class="grid">
+          <label>
+            Word or Short Phrase
             <input id="word" value="David Loves Angie" />
           </label>
-          <label>Arms
-            <input id="arms" type="number" min="3" max="24" value="8" />
+
+          <label>
+            Arms
+            <select id="arms">
+              <option value="6">6</option>
+              <option value="8" selected>8</option>
+              <option value="12">12</option>
+            </select>
           </label>
-          <label>Font size
+
+          <label>
+            Font size
             <input id="fs" type="number" value="100" />
           </label>
-          <label>Arm length (px)
+
+          <label>
+            Arm length (px)
             <input id="len" type="number" value="350" />
           </label>
-          <label>Join gap (px)
+
+          <label>
+            Join gap (px)
             <input id="gap" type="number" value="90" />
           </label>
-          <label>Tilt (°)
+
+          <label>
+            Mirror spacing (px)
+            <input id="mirror" type="number" value="40" />
+          </label>
+
+          <label>
+            Tilt (°)
             <input id="tilt" type="number" value="0" />
           </label>
-          <label>Font
+
+          <label>
+            Font
             <select id="font">
+              <!-- Handwriting / cursive -->
               <option value="Dancing Script" data-kind="cursive" selected>Dancing Script</option>
+              <option value="Great Vibes" data-kind="cursive">Great Vibes</option>
+              <option value="Pacifico" data-kind="cursive">Pacifico</option>
+              <option value="Cedarville Cursive" data-kind="cursive">Cedarville Cursive</option>
+              <option value="Shadows Into Light" data-kind="cursive">Shadows Into Light</option>
+
+              <!-- Outline / coloring -->
               <option value="Bungee Outline" data-kind="cursive">Bungee Outline</option>
               <option value="Kumar One Outline" data-kind="serif">Kumar One Outline</option>
+              <option value="Londrina Outline" data-kind="sans-serif">Londrina Outline</option>
+
+              <!-- Serif -->
               <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
               <option value="Playfair Display" data-kind="serif">Playfair Display</option>
               <option value="Lora" data-kind="serif">Lora</option>
               <option value="Cinzel" data-kind="serif">Cinzel</option>
+
+              <!-- Sans -->
               <option value="Montserrat" data-kind="sans-serif">Montserrat</option>
               <option value="Raleway" data-kind="sans-serif">Raleway</option>
               <option value="Poppins" data-kind="sans-serif">Poppins</option>
-              <option value="Great Vibes" data-kind="cursive">Great Vibes</option>
-              <option value="Londrina Outline" data-kind="sans-serif">Londrina Outline</option>
             </select>
           </label>
-          <label>Color
+
+          <label>
+            Color
             <input id="color" type="color" value="#000000" />
           </label>
-        </div>
-
-        <!-- DRAW MODE CONTROLS -->
-        <div id="drawControls" style="display:none;">
-          <p>Draw inside the wedge box below. Your drawing will repeat around the circle using the
-             current <strong>Arms</strong> setting.</p>
-          <canvas id="wedgeCanvas" width="400" height="400"></canvas>
-          <div class="buttons" style="margin-top:8px;">
-            <button id="clearDraw" class="btn">Clear drawing</button>
-          </div>
         </div>
 
         <div class="buttons">
@@ -457,22 +484,18 @@
     const $ = id => document.getElementById(id);
     const root = $("root");
 
-    let currentMode = "text";
-
-    const flakeCanvas = $("flakeCanvas");
-    const wedgeCanvas = $("wedgeCanvas");
-    const fctx = flakeCanvas ? flakeCanvas.getContext("2d") : null;
-    const wctx = wedgeCanvas ? wedgeCanvas.getContext("2d") : null;
-
-    function v(id, fb){ const el=$(id); return el ? el.value : fb; }
+    function v(id, fb){
+      const el = $(id);
+      return el ? el.value : fb;
+    }
     function selectedFontStack(){
       const sel = $("font");
-      return `'${sel.value}', ${sel.selectedOptions[0].dataset.kind || "serif"}`;
+      return "'" + sel.value + "', " + (sel.selectedOptions[0].dataset.kind || "serif");
     }
 
     async function waitForFont(fontFamily, sizePx = 40) {
       try {
-        await document.fonts.load(`${sizePx}px "${fontFamily}"`);
+        await document.fonts.load(sizePx + "px \"" + fontFamily + "\"");
         await document.fonts.ready;
       } catch(e){}
     }
@@ -481,17 +504,22 @@
     async function inlineFontsIntoSVG(svgEl, families) {
       const cssChunks = [];
       for (const fam of families) {
-        const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
-        const css = await (await fetch(cssURL)).text();
+        const cssURL = "https://fonts.googleapis.com/css2?family=" +
+          encodeURIComponent(fam) + ":wght@400;700&display=swap";
+        const resp = await fetch(cssURL);
+        const css = await resp.text();
+
         const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
         let inlined = css;
         for (const u of urls) {
-          const ab = await (await fetch(u)).arrayBuffer();
+          const fontResp = await fetch(u);
+          const ab = await fontResp.arrayBuffer();
           const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
-          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
+          inlined = inlined.replaceAll(u, "data:font/woff2;base64," + b64);
         }
         cssChunks.push(inlined);
       }
+
       const style = document.createElementNS(svgNS,"style");
       style.setAttribute("type","text/css");
       style.textContent = cssChunks.join("\n");
@@ -508,18 +536,16 @@
       return clone;
     }
 
-    /* ---------- TEXT MODE: generate SVG snowflake ---------- */
     async function generate(){
-      if (currentMode !== "text") return;
-
-      const WORD = (v("word","David Loves Angie")).toString();
-      const ARMS = +v("arms",8);
-      const FS   = +v("fs",100);
-      const LEN  = +v("len",350);
-      const GAP  = +v("gap",90);
-      const TILT = +v("tilt",0);
-      const COLOR = v("color","#000000");
-      const FONT = selectedFontStack();
+      const WORD   = (v("word","David Loves Angie")).toString();
+      const ARMS   = +v("arms",8);
+      const FS     = +v("fs",100);
+      const LEN    = +v("len",350);
+      const GAP    = +v("gap",90);
+      const MIRROR = +v("mirror",40);   // NEW: mirror spacing between halves
+      const TILT   = +v("tilt",0);
+      const COLOR  = v("color","#000000");
+      const FONT   = selectedFontStack();
       const FAMILY = $("font").value;
 
       await waitForFont(FAMILY, FS);
@@ -531,35 +557,42 @@
       hub.setAttribute("opacity",".55");
       root.appendChild(hub);
 
-      function armPair(){
-        const arm=document.createElementNS(svgNS,"g");
+      // Precompute lengths so inner text doesn't overshoot
+      const OUTER_LEN = Math.max(10, LEN - GAP);
+      const INNER_START = GAP + MIRROR;
+      const INNER_LEN = Math.max(10, LEN - INNER_START);
 
-        const go=document.createElementNS(svgNS,"g");
-        go.setAttribute("transform",`rotate(${-90+TILT})`);
+      function armPair(){
+        const arm = document.createElementNS(svgNS,"g");
+
+        // Outward-facing text
+        const go = document.createElementNS(svgNS,"g");
+        go.setAttribute("transform","rotate(" + (-90 + TILT) + ")");
         arm.appendChild(go);
-        const to=document.createElementNS(svgNS,"text");
+        const to = document.createElementNS(svgNS,"text");
         to.setAttribute("fill",COLOR);
         to.setAttribute("font-size",FS);
         to.setAttribute("font-family",FONT);
         to.setAttribute("lengthAdjust","spacingAndGlyphs");
-        to.setAttribute("textLength",String(LEN-GAP));
+        to.setAttribute("textLength", String(OUTER_LEN));
         to.setAttribute("text-anchor","start");
-        to.setAttribute("x",String(GAP));
-        to.textContent=WORD;
+        to.setAttribute("x", String(GAP));
+        to.textContent = WORD;
         go.appendChild(to);
 
-        const gi=document.createElementNS(svgNS,"g");
-        gi.setAttribute("transform",`scale(1,-1) rotate(${-90-TILT})`);
+        // Mirrored inner text, offset by MIRROR
+        const gi = document.createElementNS(svgNS,"g");
+        gi.setAttribute("transform","scale(1,-1) rotate(" + (-90 - TILT) + ")");
         arm.appendChild(gi);
-        const ti=document.createElementNS(svgNS,"text");
+        const ti = document.createElementNS(svgNS,"text");
         ti.setAttribute("fill",COLOR);
         ti.setAttribute("font-size",FS);
         ti.setAttribute("font-family",FONT);
         ti.setAttribute("lengthAdjust","spacingAndGlyphs");
-        ti.setAttribute("textLength",String(LEN-GAP));
+        ti.setAttribute("textLength", String(INNER_LEN));
         ti.setAttribute("text-anchor","start");
-        ti.setAttribute("x",String(GAP));
-        ti.textContent=WORD;
+        ti.setAttribute("x", String(INNER_START));
+        ti.textContent = WORD;
         gi.appendChild(ti);
 
         return arm;
@@ -568,7 +601,7 @@
       const pr = armPair();
       for(let i=0;i<ARMS;i++){
         const holder = document.createElementNS(svgNS,"g");
-        holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
+        holder.setAttribute("transform", "rotate(" + ((360/ARMS)*i) + ")");
         holder.appendChild(pr.cloneNode(true));
         root.appendChild(holder);
       }
@@ -576,10 +609,6 @@
 
     // --------- EXPORT: SVG (centered, embedded fonts) ----------
     async function downloadSVG(){
-      if (currentMode === "draw") {
-        alert("SVG export is only available in Text mode right now. Please use Download PNG.");
-        return;
-      }
       const svg = document.getElementById("flake");
       const fam = document.getElementById("font").value;
       const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
@@ -590,12 +619,12 @@
       const a = document.createElement("a");
       const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
       a.href = url;
-      a.download = `${word}_flake.svg`;
+      a.download = word + "_flake.svg";
       a.click();
       URL.revokeObjectURL(url);
     }
 
-    // --------- TEXT MODE: EXPORT PNG from SVG ----------
+    // --------- EXPORT: PNG (~350 dpi), centered ----------
     async function downloadPNG(whiteBg=false){
       const svg = document.getElementById("flake");
       const fam = document.getElementById("font").value;
@@ -606,7 +635,7 @@
       const vb = svg.viewBox.baseVal;
       const SCALE = 3.5; // 800 * 3.5 = 2800 (~350 dpi on 8x8 in area)
 
-      svgWithFonts.setAttribute("width", vb.width);
+      svgWithFonts.setAttribute("width",  vb.width);
       svgWithFonts.setAttribute("height", vb.height);
       svgWithFonts.setAttribute("preserveAspectRatio","xMidYMid meet");
 
@@ -618,205 +647,52 @@
       img.crossOrigin = "anonymous";
       img.onload = function(){
         const canvas = document.createElement("canvas");
-        canvas.width = vb.width * SCALE;
+        canvas.width  = vb.width  * SCALE;
         canvas.height = vb.height * SCALE;
         const ctx = canvas.getContext("2d");
 
-        if (whiteBg) { ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
-        else { ctx.clearRect(0,0,canvas.width,canvas.height); }
+        if (whiteBg) {
+          ctx.fillStyle = "#ffffff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+        } else {
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+        }
 
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
         URL.revokeObjectURL(url);
 
         const link = document.createElement("a");
         const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-        link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
+        link.download = whiteBg ? (word + "_flake_white.png") : (word + "_flake.png");
         link.href = canvas.toDataURL("image/png");
         link.click();
       };
       img.src = url;
     }
 
-    /* ---------- DRAW MODE: wedge drawing + snowflake ---------- */
-    let drawing = false;
-    let lastX = 0, lastY = 0;
-    let rebuildTimer = null;
-
-    function drawWedgeGuide() {
-      if (!wctx) return;
-      const arms = +v("arms", 8) || 8;
-      const cx = wedgeCanvas.width / 2;
-      const cy = wedgeCanvas.height; // bottom center
-      const angle = (Math.PI * 2) / arms;
-
-      wctx.clearRect(0,0,wedgeCanvas.width,wedgeCanvas.height);
-
-      wctx.save();
-      wctx.strokeStyle = 'rgba(0,0,0,0.15)';
-      wctx.lineWidth = 1;
-      wctx.beginPath();
-      wctx.moveTo(cx, cy);
-      wctx.lineTo(
-        cx + 400 * Math.cos(-angle/2 - Math.PI/2),
-        cy + 400 * Math.sin(-angle/2 - Math.PI/2)
-      );
-      wctx.moveTo(cx, cy);
-      wctx.lineTo(
-        cx + 400 * Math.cos(angle/2 - Math.PI/2),
-        cy + 400 * Math.sin(angle/2 - Math.PI/2)
-      );
-      wctx.stroke();
-      wctx.restore();
-    }
-
-    function drawSnowflakeFromWedge() {
-      if (!fctx || !wctx) return;
-      const arms = +v("arms", 8) || 8;
-      const angle = (Math.PI * 2) / arms;
-
-      fctx.clearRect(0,0,flakeCanvas.width,flakeCanvas.height);
-
-      fctx.save();
-      fctx.translate(flakeCanvas.width/2, flakeCanvas.height/2);
-
-      for (let i = 0; i < arms; i++) {
-        fctx.save();
-        fctx.rotate(i * angle);
-        fctx.translate(-wedgeCanvas.width/2, -wedgeCanvas.height);
-        fctx.drawImage(wedgeCanvas, 0, 0);
-        fctx.restore();
-      }
-
-      fctx.restore();
-    }
-
-    function attachDrawHandlers() {
-      if (!wedgeCanvas) return;
-
-      wedgeCanvas.addEventListener('pointerdown', e => {
-        if (currentMode !== "draw") return;
-        drawing = true;
-        const rect = wedgeCanvas.getBoundingClientRect();
-        lastX = e.clientX - rect.left;
-        lastY = e.clientY - rect.top;
-      });
-
-      wedgeCanvas.addEventListener('pointermove', e => {
-        if (!drawing || currentMode !== "draw") return;
-        const rect = wedgeCanvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        wctx.strokeStyle = '#000';
-        wctx.lineWidth = 2;
-        wctx.lineCap = 'round';
-
-        wctx.beginPath();
-        wctx.moveTo(lastX, lastY);
-        wctx.lineTo(x, y);
-        wctx.stroke();
-
-        lastX = x;
-        lastY = y;
-      });
-
-      window.addEventListener('pointerup', () => {
-        if (!drawing) return;
-        drawing = false;
-        clearTimeout(rebuildTimer);
-        rebuildTimer = setTimeout(drawSnowflakeFromWedge, 150);
-      });
-
-      const clearBtn = $("clearDraw");
-      if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-          wctx.clearRect(0,0,wedgeCanvas.width,wedgeCanvas.height);
-          drawWedgeGuide();
-          drawSnowflakeFromWedge();
-        });
-      }
-    }
-
-    async function downloadCanvasPNG() {
-      if (!flakeCanvas) return;
-      const link = document.createElement("a");
-      const word = (v("word","snowflake")||"snowflake").replace(/\s+/g,'_');
-      link.download = `${word}_flake.png`;
-      link.href = flakeCanvas.toDataURL("image/png");
-      link.click();
-    }
-
-    /* ---------- MODE SWITCHING UI ---------- */
-    function updateModeUI() {
-      const textControls = $("textControls");
-      const drawControls = $("drawControls");
-      const svg = $("flake");
-
-      const isDraw = currentMode === "draw";
-
-      if (textControls) textControls.style.display = isDraw ? "none" : "grid";
-      if (drawControls) drawControls.style.display = isDraw ? "block" : "none";
-      if (svg) svg.style.display = isDraw ? "none" : "block";
-      if (flakeCanvas) flakeCanvas.style.display = isDraw ? "block" : "none";
-
-      if (isDraw) {
-        drawWedgeGuide();
-        drawSnowflakeFromWedge();
-      } else {
-        generate();
-      }
-    }
-
-    const designModeSelect = $("designMode");
-    if (designModeSelect) {
-      designModeSelect.addEventListener("change", () => {
-        currentMode = designModeSelect.value || "text";
-        updateModeUI();
-      });
-    }
-
     // Share (Facebook only)
     $("fbshare").addEventListener("click", (e)=>{
       e.preventDefault();
       const page = location.href.split('#')[0];
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
+      window.open(
+        "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(page),
+        "_blank"
+      );
     });
 
-    // Bind inputs
-    ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
+    // Bind + first render
+    ["word","arms","fs","len","gap","mirror","tilt","font","color"].forEach(id=>{
       const el=$(id);
-      if (!el) return;
-      el.addEventListener("input", ()=>{
-        if (currentMode === "draw") {
-          if (id === "arms") {
-            drawWedgeGuide();
-            drawSnowflakeFromWedge();
-          }
-          // other controls ignored in draw mode for now
-        } else {
-          generate();
-        }
-      });
+      if (el) el.addEventListener("input", generate);
     });
-
-    // Download buttons
     $("download").addEventListener("click", async ()=>{
-      if (currentMode === "draw") {
-        await downloadCanvasPNG();
-      } else {
-        const white = confirm("OK = white background, Cancel = transparent");
-        await downloadPNG(white);
-      }
+      const white = confirm("OK = white background, Cancel = transparent");
+      await downloadPNG(white);
     });
-
     $("downloadSvg").addEventListener("click", downloadSVG);
     $("print").addEventListener("click", ()=> window.print());
 
-    // Init
-    document.addEventListener("DOMContentLoaded", () => {
-      attachDrawHandlers();
-      generate();  // default: text mode
-    });
+    document.addEventListener("DOMContentLoaded", generate);
     /* =================== /JS =================== */
   </script>
 </body>
