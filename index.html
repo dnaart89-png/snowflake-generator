@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Nameflake Studio — v1.0 (Option A, stable) -->
-  <meta charset="utf-8" />
 
-  <!-- Redirect /index.html -> root once -->
+  <!-- Nameflake Studio — v2.0 (stable, centered controls) -->
+  <meta charset="utf-8"/>
+
   <script>
+    /* Redirect from /index.html → root */
     (function () {
       var p = location.pathname;
       if (p.endsWith('/index.html')) {
@@ -14,76 +15,85 @@
     })();
   </script>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Nameflake Studio</title>
 
-  <!-- Icons / theme -->
-  <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <meta name="theme-color" content="#d6b46a">
 
-  <!-- Canonical & basic SEO -->
+  <!-- Canonical -->
   <link rel="canonical" href="https://nameflakestudio.com/">
+
+  <!-- SEO -->
   <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included.">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nameflakestudio.com/" />
-  <meta property="og:title" content="Nameflake Studio — Personalized Snowflake Generator" />
-  <meta property="og:description" content="Create a unique snowflake from any name. Choose fonts and styles, then download as PNG or SVG for crafts, ornaments, coloring pages, and more." />
-  <meta property="og:image" content="https://nameflakestudio.com/banner.png" />
-  <meta property="og:image:width" content="1280" />
-  <meta property="og:image:height" content="418" />
-  <meta property="og:site_name" content="Nameflake Studio" />
+  <!-- OG -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://nameflakestudio.com/"/>
+  <meta property="og:title" content="Nameflake Studio — Personalized Snowflake Generator"/>
+  <meta property="og:description" content="Create a unique snowflake from any name. Choose fonts and styles, then download as PNG or SVG for crafts, ornaments, coloring pages, and more."/>
+  <meta property="og:image" content="https://nameflakestudio.com/banner.png"/>
+  <meta property="og:site_name" content="Nameflake Studio"/>
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nameflake Studio — Personalized Snowflake Generator" />
-  <meta name="twitter:description" content="Make a custom snowflake from any name. Download high-res PNG or SVG for printing, crafts, and gifts." />
-  <meta name="twitter:image" content="https://nameflakestudio.com/banner.png" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://nameflakestudio.com/banner.png"/>
 
-  <!-- JSON-LD: WebSite -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Nameflake Studio",
     "url": "https://nameflakestudio.com/",
-    "description": "Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG.",
-    "publisher": { "@type": "Organization", "name": "Nameflake Studio" }
+    "description": "Turn any name into a unique printable snowflake."
   }
   </script>
 
-  <!-- Cache control while iterating -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <!-- Cache off while developing -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
 
-  <!-- AdSense (site-level) -->
-  <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
+  <!-- Google Ads -->
+  <meta name="google-adsense-account" content="ca-pub-9007523138058958"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-00YK96C5RV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-00YK96C5RV");
+  </script>
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Bungee+Outline&family=Kumar+One+Outline&family=Londrina+Outline&family=Caveat:wght@400;700&family=Patrick+Hand&family=Architects+Daughter&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    /* COLORS & BASE STYLE */
     :root{
       --cran:#7b2323; --ever:#144a34; --gold:#d6b46a;
       --cream:#e7d7b3; --cream2:#dbc28e; --ink:#262626; --paper:#fff;
-      --glass: rgba(255,255,255,.72);
+      --glass: rgba(255,255,255,.75);
       --shadow: 0 12px 28px rgba(0,0,0,.14);
       --gold-grad: linear-gradient(135deg,#e8c87e,#caa453);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0; color:var(--ink);
       background:
         radial-gradient(1200px 520px at 50% -10%, rgba(255,255,255,.45), transparent 70%),
         linear-gradient(135deg, var(--cream) 0%, #e2cda1 35%, var(--cream2) 100%);
-      font-family:'Libre Baskerville',serif;
+      font-family: 'Libre Baskerville', serif;
       overflow-x:hidden;
     }
 
@@ -92,21 +102,30 @@
       padding:0 0 12px;
       border-bottom:6px solid var(--gold);
       background: linear-gradient(135deg, #6b2b2b, #5c2424);
-      box-shadow: var(--shadow);
+      box-shadow:var(--shadow);
     }
     .banner{
       max-width:1280px;
-      margin:0 auto;
-      display:block;
-      width:100%;
-      height:auto;
-      object-fit:cover;
+      width:100%; height:auto;
+      display:block; margin:0 auto;
     }
 
-    /* Layout */
-    .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
-    .row{ display:grid; grid-template-columns: 260px 1fr 260px; gap:14px; }
-    @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
+    /* Layout wrapper */
+    .shell{
+      max-width:1280px;
+      margin:18px auto;
+      padding:0 16px;
+    }
+
+    /* Grid layout: Ads | Stage | Controls */
+    .row{
+      display:grid;
+      grid-template-columns: 260px 1fr 260px;
+      gap:14px;
+    }
+    @media(max-width:980px){
+      .row{ grid-template-columns: 1fr; }
+    }
 
     .card{
       background:var(--glass);
@@ -116,21 +135,14 @@
       box-shadow:var(--shadow);
     }
 
-    /* Left rail (ads) */
-    .rail{ padding:10px }
-    .rail .ad-card{ padding:8px 10px }
-
-    /* Stage */
+    /* Stage / Snowflake preview */
     .stage{ padding:12px; }
     .stage-frame{
-      background:
-        radial-gradient(circle at 50% 30%, rgba(214,180,106,.18), transparent 45%),
-        var(--paper);
+      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.18), transparent 45%), var(--paper);
       border-radius:12px;
       box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
-      overflow:hidden;
-      position:relative;
       padding:10px;
+      overflow:hidden;
     }
     svg{
       width:100%;
@@ -140,310 +152,304 @@
       margin:0 auto;
     }
 
-    /* Controls */
-    .controls{ padding:18px; background:none; border:none; box-shadow:none; }
-    .controls h3{ margin:4px 4px 12px; font-family:Poppins,system-ui,sans-serif; }
-    .grid{ display:grid; gap:.6rem; grid-template-columns:1fr; }
-    .controls label{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:.75rem;
-      font-size:14px;
-      border-bottom:1px dashed rgba(0,0,0,.08);
-      padding-bottom:6px;
+    /* CENTERED CONTROL STACK — B1 */
+    .controls{
+      padding:22px 12px;
+      text-align:center;
     }
-    .controls input,
-    .controls select{
-      width:200px;
-      max-width:60%;
-      padding:9px 10px;
+    .controls h3{
+      font-family:Poppins, sans-serif;
+      margin:4px 0 14px;
+      font-size:20px;
+      color:#3a2a1a;
+    }
+    .control-block{
+      margin-bottom:16px;
+      text-align:center;
+    }
+    .control-block label{
+      font-size:15px;
+      font-weight:600;
+      display:block;
+      margin-bottom:6px;
+      font-family:Poppins, sans-serif;
+    }
+    .control-block input,
+    .control-block select{
+      width:80%;
+      max-width:240px;
+      padding:10px 12px;
       border-radius:10px;
-      border:1px solid rgba(0,0,0,.12);
-      background:#fff;
-      font-size:14px;
+      border:1px solid rgba(0,0,0,.15);
+      font-size:15px;
+      font-family:Poppins, sans-serif;
     }
+
     .buttons{
+      margin-top:16px;
       display:flex;
       flex-wrap:wrap;
-      gap:10px;
-      margin-top:12px;
       justify-content:center;
+      gap:10px;
     }
     .btn{
-      appearance:none;
-      border:1px solid rgba(0,0,0,.12);
-      background:#fff;
-      color:var(--ink);
       padding:10px 16px;
       border-radius:12px;
       font-weight:700;
       cursor:pointer;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.12);
       box-shadow:var(--shadow);
-      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(0,0,0,.16);
-    }
-    .btn.primary{
-      background: var(--gold-grad);
-      border-color: transparent;
-      color:#2a2a2a;
-    }
+    .btn.primary{ background:var(--gold-grad); }
 
-    /* Share */
-    .share-wrap{ text-align:center; padding:12px 10px }
     .fbshare{
+      margin-top:14px;
       display:inline-block;
-      padding:10px 16px;
-      border-radius:12px;
       background:#1877f2;
       color:#fff;
       font-weight:700;
+      padding:8px 14px;
+      border-radius:12px;
       text-decoration:none;
     }
+<!doctype html>
+<html lang="en">
+<head>
 
-    /* Mockups */
-    .mockups-section{
-      margin:26px auto;
-      padding:22px;
-      background: rgba(255,255,255,0.75);
-      border-radius:14px;
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow:0 6px 16px rgba(0,0,0,.12);
-      max-width:1100px;
-    }
-    .mockups-title{
-      text-align:center;
-      font-size:24px;
-      margin-bottom:8px;
-      color:#4a3a2a;
-    }
-    .mockups-desc{
-      text-align:center;
-      margin:0 auto 20px;
-      max-width:700px;
-      font-size:15px;
-    }
-    .mockup-grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap:18px;
-      justify-items:center;
-    }
-    .mockup-grid img{
-      width:100%;
-      max-width:260px;
-      border-radius:10px;
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow:0 4px 12px rgba(0,0,0,.10);
-      background:#fff;
-    }
+  <!-- Nameflake Studio — v2.0 (stable, centered controls) -->
+  <meta charset="utf-8"/>
 
-    /* Footer bar */
-    .footer-bar{
-      background: rgba(0, 0, 0, 0.06);
-      padding:18px 10px;
-      border-top:3px solid var(--gold);
-      box-shadow: inset 0 4px 8px rgba(0,0,0,.05);
-    }
-    .footer-inner{
-      max-width:1280px;
-      margin:0 auto;
-      text-align:center;
-      font-size:13px;
-      color:#3a2f20;
-      line-height:1.6;
-      font-family:'Poppins',sans-serif;
-    }
-    .footer-bar .sep{ margin:0 8px; opacity:0.5; }
-    .footer-bar a{
-      color:inherit;
-      text-decoration:underline;
-      text-underline-offset:3px;
-    }
-    .footer-bar a:hover{
-      color:var(--cran);
-      text-decoration-color:var(--gold);
-    }
-
-    /* PRINT: only print the stage (one page) */
-    @media print {
-      body { background:#fff !important; }
-      .site-header,
-      .controls,
-      .rail,
-      .mockups-section,
-      .about,
-      .footer-bar { display:none !important; }
-      .shell, .row, .stage, .stage-frame{
-        box-shadow:none !important;
-        border:none !important;
-        margin:0 !important;
-        padding:0 !important;
+  <script>
+    /* Redirect from /index.html → root */
+    (function () {
+      var p = location.pathname;
+      if (p.endsWith('/index.html')) {
+        location.replace(location.origin + p.replace(/index\.html$/, ''));
       }
-      svg{
-        width:7.5in !important;
-        height:7.5in !important;
-      }
-      @page { size:8.5in 11in; margin:0.5in; }
-    }
-  </style>
+    })();
+  </script>
 
-  <!-- AdSense JS (page-level) -->
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Nameflake Studio</title>
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="theme-color" content="#d6b46a">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://nameflakestudio.com/">
+
+  <!-- SEO -->
+  <meta name="description" content="Turn any name or word into a one-of-a-kind snowflake. Pick your font, color, arms, and spacing—then download as PNG or SVG. Coloring-friendly outline fonts included.">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+
+  <!-- OG -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://nameflakestudio.com/"/>
+  <meta property="og:title" content="Nameflake Studio — Personalized Snowflake Generator"/>
+  <meta property="og:description" content="Create a unique snowflake from any name. Choose fonts and styles, then download as PNG or SVG for crafts, ornaments, coloring pages, and more."/>
+  <meta property="og:image" content="https://nameflakestudio.com/banner.png"/>
+  <meta property="og:site_name" content="Nameflake Studio"/>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:image" content="https://nameflakestudio.com/banner.png"/>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Nameflake Studio",
+    "url": "https://nameflakestudio.com/",
+    "description": "Turn any name into a unique printable snowflake."
+  }
+  </script>
+
+  <!-- Cache off while developing -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+
+  <!-- Google Ads -->
+  <meta name="google-adsense-account" content="ca-pub-9007523138058958"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
 
-  <!-- Google Analytics 4 — Nameflake Studio -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-00YK96C5RV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-00YK96C5RV');
+    function gtag(){ dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-00YK96C5RV");
   </script>
-</head>
-<body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <img class="banner" src="banner.png?v=2" alt="Nameflake Studio banner">
-  </header>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Poppins:wght@400;600;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Bungee+Outline&family=Kumar+One+Outline&family=Londrina+Outline&family=Caveat:wght@400;700&family=Patrick+Hand&family=Architects+Daughter&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
 
-  <main class="shell">
-    <div class="row">
-      <!-- LEFT RAIL: AdSense -->
-      <aside class="rail card">
-        <section class="ad-card">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-9007523138058958"
-               data-ad-slot="6836589862"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            setTimeout(() => {
-              const rail = document.querySelector('.rail');
-              const hasAd = rail && rail.querySelector('ins.adsbygoogle iframe');
-              if (rail && !hasAd) rail.style.display = 'none';
-            }, 1500);
-          </script>
-        </section>
-      </aside>
+  <style>
+    /* COLORS & BASE STYLE */
+    :root{
+      --cran:#7b2323; --ever:#144a34; --gold:#d6b46a;
+      --cream:#e7d7b3; --cream2:#dbc28e; --ink:#262626; --paper:#fff;
+      --glass: rgba(255,255,255,.75);
+      --shadow: 0 12px 28px rgba(0,0,0,.14);
+      --gold-grad: linear-gradient(135deg,#e8c87e,#caa453);
+    }
 
-      <!-- CENTER: Stage -->
-      <section class="stage card">
-        <div class="stage-frame">
-          <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview" role="img">
-            <g id="root" transform="translate(400,400)"></g>
-          </svg>
-        </div>
-      </section>
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; color:var(--ink);
+      background:
+        radial-gradient(1200px 520px at 50% -10%, rgba(255,255,255,.45), transparent 70%),
+        linear-gradient(135deg, var(--cream) 0%, #e2cda1 35%, var(--cream2) 100%);
+      font-family: 'Libre Baskerville', serif;
+      overflow-x:hidden;
+    }
 
-      <!-- RIGHT: Controls -->
-      <aside class="controls card">
-        <h3>Snowflake Controls</h3>
-        <div class="grid">
-          <label>
-            Word or Short Phrase
-            <input id="word" value="David Loves Angie" />
-          </label>
+    /* Header */
+    .site-header{
+      padding:0 0 12px;
+      border-bottom:6px solid var(--gold);
+      background: linear-gradient(135deg, #6b2b2b, #5c2424);
+      box-shadow:var(--shadow);
+    }
+    .banner{
+      max-width:1280px;
+      width:100%; height:auto;
+      display:block; margin:0 auto;
+    }
 
-          <!-- Arms limited to 6, 8, 12 -->
-          <label>
-            Arms
-            <select id="arms">
-              <option value="6">6</option>
-              <option value="8" selected>8</option>
-              <option value="12">12</option>
-            </select>
-          </label>
+    /* Layout wrapper */
+    .shell{
+      max-width:1280px;
+      margin:18px auto;
+      padding:0 16px;
+    }
 
-          <label>
-            Font size
-            <input id="fs" type="number" value="100" />
-          </label>
-          <label>
-            Arm length (px)
-            <input id="len" type="number" value="350" />
-          </label>
-          <label>
-            Join gap (px)
-            <input id="gap" type="number" value="90" />
-          </label>
-          <label>
-            Tilt (°)
-            <input id="tilt" type="number" value="0" />
-          </label>
-          <label>
-            Font
-            <select id="font">
-              <option value="Dancing Script" data-kind="cursive" selected>Dancing Script</option>
-              <option value="Bungee Outline" data-kind="cursive">Bungee Outline</option>
-              <option value="Kumar One Outline" data-kind="serif">Kumar One Outline</option>
-              <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
-              <option value="Playfair Display" data-kind="serif">Playfair Display</option>
-              <option value="Lora" data-kind="serif">Lora</option>
-              <option value="Cinzel" data-kind="serif">Cinzel</option>
-              <option value="Montserrat" data-kind="sans-serif">Montserrat</option>
-              <option value="Raleway" data-kind="sans-serif">Raleway</option>
-              <option value="Poppins" data-kind="sans-serif">Poppins</option>
-              <option value="Great Vibes" data-kind="cursive">Great Vibes</option>
-              <option value="Londrina Outline" data-kind="sans-serif">Londrina Outline</option>
-            </select>
-          </label>
-          <label>
-            Color
-            <input id="color" type="color" value="#000000" />
-          </label>
-        </div>
+    /* Grid layout: Ads | Stage | Controls */
+    .row{
+      display:grid;
+      grid-template-columns: 260px 1fr 260px;
+      gap:14px;
+    }
+    @media(max-width:980px){
+      .row{ grid-template-columns: 1fr; }
+    }
 
-        <div class="buttons">
-          <button id="download" class="btn">Download PNG</button>
-          <button id="downloadSvg" class="btn">Download SVG</button>
-          <button id="print" class="btn primary">Print</button>
-        </div>
+    .card{
+      background:var(--glass);
+      backdrop-filter: blur(8px);
+      border:1px solid rgba(255,255,255,.7);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+    }
 
-        <div class="share-wrap">
-          <a class="fbshare" href="#" id="fbshare">Share on Facebook</a>
-        </div>
-      </aside>
-    </div>
+    /* Stage / Snowflake preview */
+    .stage{ padding:12px; }
+    .stage-frame{
+      background: radial-gradient(circle at 50% 30%, rgba(214,180,106,.18), transparent 45%), var(--paper);
+      border-radius:12px;
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
+      padding:10px;
+      overflow:hidden;
+    }
+    svg{
+      width:100%;
+      max-width:800px;
+      height:auto;
+      display:block;
+      margin:0 auto;
+    }
 
-    <!-- MOCKUPS -->
-    <section class="mockups-section card">
-      <h2 class="mockups-title">See What You Can Create</h2>
-      <p class="mockups-desc">
-        Your personalized snowflake can become so many things — from wedding keepsakes to cozy winter decor.
-        Share your snowflakes! <strong>#MyNameSnowflake</strong>
-      </p>
-      <div class="mockup-grid">
-        <img src="mockup-coloring-page.png" alt="Coloring Page Mockup">
-        <img src="mockup-hoodie.png" alt="Hoodie Design Mockup">
-        <img src="mockup-ornament.png" alt="Christmas Ornament Mockup">
-        <img src="mockup-wedding-icon.png" alt="Wedding Symbol Mockup">
-        <img src="mockup-window-clings.png" alt="Window Clings Mockup">
-      </div>
-    </section>
+    /* CENTERED CONTROL STACK — B1 */
+    .controls{
+      padding:22px 12px;
+      text-align:center;
+    }
+    .controls h3{
+      font-family:Poppins, sans-serif;
+      margin:4px 0 14px;
+      font-size:20px;
+      color:#3a2a1a;
+    }
+    .control-block{
+      margin-bottom:16px;
+      text-align:center;
+    }
+    .control-block label{
+      font-size:15px;
+      font-weight:600;
+      display:block;
+      margin-bottom:6px;
+      font-family:Poppins, sans-serif;
+    }
+    .control-block input,
+    .control-block select{
+      width:80%;
+      max-width:240px;
+      padding:10px 12px;
+      border-radius:10px;
+      border:1px solid rgba(0,0,0,.15);
+      font-size:15px;
+      font-family:Poppins, sans-serif;
+    }
 
-    <section class="about card" style="margin-top:16px">
+    .buttons{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+    }
+    .btn{
+      padding:10px 16px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.12);
+      box-shadow:var(--shadow);
+    }
+    .btn.primary{ background:var(--gold-grad); }
+
+    .fbshare{
+      margin-top:14px;
+      display:inline-block;
+      background:#1877f2;
+      color:#fff;
+      font-weight:700;
+      padding:8px 14px;
+      border-radius:12px;
+      text-decoration:none;
+    }
+<!-- About Section -->
+    <section class="about card" style="margin-top:16px;">
       <h3>❄ About Nameflake Studio</h3>
-      <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or print your creation.</p>
+      <p>Turn any name or word into a one-of-a-kind snowflake! Choose fonts, colors, and styles — then download your creation.</p>
+
       <h4>🎨 Coloring-Friendly Fonts</h4>
-      <p>Try <strong>Londrina Outline</strong>, <strong>Bungee Outline</strong>, or <strong>Kumar One Outline</strong> for printable snowflakes you can color in.</p>
+      <p>Try <strong>Londrina Outline</strong>, <strong>Bungee Outline</strong>, or <strong>Kumar One Outline</strong> for coloring pages.</p>
+
       <h4>💡 Tip</h4>
-      <p>Use a short word for bold, petal-like designs — or a longer word for intricate lace effects.</p>
+      <p>Short words produce bold, petal-like flakes. Longer words create lacy, detailed flakes.</p>
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer-bar">
     <div class="footer-inner">
-      <span>© 2025 Nameflake Studio</span>
+      © 2025 Nameflake Studio
       <span class="sep">|</span>
       <a href="privacy.html">Privacy Policy</a>
       <span class="sep">|</span>
-      <a href="terms.html">Terms of Use</a>
+      <a href="terms.html">Terms</a>
       <span class="sep">|</span>
       <a href="about.html">About</a>
       <span class="sep">|</span>
@@ -451,216 +457,204 @@
     </div>
   </footer>
 
+  <!-- ========================= JS ========================= -->
   <script>
-    /* =================== JS =================== */
     const svgNS = "http://www.w3.org/2000/svg";
     const $ = id => document.getElementById(id);
     const root = $("root");
 
-    function v(id, fb){
-      const el = $(id);
-      return el ? el.value : fb;
-    }
-
-    function selectedFontStack(){
-      const sel = $("font");
-      return `'${sel.value}', ${sel.selectedOptions[0].dataset.kind || "serif"}`;
-    }
-
+    /* -----------------------------------------------------
+      Load Font – ensures correct appearance in SVG exports
+    ----------------------------------------------------- */
     async function waitForFont(fontFamily, sizePx = 40) {
       try {
         await document.fonts.load(`${sizePx}px "${fontFamily}"`);
         await document.fonts.ready;
-      } catch(e){
-        // fail silently, we'll still draw
-      }
+      } catch (e) {}
     }
 
-    // Inline Google Fonts into an SVG so exported files keep the look
-    async function inlineFontsIntoSVG(svgEl, families) {
-      const cssChunks = [];
-      for (const fam of families) {
-        const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
-        const css = await (await fetch(cssURL)).text();
-        const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
-        let inlined = css;
-        for (const u of urls) {
-          const ab = await (await fetch(u)).arrayBuffer();
-          const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
-          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
-        }
-        cssChunks.push(inlined);
-      }
-
-      const style = document.createElementNS(svgNS,"style");
-      style.setAttribute("type","text/css");
-      style.textContent = cssChunks.join("\n");
-
-      const clone = svgEl.cloneNode(true);
-      clone.setAttribute("preserveAspectRatio","xMidYMid meet");
-      const vb = svgEl.viewBox.baseVal;
-      clone.setAttribute("width", vb.width);
-      clone.setAttribute("height", vb.height);
-      clone.insertBefore(style, clone.firstChild);
-      return clone;
-    }
-
-    async function generate(){
-      const WORD = (v("word","David Loves Angie")).toString();
-      const ARMS = +v("arms",8);
-      const FS   = +v("fs",100);
-      const LEN  = +v("len",350);
-      const GAP  = +v("gap",90);
-      const TILT = +v("tilt",0);
-      const COLOR = v("color","#000000");
-      const FONT  = selectedFontStack();
+    /* -----------------------------------------------------
+        Build the Snowflake (Option A spacing logic)
+    ----------------------------------------------------- */
+    async function generate() {
+      const WORD = $("word").value || "Snowflake";
+      const ARMS = Number($("arms").value);
+      const FS   = Number($("fs").value);
+      const LEN  = Number($("len").value);
+      const GAP  = Number($("gap").value);
+      const TILT = Number($("tilt").value);
+      const COLOR = $("color").value;
       const FAMILY = $("font").value;
 
       await waitForFont(FAMILY, FS);
       root.innerHTML = "";
 
-      // Small hub circle
-      const hub = document.createElementNS(svgNS,"circle");
-      hub.setAttribute("r","2.5");
-      hub.setAttribute("fill",COLOR);
-      hub.setAttribute("opacity",".55");
+      /* Center dot */
+      const hub = document.createElementNS(svgNS, "circle");
+      hub.setAttribute("r", "2.5");
+      hub.setAttribute("fill", COLOR);
+      hub.setAttribute("opacity", ".55");
       root.appendChild(hub);
 
-      // OPTION A: symmetric mirrored text without shrinking/compressing
-      function armPair(){
-        const arm = document.createElementNS(svgNS,"g");
+      /* OPTION A: Correct symmetric spacing */
+      function makeArm() {
+        const g = document.createElementNS(svgNS, "g");
 
-        // Top arm group
-        const go = document.createElementNS(svgNS,"g");
-        go.setAttribute("transform",`rotate(${-90+TILT})`);
-        arm.appendChild(go);
-
-        const to = document.createElementNS(svgNS,"text");
-        to.setAttribute("fill",COLOR);
-        to.setAttribute("font-size",FS);
-        to.setAttribute("font-family",FONT);
-        // NO textLength / lengthAdjust here – so letters keep natural spacing
-        to.setAttribute("text-anchor","start");
-        to.setAttribute("x", String(GAP));
-        to.setAttribute("y", "0");
+        // OUTER TEXT
+        const go = document.createElementNS(svgNS, "g");
+        go.setAttribute("transform", `rotate(${-90 + TILT})`);
+        const to = document.createElementNS(svgNS, "text");
         to.textContent = WORD;
+        to.setAttribute("fill", COLOR);
+        to.setAttribute("font-size", FS);
+        to.setAttribute("font-family", FAMILY);
+        to.setAttribute("text-anchor", "start");
+        to.setAttribute("x", GAP);
+        to.setAttribute("lengthAdjust", "spacingAndGlyphs");
+        to.setAttribute("textLength", LEN - GAP);
         go.appendChild(to);
 
-        // Bottom mirrored arm group
-        const gi = document.createElementNS(svgNS,"g");
-        gi.setAttribute("transform",`scale(1,-1) rotate(${-90-TILT})`);
-        arm.appendChild(gi);
-
-        const ti = document.createElementNS(svgNS,"text");
-        ti.setAttribute("fill",COLOR);
-        ti.setAttribute("font-size",FS);
-        ti.setAttribute("font-family",FONT);
-        ti.setAttribute("text-anchor","start");
-        ti.setAttribute("x", String(GAP));
-        ti.setAttribute("y", "0");
+        // MIRRORED INNER
+        const gi = document.createElementNS(svgNS, "g");
+        gi.setAttribute("transform", `scale(1,-1) rotate(${-90 - TILT})`);
+        const ti = document.createElementNS(svgNS, "text");
         ti.textContent = WORD;
+        ti.setAttribute("fill", COLOR);
+        ti.setAttribute("font-size", FS);
+        ti.setAttribute("font-family", FAMILY);
+        ti.setAttribute("text-anchor", "start");
+        ti.setAttribute("x", GAP);
+        ti.setAttribute("lengthAdjust", "spacingAndGlyphs");
+        ti.setAttribute("textLength", LEN - GAP);
         gi.appendChild(ti);
 
-        return arm;
+        g.appendChild(go);
+        g.appendChild(gi);
+        return g;
       }
 
-      const baseArm = armPair();
-      for(let i = 0; i < ARMS; i++){
-        const holder = document.createElementNS(svgNS,"g");
-        holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
-        holder.appendChild(baseArm.cloneNode(true));
-        root.appendChild(holder);
+      const baseArm = makeArm();
+
+      for (let i = 0; i < ARMS; i++) {
+        const h = document.createElementNS(svgNS, "g");
+        h.setAttribute("transform", `rotate(${(360 / ARMS) * i})`);
+        h.appendChild(baseArm.cloneNode(true));
+        root.appendChild(h);
       }
     }
 
-    // --------- EXPORT: SVG (centered, embedded fonts) ----------
-    async function downloadSVG(){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
+    /* -----------------------------------------------------
+        Export: SVG (with embedded fonts)
+    ----------------------------------------------------- */
+    async function inlineFonts(svg, families) {
+      const finalCSS = [];
 
-      const data = new XMLSerializer().serializeToString(svgWithFonts);
+      for (const fam of families) {
+        const url = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
+        const css = await (await fetch(url)).text();
+
+        const matches = [...css.matchAll(/url\((https:[^)]+\.woff2)\)/g)];
+        let newCSS = css;
+
+        for (const m of matches) {
+          const fontURL = m[1];
+          const buf = await (await fetch(fontURL)).arrayBuffer();
+          const b64 = btoa(String.fromCharCode(...new Uint8Array(buf)));
+          newCSS = newCSS.replace(fontURL, `data:font/woff2;base64,${b64}`);
+        }
+
+        finalCSS.push(newCSS);
+      }
+
+      const style = document.createElementNS(svgNS, "style");
+      style.textContent = finalCSS.join("\n");
+
+      const clone = svg.cloneNode(true);
+      clone.insertBefore(style, clone.firstChild);
+
+      const vb = svg.viewBox.baseVal;
+      clone.setAttribute("width", vb.width);
+      clone.setAttribute("height", vb.height);
+      clone.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+      return clone;
+    }
+
+    async function downloadSVG() {
+      const svg = $("flake");
+      const fam = $("font").value;
+      const prepared = await inlineFonts(svg, [fam]);
+
+      const data = new XMLSerializer().serializeToString(prepared);
       const blob = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
       const url = URL.createObjectURL(blob);
+
+      const name = $("word").value.replace(/\s+/g, "_") || "snowflake";
       const a = document.createElement("a");
-      const word = (v("word","snowflake") || "snowflake").replace(/\s+/g,'_');
       a.href = url;
-      a.download = `${word}_flake.svg`;
+      a.download = `${name}_flake.svg`;
       a.click();
       URL.revokeObjectURL(url);
     }
 
-    // --------- EXPORT: PNG (~350 dpi), centered ----------
-    async function downloadPNG(whiteBg=false){
-      const svg = document.getElementById("flake");
-      const fam = document.getElementById("font").value;
-      const svgWithFonts = await inlineFontsIntoSVG(svg, [fam]);
-
-      if (whiteBg) svgWithFonts.setAttribute("style","background:white");
+    /* -----------------------------------------------------
+        Export: PNG (350 DPI)
+    ----------------------------------------------------- */
+    async function downloadPNG() {
+      const svg = $("flake");
+      const fam = $("font").value;
+      const prepared = await inlineFonts(svg, [fam]);
 
       const vb = svg.viewBox.baseVal;
-      const SCALE = 3.5; // 800 * 3.5 = 2800 (~350 dpi for ~8x8")
+      const SCALE = 3.5;
 
-      svgWithFonts.setAttribute("width", vb.width);
-      svgWithFonts.setAttribute("height", vb.height);
-      svgWithFonts.setAttribute("preserveAspectRatio","xMidYMid meet");
+      prepared.setAttribute("width", vb.width);
+      prepared.setAttribute("height", vb.height);
 
-      const svgStr = new XMLSerializer().serializeToString(svgWithFonts);
-      const blob = new Blob([svgStr], { type: "image/svg+xml;charset=utf-8" });
+      const data = new XMLSerializer().serializeToString(prepared);
+      const blob = new Blob([data], { type: "image/svg+xml" });
       const url = URL.createObjectURL(blob);
 
       const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.onload = function(){
+      img.onload = () => {
         const canvas = document.createElement("canvas");
         canvas.width = vb.width * SCALE;
         canvas.height = vb.height * SCALE;
         const ctx = canvas.getContext("2d");
-
-        if (whiteBg) {
-          ctx.fillStyle = "#ffffff";
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-        } else {
-          ctx.clearRect(0,0,canvas.width,canvas.height);
-        }
-
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        URL.revokeObjectURL(url);
 
+        const name = $("word").value.replace(/\s+/g, "_") || "snowflake";
         const link = document.createElement("a");
-        const word = (v("word","snowflake") || "snowflake").replace(/\s+/g,'_');
-        link.download = whiteBg ? `${word}_flake_white.png` : `${word}_flake.png`;
-        link.href = canvas.toDataURL("image/png");
+        link.download = `${name}_flake.png`;
+        link.href = canvas.toDataURL();
         link.click();
+        URL.revokeObjectURL(url);
       };
       img.src = url;
     }
 
-    // Share (Facebook only)
-    $("fbshare").addEventListener("click", (e)=>{
+    /* -----------------------------------------------------
+        Facebook Share
+    ----------------------------------------------------- */
+    $("fbshare").addEventListener("click", e => {
       e.preventDefault();
-      const page = location.href.split('#')[0];
-      window.open(
-        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,
-        '_blank'
-      );
+      const u = encodeURIComponent(location.href);
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${u}`, "_blank");
     });
 
-    // Bind + first render
-    ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
-      const el = $(id);
-      if (el) el.addEventListener("input", generate);
+    /* -----------------------------------------------------
+        Bind UI + First Render
+    ----------------------------------------------------- */
+    ["word","arms","fs","len","gap","tilt","font","color"].forEach(id => {
+      $(id).addEventListener("input", generate);
     });
 
-    $("download").addEventListener("click", async ()=>{
-      const white = confirm("OK = white background, Cancel = transparent");
-      await downloadPNG(white);
-    });
+    $("download").addEventListener("click", downloadPNG);
     $("downloadSvg").addEventListener("click", downloadSVG);
-    $("print").addEventListener("click", ()=> window.print());
+    $("print").addEventListener("click", () => window.print());
 
     document.addEventListener("DOMContentLoaded", generate);
-    /* =================== /JS =================== */
   </script>
+
 </body>
 </html>
