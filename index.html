@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Nameflake Studio — Option A build -->
+  <!-- Nameflake Studio — v1.0 (Option A mirror, cleaned) -->
   <meta charset="utf-8" />
 
-  <!-- Redirect /index.html -> / -->
+  <!-- Redirect /index.html -> clean root once -->
   <script>
     (function () {
       var p = location.pathname;
@@ -60,35 +60,14 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <!-- AdSense -->
+  <!-- AdSense meta -->
   <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
 
-  <!-- Fonts -->
+  <!-- Fonts (perf) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2
-    ?family=Libre+Baskerville:wght@400;700
-    &family=Playfair+Display:wght@400;700
-    &family=Lora:wght@400;700
-    &family=Cinzel:wght@400;700
-    &family=Montserrat:wght@400;700
-    &family=Raleway:wght@400;700
-    &family=Great+Vibes
-    &family=Dancing+Script:wght@400;700
-    &family=Londrina+Outline
-    &family=Bungee+Outline
-    &family=Kumar+One+Outline
-    &family=Poppins:wght@400;600;700
-    &family=Caveat:wght@400;700
-    &family=Patrick+Hand
-    &family=Homemade+Apple
-    &family=Reenie+Beanie
-    &family=Nanum+Pen+Script
-    &family=Gochi+Hand
-    &family=Just+Another+Hand
-    &family=Permanent+Marker
-    &family=Gloria+Hallelujah
-    &display=swap" rel="stylesheet">
+  <!-- Added extra handwriting fonts: Pacifico, Satisfy, Shadows Into Light, Nothing You Could Do, Handlee -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&family=Pacifico&family=Satisfy&family=Shadows+Into+Light&family=Nothing+You+Could+Do&family=Handlee&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -114,19 +93,12 @@
       background: linear-gradient(135deg, #6b2b2b, #5c2424);
       box-shadow: var(--shadow);
     }
-    .banner{
-      max-width:1280px; margin:0 auto; display:block;
-      width:100%; height:auto; object-fit:cover;
-    }
+    .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
 
     /* Layout */
     .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
-    .row{
-      display:grid; grid-template-columns: 260px 1fr 260px; gap:14px;
-    }
-    @media (max-width: 980px){
-      .row{ grid-template-columns:1fr; }
-    }
+    .row{ display:grid; grid-template-columns: 260px 1fr 260px; gap:14px; }
+    @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
 
     .card{
       background:var(--glass); backdrop-filter: blur(8px);
@@ -134,8 +106,8 @@
     }
 
     /* Left rail (ads) */
-    .rail{ padding:10px; }
-    .rail .ad-card{ padding:8px 10px; }
+    .rail{ padding:10px }
+    .rail .ad-card{ padding:8px 10px }
 
     /* Stage */
     .stage{ padding:12px; }
@@ -146,55 +118,233 @@
       border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
       overflow:hidden; position:relative; padding:10px;
     }
-    svg{
-      width:100%; max-width:800px; height:auto;
-      display:block; margin:0 auto;
-    }
+    /* Keep fixed, square viewBox area */
+    svg{ width:100%; max-width:800px; height:auto; display:block; margin:0 auto; }
 
-    /* Controls */
+    /* Controls panel */
     .controls {
-      padding: 18px;
+      padding: 20px;
       background: none;
       border: none;
       box-shadow: none;
+      font-family: Poppins, system-ui, sans-serif;
     }
     .controls h3{
       margin:4px 4px 14px;
-      font-family:Poppins,system-ui,sans-serif;
-      font-size:18px;
+      font-size: 18px;
+      letter-spacing: 0.03em;
     }
     .grid{
-      display:grid; gap:.7rem; grid-template-columns: 1fr;
+      display:grid;
+      gap:.75rem;
+      grid-template-columns: 1fr;
     }
     .controls label{
-      display:flex; align-items:center; justify-content:space-between; gap:.75rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.85rem;
       font-size:15px;
-      border-bottom:1px dashed rgba(0,0,0,.08); padding-bottom:6px;
+      border-bottom:1px dashed rgba(0,0,0,.08);
+      padding-bottom:6px;
     }
     .controls input,
     .controls select{
-      width:210px; max-width:60%;
+      width:220px;
+      max-width:65%;
       padding:10px 11px;
       border-radius:10px;
-      border:1px solid rgba(0,0,0,.12);
+      border:1px solid rgba(0,0,0,.18);
       background:#fff;
       font-size:15px;
-      height:44px;
-      font-family:Poppins,system-ui,sans-serif;
-    }
-    .controls select{
-      padding-right:26px;
+      font-family: Poppins, system-ui, sans-serif;
     }
     .buttons{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:14px; justify-content:center;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      justify-content:center
     }
     .btn{
-      appearance:none; border:1px solid rgba(0,0,0,.12); background:#fff; color:var(--ink);
-      padding:10px 16px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
-      font-family:Poppins,system-ui,sans-serif;
+      appearance:none;
+      border:1px solid rgba(0,0,0,.12);
+      background:#fff;
+      color:var(--ink);
+      padding:10px 16px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      font-family: Poppins, system-ui, sans-serif;
+      font-size:14px;
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
     }
     .btn:hover{
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(0,
+      box-shadow: 0 14px 30px rgba(0,0,0,.16)
+    }
+    .btn.primary{
+      background: var(--gold-grad);
+      border-color: transparent;
+      color:#2a2a2a
+    }
+
+    /* Share */
+    .share-wrap{ text-align:center; padding:12px 10px }
+    .fbshare{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:12px;
+      background:#1877f2;
+      color:#fff;
+      font-weight:700;
+      text-decoration:none;
+      font-family:Poppins,system-ui,sans-serif;
+      font-size:14px;
+    }
+
+    /* Mockups */
+    .mockups-section {
+      margin: 26px auto;
+      padding: 22px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+      max-width: 1100px;
+    }
+    .mockups-title { text-align:center; font-size:24px; margin-bottom:8px; color:#4a3a2a; }
+    .mockups-desc { text-align:center; margin:0 auto 20px; max-width:700px; font-size:15px; }
+    .mockup-grid {
+      display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px; justify-items:center;
+    }
+    .mockup-grid img {
+      width: 100%; max-width: 260px; border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.08); box-shadow: 0 4px 12px rgba(0,0,0,.10);
+      background: #fff;
+    }
+
+    /* Footer bar */
+    .footer-bar {
+      background: rgba(0, 0, 0, 0.06);
+      padding: 18px 10px;
+      border-top: 3px solid var(--gold);
+      box-shadow: inset 0 4px 8px rgba(0,0,0,.05);
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; text-align: center;
+      font-size: 13px; color: #3a2f20; line-height: 1.6; font-family: 'Poppins', sans-serif;
+    }
+    .footer-bar .sep { margin: 0 8px; opacity: 0.5; }
+    .footer-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    .footer-bar a:hover { color: var(--cran); text-decoration-color: var(--gold); }
+
+    /* PRINT: only print the stage (one page) */
+    @media print {
+      body { background: #fff !important; }
+      .site-header, .controls, .rail, .mockups-section, .about, .footer-bar { display:none !important; }
+      .shell, .row, .stage, .stage-frame { box-shadow:none !important; border:none !important; margin:0 !important; padding:0 !important; }
+      svg { width: 7.5in !important; height: 7.5in !important; }
+      @page { size: 8.5in 11in; margin: 0.5in; }
+    }
+  </style>
+
+  <!-- Google Analytics 4 — Nameflake Studio -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-00YK96C5RV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-00YK96C5RV');
+  </script>
+
+  <!-- Global AdSense loader -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <img class="banner" src="banner.png?v=2" alt="Nameflake Studio banner">
+  </header>
+
+  <main class="shell">
+    <div class="row">
+      <!-- LEFT RAIL: AdSense -->
+      <aside class="rail card">
+        <section class="ad-card">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-9007523138058958"
+               data-ad-slot="6836589862"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            // Fallback: hide rail if no ad iframe appears
+            setTimeout(() => {
+              const rail = document.querySelector('.rail');
+              const hasAd = rail && rail.querySelector('ins.adsbygoogle iframe');
+              if (rail && !hasAd) rail.style.display = 'none';
+            }, 1500);
+          </script>
+        </section>
+      </aside>
+
+      <!-- CENTER: Stage -->
+      <section class="stage card">
+        <div class="stage-frame">
+          <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview" role="img">
+            <g id="root" transform="translate(400,400)"></g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- RIGHT: Controls -->
+      <aside class="controls card">
+        <h3>Snowflake Controls</h3>
+        <div class="grid">
+          <label>
+            Word or Short Phrase
+            <input id="word" value="David Loves Angie" />
+          </label>
+
+          <!-- Arms: limited to 6 / 8 / 12 -->
+          <label>
+            Arms
+            <select id="arms">
+              <option value="6">6</option>
+              <option value="8" selected>8</option>
+              <option value="12">12</option>
+            </select>
+          </label>
+
+          <!-- Slightly smaller default font size so letters breathe more -->
+          <label>
+            Font size
+            <input id="fs" type="number" value="40" />
+          </label>
+
+          <label>
+            Arm length (px)
+            <input id="len" type="number" value="350" />
+          </label>
+
+          <label>
+            Join gap (px)
+            <input id="gap" type="number" value="90" />
+          </label>
+
+          <label>
+            Tilt (°)
+            <input id="tilt" type="number" value="0" />
+          </label>
+
+          <label>
+            Font
+            <select id="font">
+              <!-- Existing fonts -->
+              <option value="Dancing Script" data-kind
