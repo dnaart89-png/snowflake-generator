@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Nameflake Studio — v1.1 -->
+  <!-- Nameflake Studio — v2.0 (Option A, stacked controls) -->
   <meta charset="utf-8" />
+
+  <!-- Redirect /index.html -> / one time -->
   <script>
-    // Redirect /index.html to clean root URL
     (function () {
       var p = location.pathname;
       if (p.endsWith('/index.html')) {
@@ -62,10 +63,10 @@
   <!-- AdSense -->
   <meta name="google-adsense-account" content="ca-pub-9007523138058958" />
 
-  <!-- Fonts -->
+  <!-- Fonts (added extra handwriting fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&family=Caveat:wght@400;700&family=Indie+Flower&family=Handlee&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Raleway:wght@400;700&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Londrina+Outline&family=Bungee+Outline&family=Kumar+One+Outline&family=Poppins:wght@400;600;700&family=Pacifico&family=Satisfy&family=Caveat:wght@400;700&family=Courgette&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -91,81 +92,78 @@
       background: linear-gradient(135deg, #6b2b2b, #5c2424);
       box-shadow: var(--shadow);
     }
-    .banner{
-      max-width:1280px; margin:0 auto; display:block; width:100%;
-      height:auto; object-fit:cover;
-    }
+    .banner{ max-width:1280px; margin:0 auto; display:block; width:100%; height:auto; object-fit:cover; }
 
     /* Layout */
-    .shell{
-      max-width:1280px;
-      margin:18px auto 24px;
-      padding:0 16px 32px;
+    .shell{ max-width:1280px; margin:18px auto; padding:0 16px; }
+    .row{ display:grid; grid-template-columns: 260px 1fr 260px; gap:14px; }
+    @media (max-width: 980px){
+      .row{ grid-template-columns:1fr; }
     }
 
     .card{
-      background:var(--glass);
-      backdrop-filter: blur(8px);
-      border:1px solid rgba(255,255,255,.7);
-      border-radius:16px;
-      box-shadow:var(--shadow);
+      background:var(--glass); backdrop-filter: blur(8px);
+      border:1px solid rgba(255,255,255,.7); border-radius:16px; box-shadow:var(--shadow);
     }
 
-    .stage{
-      padding:12px;
-      margin-bottom:18px;
-    }
+    /* Left rail (ads) */
+    .rail{ padding:10px }
+    .rail .ad-card{ padding:8px 10px }
+
+    /* Stage */
+    .stage{ padding:12px; }
     .stage-frame{
       background:
         radial-gradient(circle at 50% 30%, rgba(214,180,106,.18), transparent 45%),
         var(--paper);
-      border-radius:12px;
-      box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
-      overflow:hidden;
-      position:relative;
-      padding:10px;
+      border-radius:12px; box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
+      overflow:hidden; position:relative; padding:10px;
     }
-    svg{
-      width:100%;
-      max-width:800px;
-      height:auto;
-      display:block;
-      margin:0 auto;
-    }
+    /* Keep fixed, square viewBox area */
+    svg{ width:100%; max-width:800px; height:auto; display:block; margin:0 auto; }
 
-    /* Controls: stacked + centered */
-    .controls{
-      padding:18px 16px 20px;
-      margin-bottom:20px;
+    /* Controls (stacked / B1) */
+    .controls {
+      padding: 18px;
+      background: none;
+      border: none;
+      box-shadow: none;
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
     .controls h3{
-      margin:0 0 14px;
-      font-family:Poppins,system-ui,sans-serif;
+      margin:4px 4px 14px;
+      font-size: 20px;
+      font-weight: 600;
       text-align:center;
-      font-size:20px;
     }
-    .control-grid{
+    .grid{
       display:flex;
       flex-direction:column;
-      gap:10px;
-      max-width:480px;
-      margin:0 auto;
+      gap:0.75rem;
     }
-    .control-grid label{
+    .control-field{
       display:flex;
       flex-direction:column;
-      font-size:14px;
+      align-items:flex-start;
       gap:4px;
+      font-size:15px;
+      border-bottom:1px dashed rgba(0,0,0,.08);
+      padding-bottom:6px;
     }
-    .control-grid input,
-    .control-grid select{
+    .control-label{
+      font-weight:600;
+      color:#3b2f20;
+    }
+    .controls input,
+    .controls select{
       width:100%;
-      padding:9px 11px;
+      max-width:100%;
+      padding:10px 11px;
       border-radius:10px;
-      border:1px solid rgba(0,0,0,.16);
+      border:1px solid rgba(0,0,0,.18);
       background:#fff;
-      font-size:14px;
-      font-family:Poppins,system-ui,sans-serif;
+      font-size:15px;
+      font-family:inherit;
     }
 
     .buttons{
@@ -186,7 +184,7 @@
       cursor:pointer;
       box-shadow:var(--shadow);
       transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-      font-family:Poppins,system-ui,sans-serif;
+      font-family:'Poppins',system-ui,sans-serif;
       font-size:14px;
     }
     .btn:hover{
@@ -199,80 +197,65 @@
       color:#2a2a2a;
     }
 
-    .share-wrap{
-      text-align:center;
-      padding:12px 6px 4px;
-    }
+    /* Share */
+    .share-wrap{ text-align:center; padding:12px 10px }
     .fbshare{
       display:inline-block;
-      padding:9px 14px;
+      padding:10px 16px;
       border-radius:12px;
       background:#1877f2;
       color:#fff;
       font-weight:700;
       text-decoration:none;
-      font-family:Poppins,system-ui,sans-serif;
+      font-family:'Poppins',system-ui,sans-serif;
       font-size:14px;
     }
 
-    /* Mockups section */
-    .mockups-section{
-      margin: 0 auto 20px;
+    /* Mockups */
+    .mockups-section {
+      margin: 26px auto;
       padding: 22px;
-      max-width:1100px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 6px 16px rgba(0,0,0,.12);
+      max-width: 1100px;
     }
-    .mockups-title{
+    .mockups-title {
       text-align:center;
-      font-size:22px;
+      font-size:24px;
       margin-bottom:8px;
       color:#4a3a2a;
-      font-family:Poppins,system-ui,sans-serif;
     }
-    .mockups-desc{
+    .mockups-desc {
       text-align:center;
-      margin:0 auto 18px;
+      margin:0 auto 20px;
       max-width:700px;
       font-size:15px;
     }
-    .mockup-grid{
+    .mockup-grid {
       display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap:16px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
       justify-items:center;
     }
-    .mockup-grid img{
-      width:100%;
-      max-width:260px;
-      border-radius:10px;
-      border:1px solid rgba(0,0,0,.08);
+    .mockup-grid img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.08);
       box-shadow: 0 4px 12px rgba(0,0,0,.10);
-      background:#fff;
+      background: #fff;
     }
 
-    .about{
-      padding:18px 18px 20px;
-      font-size:14px;
-      line-height:1.6;
-      margin-bottom:24px;
-    }
-    .about h3{
-      margin-top:0;
-      font-family:Poppins,system-ui,sans-serif;
-    }
-    .about h4{
-      margin-bottom:4px;
-      margin-top:12px;
-      font-family:Poppins,system-ui,sans-serif;
-    }
-
-    /* Footer */
-    .footer-bar{
+    /* Footer bar */
+    .footer-bar {
       background: rgba(0, 0, 0, 0.06);
       padding: 18px 10px;
       border-top: 3px solid var(--gold);
       box-shadow: inset 0 4px 8px rgba(0,0,0,.05);
     }
-    .footer-inner{
+    .footer-inner {
       max-width: 1280px;
       margin: 0 auto;
       text-align: center;
@@ -282,27 +265,32 @@
       font-family: 'Poppins', sans-serif;
     }
     .footer-bar .sep { margin: 0 8px; opacity: 0.5; }
-    .footer-bar a{
+    .footer-bar a {
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    .footer-bar a:hover{
+    .footer-bar a:hover {
       color: var(--cran);
       text-decoration-color: var(--gold);
     }
 
     /* PRINT: only print the stage (one page) */
     @media print {
-      body { background:#fff !important; }
-      .site-header, .controls, .mockups-section, .about, .footer-bar { display:none !important; }
-      .shell, .stage, .stage-frame { box-shadow:none !important; border:none !important; margin:0 !important; padding:0 !important; }
+      body { background: #fff !important; }
+      .site-header, .controls, .rail, .mockups-section, .about, .footer-bar { display:none !important; }
+      .shell, .row, .stage, .stage-frame {
+        box-shadow:none !important;
+        border:none !important;
+        margin:0 !important;
+        padding:0 !important;
+      }
       svg { width: 7.5in !important; height: 7.5in !important; }
       @page { size: 8.5in 11in; margin: 0.5in; }
     }
   </style>
 
-  <!-- Google Analytics 4 -->
+  <!-- Google Analytics 4 — Nameflake Studio -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-00YK96C5RV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -311,121 +299,134 @@
     gtag('config', 'G-00YK96C5RV');
   </script>
 
-  <!-- AdSense JS -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958" crossorigin="anonymous"></script>
+  <!-- AdSense script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9007523138058958"
+          crossorigin="anonymous"></script>
 </head>
-
 <body>
+
   <!-- Header -->
   <header class="site-header">
     <img class="banner" src="banner.png?v=2" alt="Nameflake Studio banner">
   </header>
 
   <main class="shell">
-    <!-- Stage -->
-    <section class="stage card">
-      <div class="stage-frame">
-        <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview" role="img">
-          <g id="root" transform="translate(400,400)"></g>
-        </svg>
-      </div>
-    </section>
+    <div class="row">
+      <!-- LEFT RAIL: AdSense -->
+      <aside class="rail card">
+        <section class="ad-card">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-9007523138058958"
+               data-ad-slot="6836589862"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-    <!-- Controls -->
-    <section class="controls card">
-      <h3>Snowflake Controls</h3>
-      <div class="control-grid">
-        <label>
-          Word or short phrase
-          <input id="word" value="David Loves Angie" />
-        </label>
+          <!-- Fallback: hide rail if no ad iframe appears -->
+          <script>
+            setTimeout(() => {
+              const rail = document.querySelector('.rail');
+              const hasAd = rail && rail.querySelector('ins.adsbygoogle iframe');
+              if (rail && !hasAd) rail.style.display = 'none';
+            }, 1500);
+          </script>
+        </section>
+      </aside>
 
-        <label>
-          Arms
-          <select id="arms">
-            <option value="6">6 arms</option>
-            <option value="8" selected>8 arms</option>
-            <option value="12">12 arms</option>
-          </select>
-        </label>
+      <!-- CENTER: Stage -->
+      <section class="stage card">
+        <div class="stage-frame">
+          <svg id="flake" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" aria-label="Snowflake preview" role="img">
+            <g id="root" transform="translate(400,400)"></g>
+          </svg>
+        </div>
+      </section>
 
-        <label>
-          Font size
-          <input id="fs" type="number" value="100" />
-        </label>
+      <!-- RIGHT: Controls -->
+      <aside class="controls card">
+        <h3>Snowflake Controls</h3>
+        <div class="grid">
+          <label class="control-field">
+            <span class="control-label">Word or short phrase</span>
+            <input id="word" value="David Loves Angie" />
+          </label>
 
-        <label>
-          Arm length (px)
-          <input id="len" type="number" value="350" />
-        </label>
+          <label class="control-field">
+            <span class="control-label">Arms</span>
+            <select id="arms">
+              <option value="6">6 arms</option>
+              <option value="8" selected>8 arms</option>
+              <option value="12">12 arms</option>
+            </select>
+          </label>
 
-        <label>
-          Join gap (px)
-          <input id="gap" type="number" value="90" />
-        </label>
+          <label class="control-field">
+            <span class="control-label">Font size</span>
+            <input id="fs" type="number" value="100" />
+          </label>
 
-        <label>
-          Tilt (°)
-          <input id="tilt" type="number" value="0" />
-        </label>
+          <label class="control-field">
+            <span class="control-label">Arm length (px)</span>
+            <input id="len" type="number" value="350" />
+          </label>
 
-        <label>
-          Font
-          <select id="font">
-            <!-- handwriting / script first -->
-            <option value="Dancing Script" data-kind="cursive" selected>Dancing Script</option>
-            <option value="Great Vibes" data-kind="cursive">Great Vibes</option>
-            <option value="Caveat" data-kind="cursive">Caveat</option>
-            <option value="Indie Flower" data-kind="cursive">Indie Flower</option>
-            <option value="Handlee" data-kind="cursive">Handlee</option>
+          <label class="control-field">
+            <span class="control-label">Join gap (px)</span>
+            <input id="gap" type="number" value="100" />
+          </label>
 
-            <!-- outline / coloring -->
-            <option value="Londrina Outline" data-kind="sans-serif">Londrina Outline</option>
-            <option value="Bungee Outline" data-kind="cursive">Bungee Outline</option>
-            <option value="Kumar One Outline" data-kind="serif">Kumar One Outline</option>
+          <label class="control-field">
+            <span class="control-label">Tilt (°)</span>
+            <input id="tilt" type="number" value="0" />
+          </label>
 
-            <!-- serif -->
-            <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
-            <option value="Playfair Display" data-kind="serif">Playfair Display</option>
-            <option value="Lora" data-kind="serif">Lora</option>
-            <option value="Cinzel" data-kind="serif">Cinzel</option>
+          <label class="control-field">
+            <span class="control-label">Font</span>
+            <select id="font">
+              <!-- Handwriting / script -->
+              <option value="Dancing Script" data-kind="cursive" selected>Dancing Script</option>
+              <option value="Great Vibes" data-kind="cursive">Great Vibes</option>
+              <option value="Pacifico" data-kind="cursive">Pacifico</option>
+              <option value="Satisfy" data-kind="cursive">Satisfy</option>
+              <option value="Caveat" data-kind="cursive">Caveat</option>
+              <option value="Courgette" data-kind="cursive">Courgette</option>
 
-            <!-- sans -->
-            <option value="Montserrat" data-kind="sans-serif">Montserrat</option>
-            <option value="Raleway" data-kind="sans-serif">Raleway</option>
-            <option value="Poppins" data-kind="sans-serif">Poppins</option>
-          </select>
-        </label>
+              <!-- Outline / coloring fonts -->
+              <option value="Bungee Outline" data-kind="cursive">Bungee Outline</option>
+              <option value="Kumar One Outline" data-kind="serif">Kumar One Outline</option>
+              <option value="Londrina Outline" data-kind="sans-serif">Londrina Outline</option>
 
-        <label>
-          Color
-          <input id="color" type="color" value="#000000" />
-        </label>
-      </div>
+              <!-- Serif -->
+              <option value="Libre Baskerville" data-kind="serif">Libre Baskerville</option>
+              <option value="Playfair Display" data-kind="serif">Playfair Display</option>
+              <option value="Lora" data-kind="serif">Lora</option>
+              <option value="Cinzel" data-kind="serif">Cinzel</option>
 
-      <div class="buttons">
-        <button id="download" class="btn">Download PNG</button>
-        <button id="downloadSvg" class="btn">Download SVG</button>
-        <button id="print" class="btn primary">Print</button>
-      </div>
+              <!-- Sans -->
+              <option value="Montserrat" data-kind="sans-serif">Montserrat</option>
+              <option value="Raleway" data-kind="sans-serif">Raleway</option>
+              <option value="Poppins" data-kind="sans-serif">Poppins</option>
+            </select>
+          </label>
 
-      <div class="share-wrap">
-        <a class="fbshare" href="#" id="fbshare">Share on Facebook</a>
-      </div>
-    </section>
+          <label class="control-field">
+            <span class="control-label">Color</span>
+            <input id="color" type="color" value="#000000" />
+          </label>
+        </div>
 
-    <!-- Simple Ad block (centered under controls) -->
-    <section class="card" style="padding:12px 10px; margin-bottom:20px; text-align:center;">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-9007523138058958"
-           data-ad-slot="6836589862"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </section>
+        <div class="buttons">
+          <button id="download" class="btn">Download PNG</button>
+          <button id="downloadSvg" class="btn">Download SVG</button>
+          <button id="print" class="btn primary">Print</button>
+        </div>
+
+        <div class="share-wrap">
+          <a class="fbshare" href="#" id="fbshare">Share on Facebook</a>
+        </div>
+      </aside>
+    </div>
 
     <!-- MOCKUPS -->
     <section class="mockups-section card">
@@ -443,7 +444,7 @@
       </div>
     </section>
 
-    <section class="about card">
+    <section class="about card" style="margin-top:16px">
       <h3>❄ About Nameflake Studio</h3>
       <p>Turn any name or word into a one-of-a-kind snowflake! Pick your font, color, and style — then download or print your creation.</p>
       <h4>🎨 Coloring-Friendly Fonts</h4>
@@ -490,18 +491,22 @@
     async function inlineFontsIntoSVG(svgEl, families) {
       const cssChunks = [];
       for (const fam of families) {
-        const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
-        const resp = await fetch(cssURL);
-        const css = await resp.text();
-        const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
-        let inlined = css;
-        for (const u of urls) {
-          const fontResp = await fetch(u);
-          const ab = await fontResp.arrayBuffer();
-          const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
-          inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
+        try {
+          const cssURL = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(fam)}:wght@400;700&display=swap`;
+          const resp = await fetch(cssURL);
+          const css = await resp.text();
+          const urls = Array.from(css.matchAll(/url\((https:[^)]+\.woff2)\)/g)).map(m => m[1]);
+          let inlined = css;
+          for (const u of urls) {
+            const fontResp = await fetch(u);
+            const ab = await fontResp.arrayBuffer();
+            const b64 = btoa(String.fromCharCode(...new Uint8Array(ab)));
+            inlined = inlined.replaceAll(u, `data:font/woff2;base64,${b64}`);
+          }
+          cssChunks.push(inlined);
+        } catch(e) {
+          // If anything fails, just skip embedding for that font
         }
-        cssChunks.push(inlined);
       }
       const style = document.createElementNS(svgNS,"style");
       style.setAttribute("type","text/css");
@@ -519,81 +524,67 @@
 
     async function generate(){
       const WORD = (v("word","David Loves Angie")).toString();
-      const ARMS = +v("arms",8) || 8;
-      const FS   = +v("fs",100) || 100;
-      const LEN  = +v("len",350) || 350;
-      const GAP  = +v("gap",90) || 90;
-      const TILT = +v("tilt",0) || 0;
+      const ARMS = parseInt(v("arms", "8"), 10) || 8;
+      const FS = +v("fs",100);
+      const LEN = +v("len",350);
+      const GAP = +v("gap",100);
+      const TILT = +v("tilt",0);
       const COLOR = v("color","#000000");
-      const FONTSTACK = selectedFontStack();
+      const FONT = selectedFontStack();
       const FAMILY = $("font").value;
 
       await waitForFont(FAMILY, FS);
+      if (!root) return;
       root.innerHTML = "";
 
-      // small center hub
       const hub = document.createElementNS(svgNS,"circle");
       hub.setAttribute("r","2.5");
       hub.setAttribute("fill",COLOR);
       hub.setAttribute("opacity",".55");
       root.appendChild(hub);
 
-      const DESCENDER_FACTOR = 0.28; // approx descender height as fraction of font size
-      const d = FS * DESCENDER_FACTOR; // distance from baseline to lowest point
+      function armPair(){
+        const arm=document.createElementNS(svgNS,"g");
 
-      function makeArmGroup(){
-        const armGroup = document.createElementNS(svgNS,"g");
+        // Top arm
+        const go=document.createElementNS(svgNS,"g");
+        go.setAttribute("transform",`rotate(${-90+TILT})`);
+        arm.appendChild(go);
+        const to=document.createElementNS(svgNS,"text");
+        to.setAttribute("fill",COLOR);
+        to.setAttribute("font-size",FS);
+        to.setAttribute("font-family",FONT);
+        to.setAttribute("text-anchor","start");
+        to.setAttribute("x",String(GAP));
+        to.textContent=WORD;
+        go.appendChild(to);
 
-        // Rotate so text runs outward from center
-        const orient = document.createElementNS(svgNS,"g");
-        orient.setAttribute("transform", `rotate(${-90 + TILT})`);
-        armGroup.appendChild(orient);
+        // Mirrored bottom arm (no shrinking, just mirrored)
+        const gi=document.createElementNS(svgNS,"g");
+        gi.setAttribute("transform",`scale(1,-1) rotate(${-90-TILT})`);
+        arm.appendChild(gi);
+        const ti=document.createElementNS(svgNS,"text");
+        ti.setAttribute("fill",COLOR);
+        ti.setAttribute("font-size",FS);
+        ti.setAttribute("font-family",FONT);
+        ti.setAttribute("text-anchor","start");
+        ti.setAttribute("x",String(GAP));
+        ti.textContent=WORD;
+        gi.appendChild(ti);
 
-        // TOP word
-        const tTop = document.createElementNS(svgNS,"text");
-        tTop.setAttribute("fill", COLOR);
-        tTop.setAttribute("font-size", FS);
-        tTop.setAttribute("font-family", FONTSTACK);
-        tTop.setAttribute("lengthAdjust","spacingAndGlyphs");
-        tTop.setAttribute("textLength", String(LEN - GAP));
-        tTop.setAttribute("text-anchor","start");
-        tTop.setAttribute("x", String(GAP));
-        tTop.setAttribute("y", "0");
-        tTop.textContent = WORD;
-        orient.appendChild(tTop);
-
-        // MIRRORED word – true vertical mirror, touching at lowest point
-        const mirrorWrapper = document.createElementNS(svgNS,"g");
-        // translate down by 2d, then flip vertically;
-        // this makes the descenders of both words touch at y = d
-        mirrorWrapper.setAttribute("transform", `translate(0, ${2*d}) scale(1,-1)`);
-        orient.appendChild(mirrorWrapper);
-
-        const tBottom = document.createElementNS(svgNS,"text");
-        tBottom.setAttribute("fill", COLOR);
-        tBottom.setAttribute("font-size", FS);
-        tBottom.setAttribute("font-family", FONTSTACK);
-        tBottom.setAttribute("lengthAdjust","spacingAndGlyphs");
-        tBottom.setAttribute("textLength", String(LEN - GAP));
-        tBottom.setAttribute("text-anchor","start");
-        tBottom.setAttribute("x", String(GAP));
-        tBottom.setAttribute("y", "0");
-        tBottom.textContent = WORD;
-        mirrorWrapper.appendChild(tBottom);
-
-        return armGroup;
+        return arm;
       }
 
-      const pair = makeArmGroup();
-      for (let i = 0; i < ARMS; i++){
+      const pr = armPair();
+      for(let i=0;i<ARMS;i++){
         const holder = document.createElementNS(svgNS,"g");
         holder.setAttribute("transform", `rotate(${(360/ARMS)*i})`);
-        holder.appendChild(pair.cloneNode(true));
+        holder.appendChild(pr.cloneNode(true));
         root.appendChild(holder);
       }
     }
 
-    // EXPORT: SVG
+    // EXPORT: SVG (centered, embedded fonts)
     async function downloadSVG(){
       const svg = document.getElementById("flake");
       const fam = document.getElementById("font").value;
@@ -610,7 +601,7 @@
       URL.revokeObjectURL(url);
     }
 
-    // EXPORT: PNG
+    // EXPORT: PNG (~350 dpi), centered
     async function downloadPNG(whiteBg=false){
       const svg = document.getElementById("flake");
       const fam = document.getElementById("font").value;
@@ -619,7 +610,7 @@
       if (whiteBg) svgWithFonts.setAttribute("style","background:white");
 
       const vb = svg.viewBox.baseVal;
-      const SCALE = 3.5; // 800 * 3.5 = 2800px
+      const SCALE = 3.5; // 800 * 3.5 = 2800 (~350 dpi on ~8x8 in)
 
       svgWithFonts.setAttribute("width", vb.width);
       svgWithFonts.setAttribute("height", vb.height);
@@ -656,16 +647,20 @@
       img.src = url;
     }
 
-    // Share
+    // Share (Facebook only)
     $("fbshare").addEventListener("click", (e)=>{
       e.preventDefault();
       const page = location.href.split('#')[0];
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,'_blank');
+      window.open(
+        `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(page)}`,
+        '_blank'
+      );
     });
 
     // Bind + first render
     ["word","arms","fs","len","gap","tilt","font","color"].forEach(id=>{
-      const el=$(id); if (el) el.addEventListener("input", generate);
+      const el=$(id);
+      if (el) el.addEventListener("input", generate);
     });
     $("download").addEventListener("click", async ()=>{
       const white = confirm("OK = white background, Cancel = transparent");
